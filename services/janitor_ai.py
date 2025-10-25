@@ -1,6 +1,6 @@
 import httpx
 import json
-from typing import List, Dict
+from typing import List, Dict, AsyncGenerator
 from config.ai_prompt import AI_SYSTEM_PROMPT
 from models.chat import Message
 
@@ -11,6 +11,7 @@ class JanitorAIClient:
         self.client = httpx.AsyncClient(timeout=30.0)
 
     async def get_ai_response(self, messages: List[Dict[str, str]]) -> str:
+        """Get AI response from JanitorAI API (collects streaming response)"""
         try:
             if not messages or not isinstance(messages, list):
                 print("Invalid messages format")

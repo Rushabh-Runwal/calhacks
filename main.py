@@ -9,15 +9,20 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import socketio
 from models.chat import Message, User, Room
-from services.fish_audio import FishAudioService
+from services.fish_audio import FishAudioClient
 from services.janitor_ai import JanitorAIClient
+import traceback
+import uuid
 
 app = FastAPI(title="Talking Tom Chat API", version="1.0.0")
-sio = socketio.AsyncServer(cors_allowed_origins="*", async_mode="asgi")
-socket_app = socketio.ASGIApp(sio, app)
+sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins="*")
 
-fish_audio = FishAudioService()
-janitor_ai = JanitorAIClient()
+# Mount the Socket.IO app at the default path
+app.mount("/socket.io", socketio.ASGIApp(sio))
+
+# Initialize clients
+fish_audio_client = FishAudioClient()
+janitor_ai_client = JanitorAIClient()
 rooms: Dict[str, Room] = {}
 
 def generate_room_id() -> str:
@@ -86,9 +91,9 @@ async def sendMessage(sid, data):
         
         if room_id in rooms:
             rooms[room_id].messages.append(user_message)
-            await sio.emit("message", user_message.dict(), room=room_id)
+            await sio.emit("newMessage", user_message.dict(), room=room_id)
             
-            await generate_ai_response(room_id, content, username)
+            await generate_ai_response(room_id, username)
         
     except Exception as e:
         print(f"Error in sendMessage: {e}")
@@ -114,7 +119,7 @@ async def sendVoiceMessage(sid, data):
             await sio.emit("error", {"message": "Invalid audio data format"}, room=sid)
             return
         
-        transcribed_text = await fish_audio.transcribe_audio(audio_bytes)
+        transcribed_text = await fish_audio_client.transcribe_audio(audio_bytes)
         
         if not transcribed_text:
             await sio.emit("error", {"message": "Could not transcribe audio. Please try speaking more clearly."}, room=sid)
@@ -130,9 +135,9 @@ async def sendVoiceMessage(sid, data):
         )
         
         rooms[room_id].messages.append(user_message)
-        await sio.emit("message", user_message.dict(), room=room_id)
+        await sio.emit("newMessage", user_message.dict(), room=room_id)
         
-        await generate_ai_response(room_id, transcribed_text, username)
+        await generate_ai_response(room_id, username)
         
     except Exception as e:
         print(f"Error in sendVoiceMessage: {e}")
@@ -157,43 +162,63 @@ def should_tom_respond(message_content: str, username: str) -> bool:
     
     return False
 
-async def generate_ai_response(room_id: str, last_user_message: str, username: str):
-    """Generate AI response with text and audio"""
-    try:
-        if room_id not in rooms:
-            return
+async def generate_ai_response(room_id: str, username: str):
+    """Generates a response from the AI and broadcasts it to the room."""
+    print(f"[{room_id}] Generating AI response for {username}")
+    
+    room = rooms.get(room_id)
+    if not room:
+        return
+
+    # 1. Build conversation context
+    context = janitor_ai_client.build_conversation_context(room.messages)
+
+    # 2. Get AI text response
+    ai_text_response = await janitor_ai_client.get_ai_response(context)
+
+    if not ai_text_response:
+        print(f"[{room_id}] AI did not return a response.")
+        return
         
-        # Check if Tom should respond based on the prompt rules
-        if not should_tom_respond(last_user_message, username):
-            print(f"Tom not responding to: {last_user_message} (from {username})")
-            return
-        
-        room = rooms[room_id]
-        context = janitor_ai.build_conversation_context(room.messages)
-        message_id = generate_message_id()
-        
-        # Get AI response (non-streaming)
-        ai_text = await janitor_ai.get_ai_response(context)
-        
-        # Generate audio
-        audio_path = None
-        if ai_text.strip():
-            audio_path = await fish_audio.generate_audio(ai_text, message_id)
-        
+    print(f"[{room_id}] AI Response (text): {ai_text_response}")
+
+    # Generate a unique ID for the AI's message
+    ai_message_id = generate_message_id()
+
+    # 3. Generate audio for the AI response
+    audio_file_path = await fish_audio_client.generate_audio(ai_text_response, ai_message_id)
+    audio_duration = 0 # Fish Audio SDK does not provide duration, default to 0
+
+    if not audio_file_path:
+        print(f"[{room_id}] Failed to generate audio for AI response.")
+        # Fallback: send text-only message if audio fails
         ai_message = Message(
-            id=message_id,
-            content=ai_text,
-            username="Talking Tom",
-            timestamp=int(datetime.now().timestamp() * 1000),
+            id=ai_message_id,
+            content=ai_text_response,
+            username="Tom",
             is_ai=True,
-            audio_url=fish_audio.get_audio_url(message_id) if audio_path else None
+            is_voice=False,
+            audio_url=None,
+            audio_duration=0,
+            timestamp=int(datetime.now().timestamp() * 1000)
         )
-        
-        room.messages.append(ai_message)
-        await sio.emit("message", ai_message.dict(), room=room_id)
-        
-    except Exception as e:
-        print(f"Error generating AI response: {e}")
+    else:
+        # 4. Create the AI message with audio
+        print(f"[{room_id}] AI Response (audio): {audio_file_path} (duration: {audio_duration}s)")
+        ai_message = Message(
+            id=ai_message_id,
+            content=ai_text_response,
+            username="Tom",
+            is_ai=True,
+            is_voice=True,
+            audio_url=f"/audio/{os.path.basename(audio_file_path)}",
+            audio_duration=audio_duration,
+            timestamp=int(datetime.now().timestamp() * 1000)
+        )
+
+    # 5. Add AI message to the room and broadcast
+    room.messages.append(ai_message)
+    await sio.emit("newMessage", ai_message.dict(), room=room_id)
 
 @sio.event
 async def leaveRoom(sid, data):
@@ -245,8 +270,14 @@ async def get_audio(filename: str):
 async def cleanup_audio():
     while True:
         await asyncio.sleep(3600)
-        fish_audio.cleanup_old_audio()
+        fish_audio_client.cleanup_old_audio()
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    await fish_audio_client.close()
+    await janitor_ai_client.close()
+    print("Clients closed.")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(socket_app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)

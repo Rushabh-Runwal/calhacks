@@ -1,25 +1,23 @@
+[tool.uv]
+dev-dependencies = []
+
+[tool.uv.sources]
+"fastapi-poe" = { "git" = "https://github.com/fastapi-poe/fastapi-poe.git" }
+
 [project]
 name = "multiplayer-ai-chat-python"
 version = "0.1.0"
-description = "Multiplayer AI Chat with Talking Tom and Fish Audio"
-authors = [
-    {name = "CalHacks Team", email = "team@calhacks.com"},
-]
+description = "A multiplayer chat application with an AI character."
 dependencies = [
-    "fastapi>=0.104.0",
-    "python-socketio>=5.10.0",
-    "uvicorn[standard]>=0.24.0",
-    "httpx>=0.25.0",
-    "pydantic>=2.5.0",
-    "streamlit>=1.28.0",
-    "fish-audio-sdk>=0.1.0",
-    "python-multipart>=0.0.6",
-    "aiofiles>=23.2.0",
-    "python-socketio-client>=1.1",
-    "aiohttp>=3.13.1",
+    "fastapi>=0.111.0",
+    "python-socketio>=5.11.2",
+    "uvicorn[standard]>=0.29.0",
+    "python-dotenv>=1.0.1",
+    "fish-audio-sdk>=0.1.13",
     "ffmpeg-python>=0.2.0",
+    "httpx>=0.27.0"
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 
 [project.optional-dependencies]
 dev = [

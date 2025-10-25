@@ -5,7 +5,7 @@ import tempfile
 from typing import Optional
 from fish_audio_sdk import WebSocketSession, TTSRequest, Session, ASRRequest
 
-class FishAudioService:
+class FishAudioClient:
     def __init__(self, api_key: str = "b34cff9e6fed4b8cb414b3ed4356014d"):
         self.api_key = api_key
         self.voice_model_id = "36d5e6340a0e4023b89aa9a8a013c217"

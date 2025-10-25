@@ -6,7 +6,7 @@ import { io, Socket } from 'socket.io-client';
 import { Message, User } from '@/types/chat';
 import ChatMessage from '@/components/ChatMessage';
 import ChatInput from '@/components/ChatInput';
-import VoiceRecorder from '@/components/VoiceRecorder';
+import ContinuousRecorder from '@/components/ContinuousRecorder';
 
 export default function RoomPage() {
     const params = useParams();
@@ -45,7 +45,7 @@ export default function RoomPage() {
         });
 
         // Message events
-        newSocket.on('message', (message: Message) => {
+        newSocket.on('newMessage', (message: Message) => {
             setMessages(prev => [...prev, message]);
         });
 
@@ -194,7 +194,7 @@ export default function RoomPage() {
             {/* Input */}
             <div className="bg-white border-t border-gray-200 p-4">
                 <div className="flex items-center gap-3">
-                    <VoiceRecorder
+                    <ContinuousRecorder
                         onRecordingComplete={handleVoiceRecording}
                         disabled={!isConnected}
                     />
