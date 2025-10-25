@@ -7,46 +7,60 @@ const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
 const port = process.env.PORT || 3000;
 
-// Initialize Next.js app
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
-// Store rooms in memory (in production, use Redis or database)
 const rooms = new Map();
 
-// Function to call JanitorAI API
-async function callJanitorAI(messages) {
+// 🧠 CHANGE: Function to call JanitorAI API with decision control
+async function callJanitorAI(messages, lastUserMessage) {
   try {
-    const response = await fetch(
-      "https://janitorai.com/hackathon/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: "calhacks2047",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          messages: [
-            { role: "system", content: AI_SYSTEM_PROMPT },
-            ...messages,
-          ],
-        }),
-      }
-    );
+    const decisionPrompt = `
+${AI_SYSTEM_PROMPT}
 
-    if (!response.ok) {
-      throw new Error(`AI API error: ${response.status}`);
-    }
+Tom should only reply when:
+- Someone directly mentions his name ("Tom", "Talking Tom") OR
+- Someone asks him a question OR
+- The message is addressed to everyone (e.g., "guys", "everyone", "hey all").
 
+If users are chatting among themselves and not addressing him,
+Tom stays silent but keeps track of what’s being said for context.
+
+Tom should remember group dynamics and reference prior user messages naturally
+(e.g., recall jokes, topics, or names from earlier). Never interrupt.
+
+Recent user message: "${lastUserMessage}"
+If Tom should not respond, reply with "__NO_RESPONSE__" exactly.
+`;
+
+    const response = await fetch("https://janitorai.com/hackathon/completions", {
+      method: "POST",
+      headers: {
+        Authorization: "calhacks2047",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messages: [
+          { role: "system", content: decisionPrompt },
+          ...messages,
+        ],
+      }),
+    });
+
+    if (!response.ok) throw new Error(`AI API error: ${response.status}`);
     const data = await response.json();
-    return data.choices[0].message.content;
+    const content = data.choices[0].message.content.trim();
+
+    // CHANGE: Skip AI reply if model says "__NO_RESPONSE__"
+    if (content === "__NO_RESPONSE__") return null;
+
+    return content;
   } catch (error) {
     console.error("AI API error:", error);
     return "Sorry, I'm having trouble responding right now!";
   }
 }
 
-// Function to build conversation context
 function buildConversationContext(roomMessages, maxMessages = 50) {
   const recentMessages = roomMessages.slice(-maxMessages);
   return recentMessages.map((msg) => ({
@@ -56,69 +70,39 @@ function buildConversationContext(roomMessages, maxMessages = 50) {
 }
 
 app.prepare().then(() => {
-  const server = createServer((req, res) => {
-    handle(req, res);
-  });
+  const server = createServer((req, res) => handle(req, res));
 
   const io = new Server(server, {
-    cors: {
-      origin: "*",
-      methods: ["GET", "POST"],
-    },
+    cors: { origin: "*", methods: ["GET", "POST"] },
   });
 
   io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
 
-    // Join room
-    socket.on("joinRoom", async (data) => {
-      const { roomId, username } = data;
-
+    socket.on("joinRoom", async ({ roomId, username }) => {
       if (!roomId || !username) {
         socket.emit("error", "Room ID and username are required");
         return;
       }
 
-      // Get or create room
       if (!rooms.has(roomId)) {
-        rooms.set(roomId, {
-          id: roomId,
-          messages: [],
-          users: [],
-          createdAt: Date.now(),
-        });
+        rooms.set(roomId, { id: roomId, messages: [], users: [], createdAt: Date.now() });
       }
 
       const room = rooms.get(roomId);
-      const user = {
-        id: socket.id,
-        username,
-        roomId,
-      };
-
-      // Add user to room
+      const user = { id: socket.id, username, roomId };
       room.users.push(user);
       socket.join(roomId);
       socket.user = user;
 
-      // Notify room about new user
       socket.to(roomId).emit("userJoined", user);
-
-      // Send current room users to the new user
       socket.emit("roomUsers", room.users);
-
-      // Send recent messages to the new user
-      room.messages.slice(-50).forEach((message) => {
-        socket.emit("message", message);
-      });
+      room.messages.slice(-50).forEach((msg) => socket.emit("message", msg));
 
       console.log(`User ${username} joined room ${roomId}`);
     });
 
-    // Send message
-    socket.on("sendMessage", async (data) => {
-      const { content, username, roomId } = data;
-
+    socket.on("sendMessage", async ({ content, username, roomId }) => {
       if (!socket.user || !roomId) {
         socket.emit("error", "Not in a room");
         return;
@@ -130,7 +114,6 @@ app.prepare().then(() => {
         return;
       }
 
-      // Create user message
       const { nanoid } = await import("nanoid");
       const userMessage = {
         id: nanoid(),
@@ -140,18 +123,16 @@ app.prepare().then(() => {
         isAI: false,
       };
 
-      // Add message to room
       room.messages.push(userMessage);
-
-      // Broadcast user message to all users in room
       io.to(roomId).emit("message", userMessage);
 
-      // Generate AI response
       try {
-        const conversationContext = buildConversationContext(room.messages);
-        const aiResponse = await callJanitorAI(conversationContext);
+        const context = buildConversationContext(room.messages);
+        const aiResponse = await callJanitorAI(context, content);
 
-        // Add small delay to simulate natural response time
+        // CHANGE: Only send AI message if model decides to respond
+        if (!aiResponse) return;
+
         setTimeout(async () => {
           const { nanoid } = await import("nanoid");
           const aiMessage = {
@@ -164,44 +145,33 @@ app.prepare().then(() => {
 
           room.messages.push(aiMessage);
           io.to(roomId).emit("message", aiMessage);
-        }, 1000 + Math.random() * 1000); // 1-2 second delay
+        }, 1000 + Math.random() * 1000);
       } catch (error) {
         console.error("Error generating AI response:", error);
       }
     });
 
-    // Leave room
     socket.on("leaveRoom", (roomId) => {
       if (socket.user && roomId) {
         const room = rooms.get(roomId);
         if (room) {
-          room.users = room.users.filter((user) => user.id !== socket.id);
+          room.users = room.users.filter((u) => u.id !== socket.id);
           socket.to(roomId).emit("userLeft", socket.id);
-
-          // Clean up empty rooms
-          if (room.users.length === 0) {
-            rooms.delete(roomId);
-          }
+          if (room.users.length === 0) rooms.delete(roomId);
         }
         socket.leave(roomId);
         socket.user = null;
       }
     });
 
-    // Handle disconnect
     socket.on("disconnect", () => {
       if (socket.user) {
         const { roomId } = socket.user;
         const room = rooms.get(roomId);
-
         if (room) {
-          room.users = room.users.filter((user) => user.id !== socket.id);
+          room.users = room.users.filter((u) => u.id !== socket.id);
           socket.to(roomId).emit("userLeft", socket.id);
-
-          // Clean up empty rooms
-          if (room.users.length === 0) {
-            rooms.delete(roomId);
-          }
+          if (room.users.length === 0) rooms.delete(roomId);
         }
       }
       console.log("User disconnected:", socket.id);

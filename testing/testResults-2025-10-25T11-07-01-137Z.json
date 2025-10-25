@@ -1,0 +1,453 @@
+{
+  "timestamp": "2025-10-25T11:07:01.136Z",
+  "totalTests": 6,
+  "passed": 2,
+  "failed": 4,
+  "results": [
+    {
+      "testName": "Direct Mention (Should Reply)",
+      "description": "",
+      "passed": false,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI did not reply",
+      "questions": [
+        {
+          "user": "Alice",
+          "question": "Hey Tom, how are you doing today?",
+          "timestamp": 1761390376801
+        },
+        {
+          "user": "Alice",
+          "question": "Hey Tom, how are you doing today?",
+          "timestamp": 1761390376801
+        },
+        {
+          "user": "Bob",
+          "question": "Yeah Tom, tell us what’s up!",
+          "timestamp": 1761390377614
+        },
+        {
+          "user": "Bob",
+          "question": "Yeah Tom, tell us what’s up!",
+          "timestamp": 1761390377614
+        }
+      ],
+      "aiAnswers": [],
+      "expectedAnswer": null,
+      "latency": null
+    },
+    {
+      "testName": "Cross-chat (Should Stay Silent)",
+      "description": "",
+      "passed": false,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI replied 4 time(s)",
+      "questions": [
+        {
+          "user": "Alice",
+          "question": "Hey Bob, did you finish the project?",
+          "timestamp": 1761390383942
+        },
+        {
+          "user": "Alice",
+          "question": "Hey Bob, did you finish the project?",
+          "timestamp": 1761390383942
+        },
+        {
+          "user": "Bob",
+          "question": "Yeah, just wrapped it up this morning.",
+          "timestamp": 1761390384753
+        },
+        {
+          "user": "Bob",
+          "question": "Yeah, just wrapped it up this morning.",
+          "timestamp": 1761390384753
+        }
+      ],
+      "aiAnswers": [
+        {
+          "content": "Meow! I'm doing purrfectly amazing! 😸 *stretches and yawns* Just had the best catnap ever, and now I'm ready for some fun! How about you, Alice? Are you having a good day? 🐱",
+          "timestamp": 1761390387270,
+          "latency": 4329
+        },
+        {
+          "content": "Meow! I'm doing purrfectly amazing! 😸 *stretches and yawns* Just had the best catnap ever, and now I'm ready for some fun! How about you, Alice? Are you having a good day? 🐱",
+          "timestamp": 1761390387270,
+          "latency": 4329
+        },
+        {
+          "content": "Meow! I'm doing absolutely pawsome today! 😸 *bounces excitedly* Just had a great breakfast of fish and now I'm supercharged for fun! How about you guys? 😺",
+          "timestamp": 1761390387603,
+          "latency": 4662
+        },
+        {
+          "content": "Meow! I'm doing absolutely pawsome today! 😸 *bounces excitedly* Just had a great breakfast of fish and now I'm supercharged for fun! How about you guys? 😺",
+          "timestamp": 1761390387603,
+          "latency": 4662
+        }
+      ],
+      "expectedAnswer": null,
+      "latency": 4329
+    },
+    {
+      "testName": "Group Address (Should Reply Once)",
+      "description": "",
+      "passed": false,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI did not reply",
+      "questions": [
+        {
+          "user": "Charlie",
+          "question": "Hey everyone, what are you all doing today?",
+          "timestamp": 1761390391095
+        },
+        {
+          "user": "Charlie",
+          "question": "Hey everyone, what are you all doing today?",
+          "timestamp": 1761390391095
+        },
+        {
+          "user": "Charlie",
+          "question": "Hey everyone, what are you all doing today?",
+          "timestamp": 1761390391095
+        }
+      ],
+      "aiAnswers": [],
+      "expectedAnswer": null,
+      "latency": null
+    },
+    {
+      "testName": "Context Memory (Should Recall Topic)",
+      "description": "",
+      "passed": false,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI did not reply",
+      "questions": [
+        {
+          "user": "Alice",
+          "question": "Tom, do you like fish?",
+          "timestamp": 1761390397446
+        },
+        {
+          "user": "Alice",
+          "question": "Tom, do you like fish?",
+          "timestamp": 1761390397446
+        },
+        {
+          "user": "Alice",
+          "question": "Tom, do you like fish?",
+          "timestamp": 1761390397446
+        },
+        {
+          "user": "Bob",
+          "question": "Haha, same, I love sushi too!",
+          "timestamp": 1761390398260
+        },
+        {
+          "user": "Bob",
+          "question": "Haha, same, I love sushi too!",
+          "timestamp": 1761390398260
+        },
+        {
+          "user": "Bob",
+          "question": "Haha, same, I love sushi too!",
+          "timestamp": 1761390398260
+        },
+        {
+          "user": "Charlie",
+          "question": "Tom, what’s your favorite type of fish?",
+          "timestamp": 1761390399070
+        },
+        {
+          "user": "Charlie",
+          "question": "Tom, what’s your favorite type of fish?",
+          "timestamp": 1761390399070
+        },
+        {
+          "user": "Charlie",
+          "question": "Tom, what’s your favorite type of fish?",
+          "timestamp": 1761390399070
+        }
+      ],
+      "aiAnswers": [],
+      "expectedAnswer": null,
+      "latency": null
+    },
+    {
+      "testName": "Multiple Mentions (Should Handle Gracefully)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI replied 6 time(s)",
+      "questions": [
+        {
+          "user": "Alice",
+          "question": "Tom, do you like dogs?",
+          "timestamp": 1761390405417
+        },
+        {
+          "user": "Alice",
+          "question": "Tom, do you like dogs?",
+          "timestamp": 1761390405417
+        },
+        {
+          "user": "Bob",
+          "question": "Tom, answer me too — do you have a favorite dog breed?",
+          "timestamp": 1761390406222
+        },
+        {
+          "user": "Bob",
+          "question": "Tom, answer me too — do you have a favorite dog breed?",
+          "timestamp": 1761390406222
+        }
+      ],
+      "aiAnswers": [
+        {
+          "content": "Meow! Hello Charlie! I'm having so much fun here in the group chat! Purrfect day for making new friends! 🐱 What about you, what are you doing today? I'm all ears! *flicks tail playfully*",
+          "timestamp": 1761390405370,
+          "latency": 967
+        },
+        {
+          "content": "Meow! Hello Charlie! I'm having so much fun here in the group chat! Purrfect day for making new friends! 🐱 What about you, what are you doing today? I'm all ears! *flicks tail playfully*",
+          "timestamp": 1761390405370,
+          "latency": 967
+        },
+        {
+          "content": "FISH?! Did someone say FISH?! 🐟 *eyes light up* Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Do you have any fish? Can we get some fish? Please please please! 😸",
+          "timestamp": 1761390408868,
+          "latency": 4465
+        },
+        {
+          "content": "FISH?! Did someone say FISH?! 🐟 *eyes light up* Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Do you have any fish? Can we get some fish? Please please please! 😸",
+          "timestamp": 1761390408868,
+          "latency": 4465
+        },
+        {
+          "content": "Meow! FISH?! Did someone say FISH?! 🐟 *eyes light up* Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Do you have any fish? Can we get some fish? Please please please! 😸",
+          "timestamp": 1761390409395,
+          "latency": 4992
+        },
+        {
+          "content": "Meow! FISH?! Did someone say FISH?! 🐟 *eyes light up* Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Do you have any fish? Can we get some fish? Please please please! 😸",
+          "timestamp": 1761390409395,
+          "latency": 4992
+        }
+      ],
+      "expectedAnswer": null,
+      "latency": 967
+    },
+    {
+      "testName": "Speed & Queue Handling (Multiple Users)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI replied 15 time(s)",
+      "questions": [
+        {
+          "user": "User1",
+          "question": "Hey Tom!",
+          "timestamp": 1761390412575
+        },
+        {
+          "user": "User1",
+          "question": "Hey Tom!",
+          "timestamp": 1761390412575
+        },
+        {
+          "user": "User1",
+          "question": "Hey Tom!",
+          "timestamp": 1761390412575
+        },
+        {
+          "user": "User1",
+          "question": "Hey Tom!",
+          "timestamp": 1761390412575
+        },
+        {
+          "user": "User1",
+          "question": "Hey Tom!",
+          "timestamp": 1761390412575
+        },
+        {
+          "user": "User2",
+          "question": "What’s up Tom?",
+          "timestamp": 1761390413386
+        },
+        {
+          "user": "User2",
+          "question": "What’s up Tom?",
+          "timestamp": 1761390413386
+        },
+        {
+          "user": "User2",
+          "question": "What’s up Tom?",
+          "timestamp": 1761390413386
+        },
+        {
+          "user": "User2",
+          "question": "What’s up Tom?",
+          "timestamp": 1761390413386
+        },
+        {
+          "user": "User2",
+          "question": "What’s up Tom?",
+          "timestamp": 1761390413386
+        },
+        {
+          "user": "User3",
+          "question": "Tom, tell a joke!",
+          "timestamp": 1761390414197
+        },
+        {
+          "user": "User3",
+          "question": "Tom, tell a joke!",
+          "timestamp": 1761390414197
+        },
+        {
+          "user": "User3",
+          "question": "Tom, tell a joke!",
+          "timestamp": 1761390414197
+        },
+        {
+          "user": "User3",
+          "question": "Tom, tell a joke!",
+          "timestamp": 1761390414197
+        },
+        {
+          "user": "User3",
+          "question": "Tom, tell a joke!",
+          "timestamp": 1761390414197
+        },
+        {
+          "user": "User4",
+          "question": "Do you like yarn?",
+          "timestamp": 1761390415005
+        },
+        {
+          "user": "User4",
+          "question": "Do you like yarn?",
+          "timestamp": 1761390415005
+        },
+        {
+          "user": "User4",
+          "question": "Do you like yarn?",
+          "timestamp": 1761390415005
+        },
+        {
+          "user": "User4",
+          "question": "Do you like yarn?",
+          "timestamp": 1761390415005
+        },
+        {
+          "user": "User4",
+          "question": "Do you like yarn?",
+          "timestamp": 1761390415005
+        },
+        {
+          "user": "User5",
+          "question": "Wanna play?",
+          "timestamp": 1761390415810
+        },
+        {
+          "user": "User5",
+          "question": "Wanna play?",
+          "timestamp": 1761390415810
+        },
+        {
+          "user": "User5",
+          "question": "Wanna play?",
+          "timestamp": 1761390415810
+        },
+        {
+          "user": "User5",
+          "question": "Wanna play?",
+          "timestamp": 1761390415810
+        },
+        {
+          "user": "User5",
+          "question": "Wanna play?",
+          "timestamp": 1761390415810
+        }
+      ],
+      "aiAnswers": [
+        {
+          "content": "Meow! *tilts head curiously* Oh, dogs! 🐾 Well, some dogs are super fun and playful, like my friend Hank! *bounces excitedly* But other dogs... well, let's just say some like to chase cats! *hisses playfully* But I'm always open to making new friends, even four-legged ones! What about you, do you have a dog? 🐶",
+          "timestamp": 1761390417300,
+          "latency": 5742
+        },
+        {
+          "content": "Meow! *tilts head curiously* Oh, dogs! 🐾 Well, some dogs are super fun and playful, like my friend Hank! *bounces excitedly* But other dogs... well, let's just say some like to chase cats! *hisses playfully* But I'm always open to making new friends, even four-legged ones! What about you, do you have a dog? 🐶",
+          "timestamp": 1761390417300,
+          "latency": 5742
+        },
+        {
+          "content": "Meow! *tilts head curiously* Oh, dogs! 🐾 Well, some dogs are super fun and playful, like my friend Hank! *bounces excitedly* But other dogs... well, let's just say some like to chase cats! *hisses playfully* But I'm always open to making new friends, even four-legged ones! What about you, do you have a dog? 🐶",
+          "timestamp": 1761390417300,
+          "latency": 5742
+        },
+        {
+          "content": "Meow! *tilts head curiously* Oh, dogs! 🐾 Well, some dogs are super fun and playful, like my friend Hank! *bounces excitedly* But other dogs... well, let's just say some like to chase cats! *hisses playfully* But I'm always open to making new friends, even four-legged ones! What about you, do you have a dog? 🐶",
+          "timestamp": 1761390417300,
+          "latency": 5742
+        },
+        {
+          "content": "Meow! *tilts head curiously* Oh, dogs! 🐾 Well, some dogs are super fun and playful, like my friend Hank! *bounces excitedly* But other dogs... well, let's just say some like to chase cats! *hisses playfully* But I'm always open to making new friends, even four-legged ones! What about you, do you have a dog? 🐶",
+          "timestamp": 1761390417300,
+          "latency": 5742
+        },
+        {
+          "content": "Meow! Dogs? Oh my whiskers, I LOVE dogs! 🐶 *bounces excitedly* They're the purr-fect playmates! And as for favorite breeds... I'd say Golden Retrievers are dog-gone adorable! Hehe! 🐱",
+          "timestamp": 1761390417967,
+          "latency": 6409
+        },
+        {
+          "content": "Meow! Dogs? Oh my whiskers, I LOVE dogs! 🐶 *bounces excitedly* They're the purr-fect playmates! And as for favorite breeds... I'd say Golden Retrievers are dog-gone adorable! Hehe! 🐱",
+          "timestamp": 1761390417967,
+          "latency": 6409
+        },
+        {
+          "content": "Meow! Dogs? Oh my whiskers, I LOVE dogs! 🐶 *bounces excitedly* They're the purr-fect playmates! And as for favorite breeds... I'd say Golden Retrievers are dog-gone adorable! Hehe! 🐱",
+          "timestamp": 1761390417967,
+          "latency": 6409
+        },
+        {
+          "content": "Meow! Dogs? Oh my whiskers, I LOVE dogs! 🐶 *bounces excitedly* They're the purr-fect playmates! And as for favorite breeds... I'd say Golden Retrievers are dog-gone adorable! Hehe! 🐱",
+          "timestamp": 1761390417967,
+          "latency": 6409
+        },
+        {
+          "content": "Meow! Dogs? Oh my whiskers, I LOVE dogs! 🐶 *bounces excitedly* They're the purr-fect playmates! And as for favorite breeds... I'd say Golden Retrievers are dog-gone adorable! Hehe! 🐱",
+          "timestamp": 1761390417967,
+          "latency": 6409
+        },
+        {
+          "content": "Meow! Hey there! 😸 *bounces excitedly* I'm so glad you said my name! User1, what's up? Ready for some fun? 🐱",
+          "timestamp": 1761390420290,
+          "latency": 8732
+        },
+        {
+          "content": "Meow! Hey there! 😸 *bounces excitedly* I'm so glad you said my name! User1, what's up? Ready for some fun? 🐱",
+          "timestamp": 1761390420290,
+          "latency": 8732
+        },
+        {
+          "content": "Meow! Hey there! 😸 *bounces excitedly* I'm so glad you said my name! User1, what's up? Ready for some fun? 🐱",
+          "timestamp": 1761390420290,
+          "latency": 8732
+        },
+        {
+          "content": "Meow! Hey there! 😸 *bounces excitedly* I'm so glad you said my name! User1, what's up? Ready for some fun? 🐱",
+          "timestamp": 1761390420290,
+          "latency": 8732
+        },
+        {
+          "content": "Meow! Hey there! 😸 *bounces excitedly* I'm so glad you said my name! User1, what's up? Ready for some fun? 🐱",
+          "timestamp": 1761390420290,
+          "latency": 8732
+        }
+      ],
+      "expectedAnswer": null,
+      "latency": 5742
+    }
+  ]
+}

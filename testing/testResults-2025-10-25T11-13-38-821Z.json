@@ -1,0 +1,386 @@
+{
+  "timestamp": "2025-10-25T11:13:38.821Z",
+  "totalTests": 6,
+  "passed": 4,
+  "failed": 2,
+  "results": [
+    {
+      "testName": "Direct Mention (Should Reply)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI replied 1 time(s)",
+      "expectedAnswer": null,
+      "latency": 7225,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Hey Tom, how are you doing today?",
+          "timestamp": "2025-10-25T11:12:30.554Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Hey Tom, how are you doing today?",
+          "timestamp": "2025-10-25T11:12:30.555Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Yeah Tom, tell us what’s up!",
+          "timestamp": "2025-10-25T11:12:31.361Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Yeah Tom, tell us what’s up!",
+          "timestamp": "2025-10-25T11:12:31.361Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! I'm doing purr-fectly amazing today, Alice! 😸 Just had a nice catnap and now I'm full of energy! How about you? Are you having a great day too? 🐱",
+          "timestamp": "2025-10-25T11:12:36.755Z",
+          "isAI": true,
+          "latency": 7225
+        }
+      ]
+    },
+    {
+      "testName": "Cross-chat (Should Stay Silent)",
+      "description": "",
+      "passed": false,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI replied 1 time(s)",
+      "expectedAnswer": null,
+      "latency": 2979,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Hey Bob, did you finish the project?",
+          "timestamp": "2025-10-25T11:12:41.689Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Hey Bob, did you finish the project?",
+          "timestamp": "2025-10-25T11:12:41.690Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Yeah, just wrapped it up this morning.",
+          "timestamp": "2025-10-25T11:12:42.503Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Yeah, just wrapped it up this morning.",
+          "timestamp": "2025-10-25T11:12:42.503Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! *bounces excitedly* I'm doing purrfectly amazing today, Alice! 😸 And Bob, what's up with ME? Oh my whiskers, there's so much fun to be had! *purrs loudly* The sun is shining, I just had my breakfast fish, and I'm ready to chat with both of you! 🐱 What should we get up to? Hehe!",
+          "timestamp": "2025-10-25T11:12:43.664Z",
+          "isAI": true,
+          "latency": 2979
+        }
+      ]
+    },
+    {
+      "testName": "Group Address (Should Reply Once)",
+      "description": "",
+      "passed": false,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI did not reply",
+      "expectedAnswer": null,
+      "latency": null,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Charlie",
+          "content": "Hey everyone, what are you all doing today?",
+          "timestamp": "2025-10-25T11:12:52.830Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Charlie",
+          "content": "Hey everyone, what are you all doing today?",
+          "timestamp": "2025-10-25T11:12:52.830Z",
+          "isAI": false,
+          "latency": null
+        }
+      ]
+    },
+    {
+      "testName": "Context Memory (Should Recall Topic)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI replied 2 time(s)",
+      "expectedAnswer": null,
+      "latency": 175,
+      "conversation": [
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hey everyone! 😸 I'm just hanging out and having fun! What about you? Are you having a good day? *purrs*",
+          "timestamp": "2025-10-25T11:13:02.330Z",
+          "isAI": true,
+          "latency": 175
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Tom, do you like fish?",
+          "timestamp": "2025-10-25T11:13:03.158Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Tom, do you like fish?",
+          "timestamp": "2025-10-25T11:13:03.159Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Haha, same, I love sushi too!",
+          "timestamp": "2025-10-25T11:13:03.970Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Haha, same, I love sushi too!",
+          "timestamp": "2025-10-25T11:13:03.971Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Charlie",
+          "content": "Tom, what’s your favorite type of fish?",
+          "timestamp": "2025-10-25T11:13:04.782Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Charlie",
+          "content": "Tom, what’s your favorite type of fish?",
+          "timestamp": "2025-10-25T11:13:04.783Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "FISH?! Did someone say FISH?! 🐟 *eyes light up* Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Do you have any fish? Can we get some fish? Please please please! 😸",
+          "timestamp": "2025-10-25T11:13:11.102Z",
+          "isAI": true,
+          "latency": 8947
+        }
+      ]
+    },
+    {
+      "testName": "Multiple Mentions (Should Handle Gracefully)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI replied 2 time(s)",
+      "expectedAnswer": null,
+      "latency": 5441,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Tom, do you like dogs?",
+          "timestamp": "2025-10-25T11:13:15.111Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Tom, do you like dogs?",
+          "timestamp": "2025-10-25T11:13:15.111Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Tom, answer me too — do you have a favorite dog breed?",
+          "timestamp": "2025-10-25T11:13:15.921Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Tom, answer me too — do you have a favorite dog breed?",
+          "timestamp": "2025-10-25T11:13:15.922Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Mmmmm, fish?! 🐟 Oh my whiskers, I LOVE fish! My purr-favorite type is tuna - it's so yummy and makes me purr so loudly! But I honestly love ALL fish! Meow! 😸",
+          "timestamp": "2025-10-25T11:13:19.551Z",
+          "isAI": true,
+          "latency": 5441
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Dogs are great friends! 🐕 *bounces excitedly* I've had lots of fun playing with doggies before! They're so energetic and playful, just like me! Hehe, we make quite the purr-fect team! 😸 *wags tail playfully*",
+          "timestamp": "2025-10-25T11:13:24.224Z",
+          "isAI": true,
+          "latency": 10114
+        }
+      ]
+    },
+    {
+      "testName": "Speed & Queue Handling (Multiple Users)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply appropriately",
+      "actualBehavior": "AI replied 3 time(s)",
+      "expectedAnswer": null,
+      "latency": 1180,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "User1",
+          "content": "Hey Tom!",
+          "timestamp": "2025-10-25T11:13:26.250Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User1",
+          "content": "Hey Tom!",
+          "timestamp": "2025-10-25T11:13:26.251Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Meow! Ooh, dogs! 😸 I'd say dogs are paw-some! they're so fluffy and fun to play with! 🐾 As for favorite breeds... Hmm, I love all dogs, but Golden Retrievers are purr-fect with their soft fur and happy smiles! They're like giant, friendly golden balls of fur! What about you guys? Do you have any doggy friends? 🐕",
+          "timestamp": "2025-10-25T11:13:26.426Z",
+          "isAI": true,
+          "latency": 1180
+        },
+        {
+          "type": "question",
+          "speaker": "User2",
+          "content": "What’s up Tom?",
+          "timestamp": "2025-10-25T11:13:27.061Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User2",
+          "content": "What’s up Tom?",
+          "timestamp": "2025-10-25T11:13:27.062Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User3",
+          "content": "Tom, tell a joke!",
+          "timestamp": "2025-10-25T11:13:27.870Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User3",
+          "content": "Tom, tell a joke!",
+          "timestamp": "2025-10-25T11:13:27.870Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User4",
+          "content": "Do you like yarn?",
+          "timestamp": "2025-10-25T11:13:28.680Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User4",
+          "content": "Do you like yarn?",
+          "timestamp": "2025-10-25T11:13:28.680Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User5",
+          "content": "Wanna play?",
+          "timestamp": "2025-10-25T11:13:29.493Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User5",
+          "content": "Wanna play?",
+          "timestamp": "2025-10-25T11:13:29.494Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hey there! 😸 *bounces excitedly* Thanks for saying hi! I'm Tom and I'm super happy to meet you! What's up, friend? *purrs loudly* 🐱",
+          "timestamp": "2025-10-25T11:13:33.978Z",
+          "isAI": true,
+          "latency": 8732
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hey there, friend! 😸 *bounces excitedly* I'm doing amazing! So happy to see you! 🐱\n\nWhat's up with you too? 😸 *purrs happily* I'm so excited to chat with both of you! What fun things should we talk about today?",
+          "timestamp": "2025-10-25T11:13:35.478Z",
+          "isAI": true,
+          "latency": 10232
+        }
+      ]
+    }
+  ]
+}
