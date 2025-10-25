@@ -1,7 +1,7 @@
 import os
 import asyncio
 from typing import Optional, AsyncGenerator
-from fish_audio_sdk import WebSocketSession, TTSRequest, Session, ASRRequest, AsyncWebSocketSession
+from fish_audio_sdk import WebSocketSession, TTSRequest, Session, ASRRequest
 
 class FishAudioService:
     def __init__(self, api_key: str = "b34cff9e6fed4b8cb414b3ed4356014d"):
