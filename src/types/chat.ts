@@ -4,6 +4,7 @@ export interface Message {
   username: string;
   timestamp: number;
   isAI: boolean;
+  isVoice?: boolean;
 }
 
 export interface User {
@@ -30,6 +31,12 @@ export interface SendMessageData {
   roomId: string;
 }
 
+export interface SendVoiceMessageData {
+  roomId: string;
+  username: string;
+  audio: string; // Base64 encoded audio
+}
+
 export interface ServerToClientEvents {
   message: (message: Message) => void;
   userJoined: (user: User) => void;
@@ -41,5 +48,6 @@ export interface ServerToClientEvents {
 export interface ClientToServerEvents {
   joinRoom: (data: JoinRoomData) => void;
   sendMessage: (data: SendMessageData) => void;
+  sendVoiceMessage: (data: SendVoiceMessageData) => void;
   leaveRoom: (roomId: string) => void;
 }

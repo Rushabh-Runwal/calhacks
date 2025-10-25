@@ -1,167 +1,62 @@
-# 🐱 Talking Tom Chat - Python Edition
+# 🐱 Talking Tom Chat
 
-A multiplayer AI chat experience featuring Talking Tom with Fish Audio integration, built with Python FastAPI backend and Next.js React frontend.
+Multiplayer AI chat with Talking Tom featuring voice chat capabilities.
 
 ## Features
 
-- **Real-time Multiplayer Chat**: Multiple users can join the same chat room
-- **Talking Tom AI**: AI character that responds with Tom's playful personality
-- **Fish Audio Integration**: Text-to-speech with emotional voice generation
-- **Smart Response Logic**: Tom only responds when directly addressed
-- **Room Management**: Create and join rooms with 6-character codes
-- **Audio Playback**: Automatic audio generation for Tom's responses
+- Real-time multiplayer chat with WebSockets
+- Talking Tom AI character with Fish Audio TTS
+- Voice message recording and transcription
+- Smart response logic (Tom responds when addressed)
+- Room-based chat with shareable codes
 
 ## Tech Stack
 
-- **Backend**: FastAPI + python-socketio for WebSockets
+- **Backend**: FastAPI + python-socketio
 - **Frontend**: Next.js + React + TypeScript + Tailwind CSS
-- **AI**: JanitorAI API with custom Talking Tom prompt
-- **Audio**: Fish Audio SDK for TTS generation
-- **Package Manager**: uv for Python, npm for Node.js
+- **AI**: JanitorAI API
+- **Audio**: Fish Audio SDK (TTS + ASR)
 
 ## Quick Start
 
-### Prerequisites
-
-- Python 3.11+
-- Node.js 18+
-- uv package manager
-- npm
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd multiplayer-ai-chat-python
-```
-
-2. Install Python dependencies:
+1. **Install dependencies:**
 ```bash
 uv sync
-```
-
-3. Install Node.js dependencies:
-```bash
 npm install
 ```
 
-### Running the Application
-
-1. **Start the Python Backend** (Terminal 1):
+2. **Start backend:**
 ```bash
 uv run python start_server.py
 ```
-Backend will be available at: http://localhost:8000
 
-2. **Start the Next.js Frontend** (Terminal 2):
+3. **Start frontend:**
 ```bash
-./start_frontend.sh
-# or
 npm run dev
 ```
-Frontend will be available at: http://localhost:3000
 
-### Usage
+4. **Open:** http://localhost:3000
 
-1. Open http://localhost:3000 in your browser
-2. Enter your username
-3. Create a new room or join an existing one with a 6-character code
-4. Start chatting! Tom will respond when you address him directly
+## Usage
 
-## API Endpoints
-
-- `GET /` - Server status
-- `GET /rooms` - List active rooms
-- `POST /rooms/create` - Create new room
-- `GET /audio/{filename}` - Serve audio files
-- WebSocket: `ws://localhost:8000/socket.io/`
-
-## WebSocket Events
-
-- `joinRoom` - Join a chat room
-- `sendMessage` - Send a message
-- `leaveRoom` - Leave current room
-- `message` - Receive new message
-- `userJoined` - User joined room
-- `userLeft` - User left room
+1. Enter username and create/join room
+2. Chat with text or voice messages
+3. Tom responds when you address him directly
+4. Voice messages are transcribed and Tom responds with audio
 
 ## Project Structure
 
 ```
-multiplayer-ai-chat-python/
-├── main.py                 # FastAPI + SocketIO server
-├── start_server.py         # Server startup script
-├── start_frontend.sh       # Frontend startup script
-├── package.json            # Node.js dependencies
-├── tsconfig.json           # TypeScript config
-├── config/
-│   └── ai_prompt.py       # Talking Tom character prompt
-├── services/
-│   ├── janitor_ai.py      # JanitorAI API client
-│   └── fish_audio.py      # Fish Audio TTS service
-├── models/
-│   └── chat.py            # Pydantic models
+├── main.py                 # FastAPI server
+├── services/               # AI and audio services
+├── models/                 # Pydantic models
+├── config/                 # AI prompts
 ├── src/                    # Next.js frontend
-│   ├── app/               # App router pages
-│   ├── components/        # React components
-│   └── types/             # TypeScript types
-├── audio_cache/           # Generated audio files
-└── pyproject.toml         # Python dependencies
+└── audio_cache/           # Generated audio files
 ```
 
-## Character Behavior
+## API
 
-Talking Tom will only respond when:
-- Someone directly mentions his name ("Tom", "Talking Tom")
-- Someone asks him a question
-- The message is addressed to everyone ("guys", "everyone", "hey all")
-
-Tom maintains conversation context and references previous messages naturally.
-
-## Audio Features
-
-- Automatic TTS generation for Tom's responses
-- Emotional voice tags (excited, curious, happy, etc.)
-- Audio files cached in `audio_cache/` directory
-- Automatic cleanup of old audio files
-
-## Development
-
-### Adding Dependencies
-
-```bash
-uv add package-name
-```
-
-### Running Tests
-
-```bash
-uv run pytest
-```
-
-### Code Formatting
-
-```bash
-uv run black .
-uv run isort .
-```
-
-## Deployment
-
-The application can be deployed to any platform that supports Python applications:
-
-- **Render**: Easy deployment with automatic builds
-- **Railway**: Simple Python app deployment
-- **Heroku**: Traditional PaaS deployment
-- **DigitalOcean**: VPS deployment
-
-Make sure to:
-1. Set environment variables for production
-2. Configure proper CORS settings
-3. Set up audio file storage (S3, etc.)
-4. Configure proper logging
-
-## License
-
-MIT License - see LICENSE file for details.
+- WebSocket: `ws://localhost:8000/socket.io/`
+- Events: `joinRoom`, `sendMessage`, `sendVoiceMessage`
+- HTTP: `/rooms`, `/audio/{filename}`

@@ -6,6 +6,7 @@ import { io, Socket } from 'socket.io-client';
 import { Message, User } from '@/types/chat';
 import ChatMessage from '@/components/ChatMessage';
 import ChatInput from '@/components/ChatInput';
+import VoiceRecorder from '@/components/VoiceRecorder';
 
 export default function RoomPage() {
     const params = useParams();
@@ -89,6 +90,24 @@ export default function RoomPage() {
         }
     };
 
+    const handleVoiceRecording = async (audioBlob: Blob) => {
+        if (!socket || !roomId || !username) return;
+
+        // Convert blob to base64
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const base64Audio = reader.result?.toString().split(',')[1];
+            if (base64Audio) {
+                socket.emit('sendVoiceMessage', {
+                    roomId,
+                    username,
+                    audio: base64Audio
+                });
+            }
+        };
+        reader.readAsDataURL(audioBlob);
+    };
+
     const copyRoomCode = () => {
         navigator.clipboard.writeText(roomId);
         // You could add a toast notification here
@@ -165,7 +184,15 @@ export default function RoomPage() {
 
             {/* Input */}
             <div className="bg-white border-t border-gray-200 p-4">
-                <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
+                <div className="flex items-center gap-3">
+                    <VoiceRecorder
+                        onRecordingComplete={handleVoiceRecording}
+                        disabled={!isConnected}
+                    />
+                    <div className="flex-1">
+                        <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
+                    </div>
+                </div>
             </div>
         </div>
     );

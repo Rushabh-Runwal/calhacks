@@ -33,6 +33,14 @@ export default function ChatMessage({ message }: ChatMessageProps) {
                     <div className="flex items-center space-x-2 mb-2">
                         <span className="text-sm font-bold text-gray-900">{message.username}</span>
                         <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-tom-sm">{formatTime(message.timestamp)}</span>
+                        {message.isVoice && (
+                            <span className="inline-flex items-center gap-1 text-xs text-gray-500 bg-blue-100 px-2 py-1 rounded-tom-sm">
+                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                </svg>
+                                Voice
+                            </span>
+                        )}
                     </div>
                     <div className="tom-message p-4 max-w-xs lg:max-w-md">
                         <p className="text-white font-medium leading-relaxed">{message.content}</p>
@@ -53,6 +61,14 @@ export default function ChatMessage({ message }: ChatMessageProps) {
                 <div className="flex items-center space-x-2 mb-2">
                     <span className="text-sm font-bold text-gray-900">{message.username}</span>
                     <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-tom-sm">{formatTime(message.timestamp)}</span>
+                    {message.isVoice && (
+                        <span className="inline-flex items-center gap-1 text-xs text-gray-500 bg-blue-100 px-2 py-1 rounded-tom-sm">
+                            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            </svg>
+                            Voice
+                        </span>
+                    )}
                 </div>
                 <div className="user-message p-4 max-w-xs lg:max-w-md">
                     <p className="text-white font-medium leading-relaxed">{message.content}</p>

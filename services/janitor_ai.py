@@ -1,8 +1,7 @@
 import httpx
-from typing import List, Dict, Any
+from typing import List, Dict
 from config.ai_prompt import AI_SYSTEM_PROMPT
 from models.chat import Message
-
 
 class JanitorAIClient:
     def __init__(self):
@@ -11,7 +10,6 @@ class JanitorAIClient:
         self.client = httpx.AsyncClient(timeout=30.0)
 
     async def call_janitor_ai(self, messages: List[Dict[str, str]], last_user_message: str) -> str | None:
-        """Call JanitorAI API with decision control logic."""
         try:
             decision_prompt = f"""
 {AI_SYSTEM_PROMPT}
@@ -51,7 +49,6 @@ If Tom should not respond, reply with "__NO_RESPONSE__" exactly.
             data = response.json()
             content = data["choices"][0]["message"]["content"].strip()
 
-            # Skip AI reply if model says "__NO_RESPONSE__"
             if content == "__NO_RESPONSE__":
                 return None
 
@@ -62,7 +59,6 @@ If Tom should not respond, reply with "__NO_RESPONSE__" exactly.
             return "Sorry, I'm having trouble responding right now! Meow! 😿"
 
     def build_conversation_context(self, room_messages: List[Message], max_messages: int = 50) -> List[Dict[str, str]]:
-        """Build conversation context from room messages."""
         recent_messages = room_messages[-max_messages:]
         return [
             {
@@ -73,5 +69,4 @@ If Tom should not respond, reply with "__NO_RESPONSE__" exactly.
         ]
 
     async def close(self):
-        """Close the HTTP client."""
         await self.client.aclose()
