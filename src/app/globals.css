@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Talking Tom Color Palette */
+:root {
+  /* Primary Colors */
+  --tom-orange: #FF8C42;
+  --sunny-yellow: #FFD93D;
+  --sky-blue: #6BCF7F;
+  --playful-pink: #FF6B9D;
+  --soft-purple: #A78BFA;
+  
+  /* Background Colors */
+  --main-bg: linear-gradient(135deg, #FFE5B4 0%, #87CEEB 100%);
+  --chat-bg: #FFF8E7;
+  --card-bg: #FFFFFF;
+  
+  /* Text Colors */
+  --text-primary: #2D3748;
+  --text-secondary: #4A5568;
+  --text-white: #FFFFFF;
+  
+  /* Shadows */
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+@theme inline {
+  --color-background: var(--card-bg);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--main-bg);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Talking Tom Animations */
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 140, 66, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 140, 66, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Utility Classes */
+.tom-gradient {
+  background: linear-gradient(135deg, var(--tom-orange) 0%, var(--sunny-yellow) 100%);
+}
+
+.sky-gradient {
+  background: linear-gradient(135deg, var(--sky-blue) 0%, var(--soft-purple) 100%);
+}
+
+.pink-gradient {
+  background: linear-gradient(135deg, var(--playful-pink) 0%, var(--tom-orange) 100%);
+}
+
+.bounce-in {
+  animation: bounce-in 0.6s ease-out;
+}
+
+.slide-in {
+  animation: slide-in 0.4s ease-out;
+}
+
+.wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Rounded corners for everything */
+.rounded-tom {
+  border-radius: 20px;
+}
+
+.rounded-tom-sm {
+  border-radius: 12px;
+}
+
+.rounded-tom-lg {
+  border-radius: 24px;
+}
+
+/* Button hover effects */
+.tom-button {
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.tom-button:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-strong);
+}
+
+.tom-button:active {
+  transform: scale(0.98);
+}
+
+/* Message bubble styles */
+.tom-message {
+  position: relative;
+  background: var(--tom-orange);
+  color: var(--text-white);
+  border-radius: 20px 20px 20px 5px;
+  box-shadow: var(--shadow-soft);
+}
+
+.tom-message::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-right-color: var(--tom-orange);
+  border-bottom: 0;
+  border-left: 0;
+}
+
+.user-message {
+  background: var(--sky-blue);
+  color: var(--text-white);
+  border-radius: 20px 20px 5px 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.user-message::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: var(--sky-blue);
+  border-bottom: 0;
+  border-right: 0;
+}
+
+/* Input styles */
+.tom-input {
+  border: 3px solid var(--tom-orange);
+  border-radius: 20px;
+  background: var(--card-bg);
+  transition: all 0.3s ease;
+}
+
+.tom-input:focus {
+  border-color: var(--sunny-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 217, 61, 0.3);
+  outline: none;
+}
+
+/* Decorative elements */
+.paw-print {
+  position: relative;
+}
+
+.paw-print::before {
+  content: '🐾';
+  position: absolute;
+  opacity: 0.3;
+  font-size: 12px;
+}
+
+/* User count display */
+.user-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .rounded-tom {
+    border-radius: 16px;
+  }
+  
+  .rounded-tom-lg {
+    border-radius: 20px;
+  }
+  
+  .user-count {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

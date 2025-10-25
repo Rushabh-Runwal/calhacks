@@ -1,0 +1,42 @@
+[project]
+name = "multiplayer-ai-chat-python"
+version = "0.1.0"
+description = "Multiplayer AI Chat with Talking Tom and Fish Audio"
+authors = [
+    {name = "CalHacks Team", email = "team@calhacks.com"},
+]
+dependencies = [
+    "fastapi>=0.104.0",
+    "python-socketio>=5.10.0",
+    "uvicorn[standard]>=0.24.0",
+    "httpx>=0.25.0",
+    "pydantic>=2.5.0",
+    "streamlit>=1.28.0",
+    "fish-audio-sdk>=0.1.0",
+    "python-multipart>=0.0.6",
+    "aiofiles>=23.2.0",
+]
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 88
