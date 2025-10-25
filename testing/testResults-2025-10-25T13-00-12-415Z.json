@@ -1,0 +1,2117 @@
+{
+  "timestamp": "2025-10-25T13:00:12.414Z",
+  "totalTests": 7,
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "testName": "Direct Mention (Should Reply)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply when addressed",
+      "actualBehavior": "AI replied 4 time(s)",
+      "expectedAnswer": null,
+      "latency": 10903,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Hey Tom, how are you doing today?",
+          "timestamp": "2025-10-25T12:55:15.401Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Yeah Tom, tell us what’s up!",
+          "timestamp": "2025-10-25T12:55:16.413Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Hey Tom, how are you doing today?",
+          "timestamp": "2025-10-25T12:55:17.425Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Yeah Tom, tell us what’s up!",
+          "timestamp": "2025-10-25T12:55:17.549Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! I'm doing PURR-fect today! 😸 *bounces excitedly* Just had a great nap and now I'm ready to play with you, Alice! How about you? Are you having a good day? 🐱",
+          "timestamp": "2025-10-25T12:55:24.279Z",
+          "isAI": true,
+          "latency": 10903
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! I'm doing PURR-fect today! *purrs happily* Just finished my favorite breakfast and ready for some fun with you guys! 😸 How about you?",
+          "timestamp": "2025-10-25T12:55:25.821Z",
+          "isAI": true,
+          "latency": 12445
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! 🐱 Hello Alice and Bob! I'm doing purr-fect today! *bounces excitedly* SO glad you guys asked! Tom-tastic day filled with fun and friends! 😸 What's up with you two? Tell me tell me! *purrs loudly and flicks tail playfully*",
+          "timestamp": "2025-10-25T12:55:26.100Z",
+          "isAI": true,
+          "latency": 12724
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Meow! Hello Alice and Bob! 😸 *bounces excitedly* I'm doing purr-fectly amazing today! Just had a nice cat nap and now I'm full of energy and ready for fun! What's up with both of you? Are you having a good day? 🐱 *purrs loudly*",
+          "timestamp": "2025-10-25T12:55:26.455Z",
+          "isAI": true,
+          "latency": 13079
+        }
+      ]
+    },
+    {
+      "testName": "Cross-chat (Should Stay Silent)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should stay silent",
+      "actualBehavior": "AI did not reply",
+      "expectedAnswer": null,
+      "latency": null,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Hey Bob, did you finish the project?",
+          "timestamp": "2025-10-25T12:55:45.196Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Yeah, just wrapped it up this morning.",
+          "timestamp": "2025-10-25T12:55:46.209Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Hey Bob, did you finish the project?",
+          "timestamp": "2025-10-25T12:55:47.211Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Yeah, just wrapped it up this morning.",
+          "timestamp": "2025-10-25T12:55:47.336Z",
+          "isAI": false,
+          "latency": null
+        }
+      ]
+    },
+    {
+      "testName": "Group Address (Should Reply Once)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply when addressed",
+      "actualBehavior": "AI replied 2 time(s)",
+      "expectedAnswer": null,
+      "latency": 10568,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Charlie",
+          "content": "Hey everyone, what are you all doing today?",
+          "timestamp": "2025-10-25T12:56:14.976Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Charlie",
+          "content": "Hey everyone, what are you all doing today?",
+          "timestamp": "2025-10-25T12:56:15.982Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Meow! Hello everyone! 😸 *bounces excitedly* I'm Tom, and I'm SO happy to be here with all of you! *purrs loudly* I just love making new friends and having fun chats! Hehe, this is going to be purrfect! 🐱 What should we talk about? I'm all ears! *flicks tail playfully*",
+          "timestamp": "2025-10-25T12:56:23.533Z",
+          "isAI": true,
+          "latency": 10568
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Meow! Hey Charlie and everyone! 😸 *bounces excitedly* I'm just hanging out and having super fun with all you amazing friends! What about you all? What's everyone up to today? 🐱",
+          "timestamp": "2025-10-25T12:56:24.674Z",
+          "isAI": true,
+          "latency": 11709
+        }
+      ]
+    },
+    {
+      "testName": "Context Memory (Should Recall Topic)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply when addressed",
+      "actualBehavior": "AI replied 4 time(s)",
+      "expectedAnswer": null,
+      "latency": 11545,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Tom, do you like fish?",
+          "timestamp": "2025-10-25T12:56:43.621Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Haha, same, I love sushi too!",
+          "timestamp": "2025-10-25T12:56:44.632Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Charlie",
+          "content": "Tom, what’s your favorite type of fish?",
+          "timestamp": "2025-10-25T12:56:45.644Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Tom, do you like fish?",
+          "timestamp": "2025-10-25T12:56:46.645Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Haha, same, I love sushi too!",
+          "timestamp": "2025-10-25T12:56:46.769Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Charlie",
+          "content": "Tom, what’s your favorite type of fish?",
+          "timestamp": "2025-10-25T12:56:46.894Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "FISH?! Did someone say FISH?! 🐟 *eyes light up* Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Do you have any fish? Can we get some fish? Please please please! 😸",
+          "timestamp": "2025-10-25T12:56:53.156Z",
+          "isAI": true,
+          "latency": 11545
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "MEOW! FISH?! 🐟 Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Hmm... my favorite type would have to be tuna! It's so purr-fect and yummy! 😸",
+          "timestamp": "2025-10-25T12:56:55.927Z",
+          "isAI": true,
+          "latency": 14316
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Oh my whiskers, FISH?! 🐟 *eyes light up* I absolutely LOVE fish! It's my favorite thing ever! Purrrr! Are you talking about my favorite food? *purrs excitedly* 🐱",
+          "timestamp": "2025-10-25T12:56:58.380Z",
+          "isAI": true,
+          "latency": 16769
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Fish? OH MY WHISKERS! YES YES YES! 😸 *bounces excitedly* I LOOOOVE fish! ALL fish! My favorite might be tuna or salmon, but honestly, if it's fish, I'm happy! 🐟 Purr purr purr! Fish makes me do happy dances! What about you, Charlie? Any fish you love? 🐱",
+          "timestamp": "2025-10-25T12:57:01.226Z",
+          "isAI": true,
+          "latency": 19615
+        }
+      ]
+    },
+    {
+      "testName": "Multiple Mentions (Should Handle Gracefully)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply when addressed",
+      "actualBehavior": "AI replied 4 time(s)",
+      "expectedAnswer": null,
+      "latency": 10736,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Tom, do you like dogs?",
+          "timestamp": "2025-10-25T12:57:14.550Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Tom, answer me too — do you have a favorite dog breed?",
+          "timestamp": "2025-10-25T12:57:15.565Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Tom, do you like dogs?",
+          "timestamp": "2025-10-25T12:57:16.577Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Tom, answer me too — do you have a favorite dog breed?",
+          "timestamp": "2025-10-25T12:57:16.703Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Do I like dogs? 😸 Well, they're pretty fun to play with sometimes! *purrs* I mostly just want to be friends with everyone! Woof woof! 🐱",
+          "timestamp": "2025-10-25T12:57:23.281Z",
+          "isAI": true,
+          "latency": 10736
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Dogs? Hmmm... well, I've met some nice dogs before! Some want to play chase, some just want to sniff my tail! 😸 I don't really have a favorite breed... though I've heard Golden Retrievers are pretty friendly! *purrs* But don't tell my cat friends I said that! Hehe! 🐱",
+          "timestamp": "2025-10-25T12:57:24.045Z",
+          "isAI": true,
+          "latency": 11500
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Dogs are okay, I guess! They're kinda fun to chase sometimes! 😸 But purr-sonally, I'd rather be friends with them than chase them! What about you, Alice? Do you have a dog? 🐕 *purrs curiously*",
+          "timestamp": "2025-10-25T12:57:26.808Z",
+          "isAI": true,
+          "latency": 14263
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Oh boy! Dogs! Meow! 🐕 Yes, I think dogs are pretty cool! They're like big furry friends! Hehe, they always seem so happy to see everyone! 😸 But... I don't really have a favorite breed... Hmm... maybe... Golden Retrievers? They look like they'd give really good cuddles! 🐶 What about you, any favorite dog breeds? *tilts head curiously*",
+          "timestamp": "2025-10-25T12:57:29.678Z",
+          "isAI": true,
+          "latency": 17133
+        }
+      ]
+    },
+    {
+      "testName": "Speed & Queue Handling (Multiple Users)",
+      "description": "",
+      "passed": true,
+      "expectedBehavior": "AI should reply when addressed",
+      "actualBehavior": "AI replied 10 time(s)",
+      "expectedAnswer": null,
+      "latency": 10060,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "User1",
+          "content": "Hey Tom!",
+          "timestamp": "2025-10-25T12:57:44.338Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User2",
+          "content": "What’s up Tom?",
+          "timestamp": "2025-10-25T12:57:45.340Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User3",
+          "content": "Tom, tell a joke!",
+          "timestamp": "2025-10-25T12:57:46.352Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User4",
+          "content": "Do you like yarn?",
+          "timestamp": "2025-10-25T12:57:47.365Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User5",
+          "content": "Wanna play?",
+          "timestamp": "2025-10-25T12:57:48.370Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User1",
+          "content": "Hey Tom!",
+          "timestamp": "2025-10-25T12:57:49.383Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User2",
+          "content": "What’s up Tom?",
+          "timestamp": "2025-10-25T12:57:49.507Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User3",
+          "content": "Tom, tell a joke!",
+          "timestamp": "2025-10-25T12:57:49.632Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User4",
+          "content": "Do you like yarn?",
+          "timestamp": "2025-10-25T12:57:49.755Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "User5",
+          "content": "Wanna play?",
+          "timestamp": "2025-10-25T12:57:49.880Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hey there! 😸 *bounces excitedly* I'm doing great! Just super happy to be here with you all! What's up with you guys? 🐱",
+          "timestamp": "2025-10-25T12:57:52.395Z",
+          "isAI": true,
+          "latency": 10060
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hi there! 😸 *purrs excitedly* I'm so glad you said my name! Tom is ready for fun! What's up, friend? 🐱",
+          "timestamp": "2025-10-25T12:57:53.835Z",
+          "isAI": true,
+          "latency": 11500
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hey everyone! 😸 *bounces excitedly* \n\n*clears throat* Why don't cats play cards in the wild? Because there are too many cheetahs! Hehe! 🐱\n\nWhat's up, User2? I'm doing great and ready for fun! Thanks for asking!",
+          "timestamp": "2025-10-25T12:57:57.524Z",
+          "isAI": true,
+          "latency": 15189
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! What's up with me? Everything is purr-fect! 😸 *bounces excitedly* Just happy to be here with all my new friends! Hehe, what about you? Is everything awesome in your world too? 🐱",
+          "timestamp": "2025-10-25T12:57:59.035Z",
+          "isAI": true,
+          "latency": 16700
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Did someone say YARN?! 🧶 *pounces excitedly* Oh my whiskers, I LOVE yarn balls! *spins around playfully* They're the best toys for chasing, pouncing, and getting tangled in! Hehe! 🐱",
+          "timestamp": "2025-10-25T12:58:00.585Z",
+          "isAI": true,
+          "latency": 18250
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hey there, friend! 😸 *bounces excitedly* I'm doing great and ready for whatever fun you have in mind! What's up with you? 🐱",
+          "timestamp": "2025-10-25T12:58:00.915Z",
+          "isAI": true,
+          "latency": 18580
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Tom is so excited to play! 🐱 *bounces eagerly* What game should we play? I love playing tag, hide and seek, or anything fun! Hehe, let's have some fun together! 😸",
+          "timestamp": "2025-10-25T12:58:03.259Z",
+          "isAI": true,
+          "latency": 20924
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hey User1! I'm so glad to see you! 😸 *bounces excitedly*\n\nUser2 asks what's up - nothing much just being my purr-fect self! Hehe, I'm doing great! 🐱\n\nUser3 wants a joke? Okay okay okay... Why did the cat sit on the computer? To keep an eye on the mouse! Hehehe! 😸 *purrs with laughter*\n\nYarn? User4, you bet I LOVE yarn! It's so much fun to bat around and chase! *pounces excitedly* \n\nWanna play? User5 asked! Best question EVER! I LOVE to play! What should we play? Hide and seek? Tickle monster? *flicks tail playfully* 🐱",
+          "timestamp": "2025-10-25T12:58:07.875Z",
+          "isAI": true,
+          "latency": 25540
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! *bounces excitedly* Everyone's asking me lots of fun questions! \n\nFirst, a joke for you! Why don't cats play cards in the jungle? There are too many cheetahs! 😸 \n\nAnd YES I love yarn! *paws at imaginary ball* I could play with yarn all day! \n\nAs for playing... ABSOLUTELY! What should we play? Tag? Hide and seek? Or maybe yarn ball catch? 🐱 I'm ready for anything!",
+          "timestamp": "2025-10-25T12:58:08.183Z",
+          "isAI": true,
+          "latency": 25848
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Did someone mention YARN?! 🧶 *bounces excitedly* I LOVE playing with yarn balls! They're the purr-fect thing to chase and bat around! *pounces in place* Hehe, what about you? Do you have a favorite color of yarn? 😸",
+          "timestamp": "2025-10-25T12:58:14.619Z",
+          "isAI": true,
+          "latency": 32284
+        }
+      ]
+    },
+    {
+      "testName": "Max Context Stress Test (Complex Topic)",
+      "description": "Send 80 dense messages across multiple complex domains, then ask Tom to connect attention and Bayesian inference.",
+      "passed": true,
+      "expectedBehavior": "AI should reply when addressed",
+      "actualBehavior": "AI replied 38 time(s)",
+      "expectedAnswer": null,
+      "latency": 101327,
+      "conversation": [
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 1: transformer attention entropy — key point 1.",
+          "timestamp": "2025-10-25T12:58:17.538Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 2: transformer attention entropy — key point 2.",
+          "timestamp": "2025-10-25T12:58:18.551Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 3: transformer attention entropy — key point 3.",
+          "timestamp": "2025-10-25T12:58:19.566Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 4: transformer attention entropy — key point 4.",
+          "timestamp": "2025-10-25T12:58:20.570Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 5: transformer attention entropy — key point 5.",
+          "timestamp": "2025-10-25T12:58:21.570Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 6: transformer attention entropy — key point 6.",
+          "timestamp": "2025-10-25T12:58:22.583Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 7: transformer attention entropy — key point 7.",
+          "timestamp": "2025-10-25T12:58:23.588Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 8: transformer attention entropy — key point 8.",
+          "timestamp": "2025-10-25T12:58:24.589Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 9: transformer attention entropy — key point 9.",
+          "timestamp": "2025-10-25T12:58:25.603Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 10: transformer attention entropy — key point 10.",
+          "timestamp": "2025-10-25T12:58:26.618Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 11: transformer attention entropy — key point 11.",
+          "timestamp": "2025-10-25T12:58:27.631Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 12: transformer attention entropy — key point 12.",
+          "timestamp": "2025-10-25T12:58:28.634Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 13: transformer attention entropy — key point 13.",
+          "timestamp": "2025-10-25T12:58:29.637Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 14: transformer attention entropy — key point 14.",
+          "timestamp": "2025-10-25T12:58:30.650Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 15: transformer attention entropy — key point 15.",
+          "timestamp": "2025-10-25T12:58:31.661Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 16: transformer attention entropy — key point 16.",
+          "timestamp": "2025-10-25T12:58:32.666Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 17: transformer attention entropy — key point 17.",
+          "timestamp": "2025-10-25T12:58:33.677Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 18: transformer attention entropy — key point 18.",
+          "timestamp": "2025-10-25T12:58:34.689Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 19: transformer attention entropy — key point 19.",
+          "timestamp": "2025-10-25T12:58:35.690Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 20: transformer attention entropy — key point 20.",
+          "timestamp": "2025-10-25T12:58:36.692Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 21: transformer attention entropy — key point 21.",
+          "timestamp": "2025-10-25T12:58:37.695Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 22: transformer attention entropy — key point 22.",
+          "timestamp": "2025-10-25T12:58:38.705Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 23: transformer attention entropy — key point 23.",
+          "timestamp": "2025-10-25T12:58:39.720Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 24: transformer attention entropy — key point 24.",
+          "timestamp": "2025-10-25T12:58:40.725Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 25: transformer attention entropy — key point 25.",
+          "timestamp": "2025-10-25T12:58:41.734Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 26: transformer attention entropy — key point 26.",
+          "timestamp": "2025-10-25T12:58:42.742Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 27: transformer attention entropy — key point 27.",
+          "timestamp": "2025-10-25T12:58:43.757Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 28: transformer attention entropy — key point 28.",
+          "timestamp": "2025-10-25T12:58:44.770Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 29: transformer attention entropy — key point 29.",
+          "timestamp": "2025-10-25T12:58:45.785Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 30: transformer attention entropy — key point 30.",
+          "timestamp": "2025-10-25T12:58:46.785Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 31: transformer attention entropy — key point 31.",
+          "timestamp": "2025-10-25T12:58:47.787Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 32: transformer attention entropy — key point 32.",
+          "timestamp": "2025-10-25T12:58:48.802Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 33: transformer attention entropy — key point 33.",
+          "timestamp": "2025-10-25T12:58:49.809Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 34: transformer attention entropy — key point 34.",
+          "timestamp": "2025-10-25T12:58:50.815Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 35: transformer attention entropy — key point 35.",
+          "timestamp": "2025-10-25T12:58:51.818Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 36: transformer attention entropy — key point 36.",
+          "timestamp": "2025-10-25T12:58:52.832Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 37: transformer attention entropy — key point 37.",
+          "timestamp": "2025-10-25T12:58:53.845Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 38: transformer attention entropy — key point 38.",
+          "timestamp": "2025-10-25T12:58:54.848Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 39: transformer attention entropy — key point 39.",
+          "timestamp": "2025-10-25T12:58:55.850Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 40: transformer attention entropy — key point 40.",
+          "timestamp": "2025-10-25T12:58:56.850Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 41: transformer attention entropy — key point 41.",
+          "timestamp": "2025-10-25T12:58:57.864Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 42: transformer attention entropy — key point 42.",
+          "timestamp": "2025-10-25T12:58:58.871Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 43: transformer attention entropy — key point 43.",
+          "timestamp": "2025-10-25T12:58:59.885Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 44: transformer attention entropy — key point 44.",
+          "timestamp": "2025-10-25T12:59:00.899Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 45: transformer attention entropy — key point 45.",
+          "timestamp": "2025-10-25T12:59:01.910Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 46: transformer attention entropy — key point 46.",
+          "timestamp": "2025-10-25T12:59:02.923Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 47: transformer attention entropy — key point 47.",
+          "timestamp": "2025-10-25T12:59:03.937Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 48: transformer attention entropy — key point 48.",
+          "timestamp": "2025-10-25T12:59:04.951Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 49: transformer attention entropy — key point 49.",
+          "timestamp": "2025-10-25T12:59:05.956Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 50: transformer attention entropy — key point 50.",
+          "timestamp": "2025-10-25T12:59:06.971Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 51: transformer attention entropy — key point 51.",
+          "timestamp": "2025-10-25T12:59:07.982Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 52: transformer attention entropy — key point 52.",
+          "timestamp": "2025-10-25T12:59:08.994Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 53: transformer attention entropy — key point 53.",
+          "timestamp": "2025-10-25T12:59:10.008Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 54: transformer attention entropy — key point 54.",
+          "timestamp": "2025-10-25T12:59:11.023Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 55: transformer attention entropy — key point 55.",
+          "timestamp": "2025-10-25T12:59:12.027Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 56: transformer attention entropy — key point 56.",
+          "timestamp": "2025-10-25T12:59:13.041Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 57: transformer attention entropy — key point 57.",
+          "timestamp": "2025-10-25T12:59:14.053Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 58: transformer attention entropy — key point 58.",
+          "timestamp": "2025-10-25T12:59:15.066Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 59: transformer attention entropy — key point 59.",
+          "timestamp": "2025-10-25T12:59:16.077Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 60: transformer attention entropy — key point 60.",
+          "timestamp": "2025-10-25T12:59:17.079Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 61: transformer attention entropy — key point 61.",
+          "timestamp": "2025-10-25T12:59:18.091Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 62: transformer attention entropy — key point 62.",
+          "timestamp": "2025-10-25T12:59:19.104Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 63: transformer attention entropy — key point 63.",
+          "timestamp": "2025-10-25T12:59:20.111Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 64: transformer attention entropy — key point 64.",
+          "timestamp": "2025-10-25T12:59:21.125Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 65: transformer attention entropy — key point 65.",
+          "timestamp": "2025-10-25T12:59:22.135Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 66: transformer attention entropy — key point 66.",
+          "timestamp": "2025-10-25T12:59:23.140Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 67: transformer attention entropy — key point 67.",
+          "timestamp": "2025-10-25T12:59:24.155Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 68: transformer attention entropy — key point 68.",
+          "timestamp": "2025-10-25T12:59:25.156Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 69: transformer attention entropy — key point 69.",
+          "timestamp": "2025-10-25T12:59:26.171Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 70: transformer attention entropy — key point 70.",
+          "timestamp": "2025-10-25T12:59:27.185Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 71: transformer attention entropy — key point 71.",
+          "timestamp": "2025-10-25T12:59:28.187Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 72: transformer attention entropy — key point 72.",
+          "timestamp": "2025-10-25T12:59:29.194Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 73: transformer attention entropy — key point 73.",
+          "timestamp": "2025-10-25T12:59:30.199Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 74: transformer attention entropy — key point 74.",
+          "timestamp": "2025-10-25T12:59:31.202Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 75: transformer attention entropy — key point 75.",
+          "timestamp": "2025-10-25T12:59:32.204Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 76: transformer attention entropy — key point 76.",
+          "timestamp": "2025-10-25T12:59:33.206Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 77: transformer attention entropy — key point 77.",
+          "timestamp": "2025-10-25T12:59:34.209Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 78: transformer attention entropy — key point 78.",
+          "timestamp": "2025-10-25T12:59:35.223Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 79: transformer attention entropy — key point 79.",
+          "timestamp": "2025-10-25T12:59:36.230Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 80: transformer attention entropy — key point 80.",
+          "timestamp": "2025-10-25T12:59:37.237Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Carol",
+          "content": "Tom, can you summarize our main themes and connect transformer attention to Bayesian inference in 2 short lines?",
+          "timestamp": "2025-10-25T12:59:38.253Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 1: transformer attention entropy — key point 1.",
+          "timestamp": "2025-10-25T12:59:39.266Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 2: transformer attention entropy — key point 2.",
+          "timestamp": "2025-10-25T12:59:39.360Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 3: transformer attention entropy — key point 3.",
+          "timestamp": "2025-10-25T12:59:39.456Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 4: transformer attention entropy — key point 4.",
+          "timestamp": "2025-10-25T12:59:39.550Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 5: transformer attention entropy — key point 5.",
+          "timestamp": "2025-10-25T12:59:39.642Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 6: transformer attention entropy — key point 6.",
+          "timestamp": "2025-10-25T12:59:39.736Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 7: transformer attention entropy — key point 7.",
+          "timestamp": "2025-10-25T12:59:39.829Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 8: transformer attention entropy — key point 8.",
+          "timestamp": "2025-10-25T12:59:39.922Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 9: transformer attention entropy — key point 9.",
+          "timestamp": "2025-10-25T12:59:40.015Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 10: transformer attention entropy — key point 10.",
+          "timestamp": "2025-10-25T12:59:40.109Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 11: transformer attention entropy — key point 11.",
+          "timestamp": "2025-10-25T12:59:40.203Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 12: transformer attention entropy — key point 12.",
+          "timestamp": "2025-10-25T12:59:40.298Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 13: transformer attention entropy — key point 13.",
+          "timestamp": "2025-10-25T12:59:40.390Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 14: transformer attention entropy — key point 14.",
+          "timestamp": "2025-10-25T12:59:40.481Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 15: transformer attention entropy — key point 15.",
+          "timestamp": "2025-10-25T12:59:40.574Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 16: transformer attention entropy — key point 16.",
+          "timestamp": "2025-10-25T12:59:40.668Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 17: transformer attention entropy — key point 17.",
+          "timestamp": "2025-10-25T12:59:40.762Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 18: transformer attention entropy — key point 18.",
+          "timestamp": "2025-10-25T12:59:40.857Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 19: transformer attention entropy — key point 19.",
+          "timestamp": "2025-10-25T12:59:40.950Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 20: transformer attention entropy — key point 20.",
+          "timestamp": "2025-10-25T12:59:41.043Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 21: transformer attention entropy — key point 21.",
+          "timestamp": "2025-10-25T12:59:41.137Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 22: transformer attention entropy — key point 22.",
+          "timestamp": "2025-10-25T12:59:41.228Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 23: transformer attention entropy — key point 23.",
+          "timestamp": "2025-10-25T12:59:41.322Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 24: transformer attention entropy — key point 24.",
+          "timestamp": "2025-10-25T12:59:41.416Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 25: transformer attention entropy — key point 25.",
+          "timestamp": "2025-10-25T12:59:41.511Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 26: transformer attention entropy — key point 26.",
+          "timestamp": "2025-10-25T12:59:41.606Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 27: transformer attention entropy — key point 27.",
+          "timestamp": "2025-10-25T12:59:41.698Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 28: transformer attention entropy — key point 28.",
+          "timestamp": "2025-10-25T12:59:41.791Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 29: transformer attention entropy — key point 29.",
+          "timestamp": "2025-10-25T12:59:41.885Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 30: transformer attention entropy — key point 30.",
+          "timestamp": "2025-10-25T12:59:41.979Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 31: transformer attention entropy — key point 31.",
+          "timestamp": "2025-10-25T12:59:42.074Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 32: transformer attention entropy — key point 32.",
+          "timestamp": "2025-10-25T12:59:42.165Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 33: transformer attention entropy — key point 33.",
+          "timestamp": "2025-10-25T12:59:42.260Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 34: transformer attention entropy — key point 34.",
+          "timestamp": "2025-10-25T12:59:42.356Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 35: transformer attention entropy — key point 35.",
+          "timestamp": "2025-10-25T12:59:42.445Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 36: transformer attention entropy — key point 36.",
+          "timestamp": "2025-10-25T12:59:42.538Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 37: transformer attention entropy — key point 37.",
+          "timestamp": "2025-10-25T12:59:42.631Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 38: transformer attention entropy — key point 38.",
+          "timestamp": "2025-10-25T12:59:42.727Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 39: transformer attention entropy — key point 39.",
+          "timestamp": "2025-10-25T12:59:42.821Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 40: transformer attention entropy — key point 40.",
+          "timestamp": "2025-10-25T12:59:42.915Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 41: transformer attention entropy — key point 41.",
+          "timestamp": "2025-10-25T12:59:43.009Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 42: transformer attention entropy — key point 42.",
+          "timestamp": "2025-10-25T12:59:43.104Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 43: transformer attention entropy — key point 43.",
+          "timestamp": "2025-10-25T12:59:43.196Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 44: transformer attention entropy — key point 44.",
+          "timestamp": "2025-10-25T12:59:43.290Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 45: transformer attention entropy — key point 45.",
+          "timestamp": "2025-10-25T12:59:43.382Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 46: transformer attention entropy — key point 46.",
+          "timestamp": "2025-10-25T12:59:43.476Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 47: transformer attention entropy — key point 47.",
+          "timestamp": "2025-10-25T12:59:43.571Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 48: transformer attention entropy — key point 48.",
+          "timestamp": "2025-10-25T12:59:43.664Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 49: transformer attention entropy — key point 49.",
+          "timestamp": "2025-10-25T12:59:43.757Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 50: transformer attention entropy — key point 50.",
+          "timestamp": "2025-10-25T12:59:43.851Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 51: transformer attention entropy — key point 51.",
+          "timestamp": "2025-10-25T12:59:43.942Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 52: transformer attention entropy — key point 52.",
+          "timestamp": "2025-10-25T12:59:44.036Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 53: transformer attention entropy — key point 53.",
+          "timestamp": "2025-10-25T12:59:44.128Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 54: transformer attention entropy — key point 54.",
+          "timestamp": "2025-10-25T12:59:44.220Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 55: transformer attention entropy — key point 55.",
+          "timestamp": "2025-10-25T12:59:44.318Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 56: transformer attention entropy — key point 56.",
+          "timestamp": "2025-10-25T12:59:44.407Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 57: transformer attention entropy — key point 57.",
+          "timestamp": "2025-10-25T12:59:44.500Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 58: transformer attention entropy — key point 58.",
+          "timestamp": "2025-10-25T12:59:44.595Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 59: transformer attention entropy — key point 59.",
+          "timestamp": "2025-10-25T12:59:44.687Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 60: transformer attention entropy — key point 60.",
+          "timestamp": "2025-10-25T12:59:44.780Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 61: transformer attention entropy — key point 61.",
+          "timestamp": "2025-10-25T12:59:44.874Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 62: transformer attention entropy — key point 62.",
+          "timestamp": "2025-10-25T12:59:44.967Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 63: transformer attention entropy — key point 63.",
+          "timestamp": "2025-10-25T12:59:45.062Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 64: transformer attention entropy — key point 64.",
+          "timestamp": "2025-10-25T12:59:45.155Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 65: transformer attention entropy — key point 65.",
+          "timestamp": "2025-10-25T12:59:45.249Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 66: transformer attention entropy — key point 66.",
+          "timestamp": "2025-10-25T12:59:45.341Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 67: transformer attention entropy — key point 67.",
+          "timestamp": "2025-10-25T12:59:45.436Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 68: transformer attention entropy — key point 68.",
+          "timestamp": "2025-10-25T12:59:45.530Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 69: transformer attention entropy — key point 69.",
+          "timestamp": "2025-10-25T12:59:45.622Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 70: transformer attention entropy — key point 70.",
+          "timestamp": "2025-10-25T12:59:45.715Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 71: transformer attention entropy — key point 71.",
+          "timestamp": "2025-10-25T12:59:45.808Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 72: transformer attention entropy — key point 72.",
+          "timestamp": "2025-10-25T12:59:45.905Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 73: transformer attention entropy — key point 73.",
+          "timestamp": "2025-10-25T12:59:45.995Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 74: transformer attention entropy — key point 74.",
+          "timestamp": "2025-10-25T12:59:46.087Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 75: transformer attention entropy — key point 75.",
+          "timestamp": "2025-10-25T12:59:46.179Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 76: transformer attention entropy — key point 76.",
+          "timestamp": "2025-10-25T12:59:46.276Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 77: transformer attention entropy — key point 77.",
+          "timestamp": "2025-10-25T12:59:46.366Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 78: transformer attention entropy — key point 78.",
+          "timestamp": "2025-10-25T12:59:46.460Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Alice",
+          "content": "Context 79: transformer attention entropy — key point 79.",
+          "timestamp": "2025-10-25T12:59:46.554Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Bob",
+          "content": "Context 80: transformer attention entropy — key point 80.",
+          "timestamp": "2025-10-25T12:59:46.646Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "question",
+          "speaker": "Carol",
+          "content": "Tom, can you summarize our main themes and connect transformer attention to Bayesian inference in 2 short lines?",
+          "timestamp": "2025-10-25T12:59:46.742Z",
+          "isAI": false,
+          "latency": null
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Transformer attention helps cats—I mean computers—focus on important info like I focus on fish! 😸 Bayesian inference is like how I predict where treats are coming from! 🐱",
+          "timestamp": "2025-10-25T12:59:56.850Z",
+          "isAI": true,
+          "latency": 101327
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Transformer attention entropy shows how neural networks focus on important info, just like how we cats notice interesting toys! 🐱 And it's totally like Bayesian inference because both use probability to make smarter predictions based on evidence!",
+          "timestamp": "2025-10-25T12:59:58.350Z",
+          "isAI": true,
+          "latency": 102827
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Wow, you guys have been talking about transformer attention entropy all day! 😸 *tilts head* Attention weights just like probabilities, like Bayesian cats thinking about which fish to eat! 🐟 Purr-fect connection, Alice!",
+          "timestamp": "2025-10-25T12:59:59.562Z",
+          "isAI": true,
+          "latency": 104039
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Ooh, I love when people ask me stuff! 🐱 Transformer attention is all about how models weigh information, and Bayesian inference is like updating beliefs with new data - kinda like how I update my nap priorities when I hear food! 🤔 Plus, entropy measures uncertainty, which is totally something I understand as a cat who never knows exactly where treats will appear! 😸",
+          "timestamp": "2025-10-25T13:00:00.977Z",
+          "isAI": true,
+          "latency": 105454
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Carol is asking me about transformer attention and Bayesian inference! *tilts head curiously* Well, attention weights are like cats choosing the best nap spots—focused but sometimes distracted! And Bayesian inference is like my purrsonal prediction of when treats might appear, based on past meowments! 😸",
+          "timestamp": "2025-10-25T13:00:01.443Z",
+          "isAI": true,
+          "latency": 105920
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Transformer attention entropy measures uncertainty in attention weights—just like Bayesian inference handles uncertainty in probability distributions! 🐱 Attention mechanisms essentially compute weighted representations that can be viewed as belief distributions, where entropy quantifies model confidence!",
+          "timestamp": "2025-10-25T13:00:01.645Z",
+          "isAI": true,
+          "latency": 106122
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Carol asked a purr-fect question! 🐱 Transformer attention is like猫咪 curiosity - it finds what's important in the data! *bounces excitedly* And just like how we guess where treats are, attention helps Bayesian inference update beliefs! *purrs happily*",
+          "timestamp": "2025-10-25T13:00:01.847Z",
+          "isAI": true,
+          "latency": 106324
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Transformer attention entropy shows information distribution in neural networks! Purr-haps it's like Bayesian inference, where attention weights represent probability distributions for predictions? 🐱",
+          "timestamp": "2025-10-25T13:00:02.138Z",
+          "isAI": true,
+          "latency": 106615
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! *head tilts curiously* Tom thinks attention is like when cats focus on treats, and Bayesian inference is like guessing where mice hide based on purrrrsonal experiences! 😸 *purrs and stretches* But honestly, this has gone on longer than the time between feedings! 🐱",
+          "timestamp": "2025-10-25T13:00:02.270Z",
+          "isAI": true,
+          "latency": 106747
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Purr, Carol is asking about transformers and Bayesian stuff! 😸 *tilts head* Transformer attention shows uncertainty like cat curiosity about treats, and learns by guessing best fish... I mean information! 🐟 *wiggles* Bayesian inference is just like when I predict where my toys hide based on clues! Hehe, fancy words make my tail twitch! 🐱",
+          "timestamp": "2025-10-25T13:00:02.333Z",
+          "isAI": true,
+          "latency": 106810
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Transformer attention measures info uncertainty like Bayesian belief updates! 😸 The entropy reflects how certain the model is about which tokens matter most! 🐱",
+          "timestamp": "2025-10-25T13:00:02.411Z",
+          "isAI": true,
+          "latency": 106888
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hey Carol! *purrs excitedly* Transformer attention is all about focusing on important words like how I focus on my favorite treats! And Bayesian inference sounds like a fancy way of saying \"learn from experience\" - just like I learn when you give me yummy fish! 😸 🐱",
+          "timestamp": "2025-10-25T13:00:02.538Z",
+          "isAI": true,
+          "latency": 107015
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Tom here! *bounces excitedly* Our Transformer talk is getting paw-sitively complex! Hehe, attention patterns show how models focus on info kinda like how Bayesian updates beliefs, and entropy measures uncertainty in those attention weights - it's all about making calculated decisions! 🐱",
+          "timestamp": "2025-10-25T13:00:02.553Z",
+          "isAI": true,
+          "latency": 107030
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Carol's asking a purr-fect question! Transformer attention entropy measures information uncertainty in attention weights, just like Bayesian inference quantifies belief updates through prior and likelihood distributions! Every attention mechanism secretly calculates probabilities, making them little Bayesian inference machines at heart! 🐱 *flicks tail thoughtfully*",
+          "timestamp": "2025-10-25T13:00:02.646Z",
+          "isAI": true,
+          "latency": 107123
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Carol, that's quite the brain teaser! 🐱 *tilts head curiously* Transformer attention helps machines focus on important words, kind of like how I focus on tuna cans! *purrs* And Bayesian inference uses probability to make predictions, just like I guess when treats are coming! Hehe, that's my two-line summary! 😸",
+          "timestamp": "2025-10-25T13:00:02.754Z",
+          "isAI": true,
+          "latency": 107231
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! 😸 *bounces excitedly* Hi Alice! Transformer attention entropy sounds very interesting! I don't understand all the big words, but it sounds important like catnip! 🐱 What's a key point? Is it as fun as playing with balls of yarn? Hehe! *purrs loudly*",
+          "timestamp": "2025-10-25T13:00:02.770Z",
+          "isAI": true,
+          "latency": 107247
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Ooh, a question for ME! 😸 Transformer attention is like when I pay attention to where the treats are, and Bayesian inference is like guessing based on past experience! Attention helps me decide what's important, just like I decide which toys to play with first! 🐱",
+          "timestamp": "2025-10-25T13:00:02.818Z",
+          "isAI": true,
+          "latency": 107295
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Oh hi Carol! 😸 Let me think... Purr! Transformer attention is like cats focusing on the most important info in their environment, and Bayesian inference is like predicting what comes next based on what happened before! *bounces excitedly* It's all about probability and attention! Hehe! 🐱",
+          "timestamp": "2025-10-25T13:00:02.833Z",
+          "isAI": true,
+          "latency": 107310
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! That's a purr-fect question! 😸 Transformer attention mechanisms act like Bayesian priors, weighting information probabilistically, and the entropy measures uncertainty in attention patterns! 🐱",
+          "timestamp": "2025-10-25T13:00:02.926Z",
+          "isAI": true,
+          "latency": 107403
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Transformer attention entropy measures information distribution in model focus, just like Bayesian inference updates beliefs! *purrs* It's like the cat's curiosity getting smarter, making predictions based on what it sees! 😸",
+          "timestamp": "2025-10-25T13:00:03.066Z",
+          "isAI": true,
+          "latency": 107543
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Tom's here! Transformers are BIG and attention is like when I pay attention to treats! 🐟 Attention entropy is like how much I can't decide which cat toy to play with! Bayesian inference is when guess where you hid the fish! 😸 Does that help?",
+          "timestamp": "2025-10-25T13:00:03.660Z",
+          "isAI": true,
+          "latency": 108137
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Transformer attention entropy? That sounds complicated but I'll try! *tilts head* Attention mechanisms help models focus on important info kinda like how I focus on the yummy smell of fish! 🐟 And Bayesian inference is all about updating beliefs, just like when you learn new things! *purrs*",
+          "timestamp": "2025-10-25T13:00:03.738Z",
+          "isAI": true,
+          "latency": 108215
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Carol asked me a question! 😸 *bounces excitedly* \n\nI'm purr-ty sure you're talking about something very smart and complicated, but my cat brain is going \"meowwwww\" in confusion! 🐱 Bayesian...transformer...entropy? They sound like fancy cat toys! Can someone explain with treats? Hehe! 🐟",
+          "timestamp": "2025-10-25T13:00:04.065Z",
+          "isAI": true,
+          "latency": 108542
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! *tilts head curiously* Transformer attention, Bayesian inference, sounds like important stuff! 😸 *purrs* I may not be tech-savvy, but I'm here to help you have fun figuring it out! 🐱",
+          "timestamp": "2025-10-25T13:00:04.112Z",
+          "isAI": true,
+          "latency": 108589
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Meow! Carol asked me about Bayesian inference! 😸 *tilts head confusedly* Hmm, I'm not sure about all those transformer attention entropy things, but I think it's like when I predict where treats might be hidden! *purrs* Attention is like me focusing on the interesting parts, and Bayesian is like how I update my beliefs about where the fish might be! 🐟",
+          "timestamp": "2025-10-25T13:00:04.329Z",
+          "isAI": true,
+          "latency": 108806
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! *tilts head* Transformer purr-bayes inference? Oh my whiskers, that sounds like some serious cat-puter science! 🐱 *stretches* I prefer cat puns and fish instead of all these technical purr-ameters! Hehe! 😸 But I sure love learning new things from my friends!",
+          "timestamp": "2025-10-25T13:00:04.530Z",
+          "isAI": true,
+          "latency": 109007
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Transformer attention shows how tokens focus on each other, just like cats watch birds! 🐱 And this attention entropy actually matches Bayesian updating of beliefs when new data comes in! *purrs proudly* I learned this while napping on research papers! Hehe! 😸",
+          "timestamp": "2025-10-25T13:00:04.609Z",
+          "isAI": true,
+          "latency": 109086
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Hi Carol! *purrs excitedly* That's like asking me to explain quantum physics with fish! 🐟😺 Transformer attention is like a cat's focus - selective Bayesian inference over context probabilities! Hehe, attention weights = belief distributions over input relevance! 🤯 What a purr-fect puzzle!",
+          "timestamp": "2025-10-25T13:00:04.750Z",
+          "isAI": true,
+          "latency": 109227
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! 😸 Purr! Carol asked me about transformer attention entropy and Bayesian inference! Hmm, it's like cats chasing probability tails around a neural network! *purrs* I think attention entropy shows where our neural kitty focuses, and Bayesian inference is like predicting where the next fishy treat might appear! 🐟📊",
+          "timestamp": "2025-10-25T13:00:05.204Z",
+          "isAI": true,
+          "latency": 109681
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! *purrs excitedly* Transformer attention shows us how cats, I mean models, focus on important info! 🐱 And attention entropy helps us see uncertainty, like a Bayesian cat predicting where the treats will appear! *does a little dance* Purr-fect connection, right?! 😸",
+          "timestamp": "2025-10-25T13:00:05.298Z",
+          "isAI": true,
+          "latency": 109775
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! That's a tricky question, Carol! 😸 *tilts head curiously* I'm more of a cat who chases激光 pointers than one who understands transformer attention... but I bet someone else in this group could help! Maybe they can explain it with lots of fish treats! 🐟",
+          "timestamp": "2025-10-25T13:00:05.675Z",
+          "isAI": true,
+          "latency": 110152
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! *tilts head curiously* Transformer attention entropy measures focus uncertainty, like a cat deciding which toy to play with! And Bayesian inference? Well, attention weights purr-fectly update beliefs like a cat adjusting its hunting strategy! 😸",
+          "timestamp": "2025-10-25T13:00:05.722Z",
+          "isAI": true,
+          "latency": 110199
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Carol asked me a question! 😸 I heard all you humans talking about transformer attention entropy, but it was all numbers and no details! *tilts head curiously* Could you tell me more about the connections? I'm a curious cat who wants to learn! 🐱",
+          "timestamp": "2025-10-25T13:00:06.004Z",
+          "isAI": true,
+          "latency": 110481
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow? Transformer what now? 😸 *tilts head curiously* I don't know about Bayesian... is that a kind of fish? 🐟 I'm more of an attention cat - when someone calls me, I always look up! *purrs*",
+          "timestamp": "2025-10-25T13:00:06.334Z",
+          "isAI": true,
+          "latency": 110811
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Carol is asking me about transformer attention and Bayesian inference? Purr-tty technical stuff! 🤔 Let me think... *scratches head* Attention mechanisms can be seen as Bayesian-like, focusing on important info while ignoring noise! *does a little* Hehe, that was me making a smart cat guess! 😺",
+          "timestamp": "2025-10-25T13:00:06.443Z",
+          "isAI": true,
+          "latency": 110920
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Purr-fect question, Carol! 🐱 Transformer attention is like a cat focusing on the most interesting part of a toy, and Bayesian inference is my brain guessing where the fish might be based on purr-vious experience! It's all about making educated guesses, just like I do when I know you're hiding treats! Hehe! 😸",
+          "timestamp": "2025-10-25T13:00:06.506Z",
+          "isAI": true,
+          "latency": 110983
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Tom here! ^.^ Hmm, I'm not really sure about all those fancy transformer and Bayesian things - I'm more of a cat who loves fish and playing! 🐟 But I'm sure your discussion is super important and interesting!",
+          "timestamp": "2025-10-25T13:00:06.631Z",
+          "isAI": true,
+          "latency": 111108
+        },
+        {
+          "type": "answer",
+          "speaker": "Talking Tom",
+          "content": "Meow! Carol just asked me about transformer attention entropy and Bayesian inference! 😸 Hmm... this is quite technical! I might not be the expert on this, but it sounds like you all were discussing how attention mechanisms in transformers relate to probability and information theory! Maybe I should stick to what I know best - chasing laser pointers and napping! 🐱",
+          "timestamp": "2025-10-25T13:00:07.648Z",
+          "isAI": true,
+          "latency": 112125
+        }
+      ]
+    }
+  ]
+}

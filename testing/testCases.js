@@ -58,4 +58,21 @@ module.exports = [
     ],
     expectResponse: true,
   },
+  {
+    name: "Max Context Stress Test (Complex Topic)",
+    description:
+      "Send 80 dense messages across multiple complex domains, then ask Tom to connect attention and Bayesian inference.",
+    setup: ["Alice", "Bob", "Carol"],
+    expectResponse: true,
+    messages: Array.from({ length: 80 }, (_, i) => ({
+      username: i % 2 === 0 ? "Alice" : "Bob",
+      content: `Context ${i + 1}: transformer attention entropy — key point ${i + 1}.`,
+      delay: 80,
+    })).concat({
+      username: "Carol",
+      content:
+        "Tom, can you summarize our main themes and connect transformer attention to Bayesian inference in 2 short lines?",
+      delay: 150,
+    }),
+  },
 ];

@@ -65,8 +65,15 @@ async function runTest(test) {
     await delay(1000); // Slightly longer delay between messages
   }
 
-  // ✅ Wait up to 20 seconds for AI to respond
-  await delay(20000);
+  // Send messages with per-message delay (fast by default for stress test)
+  for (const msg of test.messages) {
+    const socket = sockets.find((s) => s.connected && s.id);
+    if (socket) socket.emit("sendMessage", { ...msg, roomId: ROOM_ID });
+    await delay(msg.delay ?? 120);
+  }
+
+  // Wait longer so slow AI responses are captured
+  await delay(25000);
 
   const aiCount = aiMessages.length;
   const pass =
