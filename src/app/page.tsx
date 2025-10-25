@@ -49,7 +49,7 @@ export default function Home() {
           src="/Hero/cloud_two.svg"
           alt="Cloud"
           className="cloud cloud-2"
-          width={200}
+          width={250}
           height={100}
         />
         <Image
