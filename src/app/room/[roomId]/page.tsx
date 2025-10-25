@@ -48,6 +48,7 @@ export default function RoomPage() {
             setMessages(prev => [...prev, message]);
         });
 
+
         newSocket.on('userJoined', (user: User) => {
             setUsers(prev => {
                 if (!prev.find(u => u.id === user.id)) {
@@ -63,6 +64,10 @@ export default function RoomPage() {
 
         newSocket.on('roomUsers', (roomUsers: User[]) => {
             setUsers(roomUsers);
+        });
+
+        newSocket.on('roomMessages', (roomMessages: Message[]) => {
+            setMessages(roomMessages);
         });
 
         newSocket.on('error', (errorMessage: string) => {
@@ -87,6 +92,26 @@ export default function RoomPage() {
                 roomId
             });
         }
+    };
+
+    const handleVoiceRecording = async (audioBlob: Blob) => {
+        if (!socket || !roomId || !username) {
+            return;
+        }
+
+        // Convert blob to base64
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const base64Audio = reader.result?.toString().split(',')[1];
+            if (base64Audio) {
+                socket.emit('sendVoiceMessage', {
+                    roomId,
+                    username,
+                    audio: base64Audio
+                });
+            }
+        };
+        reader.readAsDataURL(audioBlob);
     };
 
     const copyRoomCode = () => {
@@ -156,9 +181,11 @@ export default function RoomPage() {
                         <p>No messages yet. Start the conversation!</p>
                     </div>
                 ) : (
-                    messages.map((message) => (
-                        <ChatMessage key={message.id} message={message} />
-                    ))
+                    <div>
+                        {messages.map((message) => (
+                            <ChatMessage key={message.id} message={message} />
+                        ))}
+                    </div>
                 )}
                 <div ref={messagesEndRef} />
             </div>

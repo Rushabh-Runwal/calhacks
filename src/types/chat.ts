@@ -3,8 +3,9 @@ export interface Message {
   content: string;
   username: string;
   timestamp: number;
-  isAI: boolean;
-  isVoice?: boolean;
+  is_ai: boolean;
+  is_voice?: boolean;
+  audio_url?: string;
 }
 
 export interface User {

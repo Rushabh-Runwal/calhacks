@@ -10,8 +10,8 @@ async def start_with_cleanup():
     await server.serve()
 
 if __name__ == "__main__":
-    print("🐱 Starting Talking Tom Chat Server...")
-    print("📍 Server: http://localhost:8000")
-    print("🔌 WebSocket: ws://localhost:8000/socket.io/")
+    print("Starting Talking Tom Chat Server...")
+    print("Server: http://localhost:8000")
+    print("WebSocket: ws://localhost:8000/socket.io/")
     print("Press Ctrl+C to stop")
     asyncio.run(start_with_cleanup())

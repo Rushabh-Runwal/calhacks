@@ -11,6 +11,10 @@ venv/
 pip-log.txt
 pip-delete-this-directory.txt
 
+# Python package management
+uv.lock
+.python-version
+
 # Next.js
 .next/
 out/
@@ -103,3 +107,47 @@ jspm_packages/
 # Temporary folders
 tmp/
 temp/
+
+# Python specific
+*.egg-info/
+dist/
+build/
+*.egg
+.coverage
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# Test files
+test_*.py
+*_test.py
