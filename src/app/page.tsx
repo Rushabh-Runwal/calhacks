@@ -30,14 +30,17 @@ export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
       <div className="background-container">
-        <Image
-          src="/Hero/sun_rays.svg"
-          alt="Sun Rays"
-          className="sun-rays"
-          width={1000}
-          height={1000}
-          priority
-        />
+    {/* Sun (orbiting) */}
+<div className="sun-fan">
+  <Image
+    src="/Hero/sun_rays.svg"
+    alt="Sun Rays"
+    fill
+    className="sun-fan-img"
+    priority
+  />
+</div>
+<div className="sun-disk" aria-hidden="true" />
         <Image
           src="/Hero/cloud_one.svg"
           alt="Cloud"

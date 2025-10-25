@@ -25,6 +25,13 @@
   --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-strong: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Cloud fade duration: ~4–5s per direction */
+  --fade-dur: 4.5s;
+
+  /* Mountain sway controls */
+  --sway-distance: 8px;
+  --sway-duration: 6s;
 }
 
 @theme inline {
@@ -49,26 +56,17 @@ body {
   overflow-x: hidden;
 }
 
+/* Legacy sun spin (now disabled by orbit override) */
 @keyframes rotate-rays {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* Gentle cloud drift: move clouds back and forth slowly for a relaxed effect */
 @keyframes cloud-drift {
-  0% {
-    transform: translateX(-12px);
-  }
-  50% {
-    transform: translateX(12px);
-  }
-  100% {
-    transform: translateX(-12px);
-  }
+  0%   { transform: translateX(-12px); }
+  50%  { transform: translateX(12px); }
+  100% { transform: translateX(-12px); }
 }
 
 .background-container {
@@ -81,20 +79,82 @@ body {
   overflow: hidden;
 }
 
-.sun-rays {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200%;
-  height: 200%;
-  transform-origin: center;
-  animation: rotate-rays 60s linear infinite;
+/* ===== Sun orbit + stacking ===== */
+/* Fan-style spin (in place) */
+/* Fan-style spin (already added earlier; here for context) */
+@keyframes fan-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
+/* Rays (behind the disk) */
+.sun-fan {
+  position: absolute;
+  top: 68%;
+  left: 21%;
+  width: 200vmin;   /* overall rays size */
+  height: 200vmin;
+  transform: translate(-50%, -50%);
+  z-index: 2;      /* BEHIND the disk */
+  pointer-events: none;
+}
+.sun-fan-img {
+  object-fit: contain;
+  animation: fan-spin 50s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+/* Sun disk (50% opacity), in front of rays but behind mountain */
+.sun-disk {
+  position: absolute;
+  top: 65%;         /* nudge to taste so the mountain covers the lower half */
+  left: 23%;
+  width: 32vmin;    /* disk size */
+  height: 32vmin;
+  transform: translate(-50%, -50%);
+  z-index: 2;       /* IN FRONT of rays (1), BEHIND mountain (4) */
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+
+  /* Warm gradient that reads as sun */
+  background: radial-gradient(
+    circle at 40% 40%,
+    #FFD93D 0%,
+    #FFD93D 35%,
+    #FFB34D 60%,
+    #FF8C42 100%
+  );
+
+  /* optional: a soft glow that respects opacity */
+  box-shadow:
+    0 0 40px 10px rgba(255, 217, 61, 0.35),
+    0 0 80px 30px rgba(255, 140, 66, 0.25);
+}
+
+/* Make sure the mountain stays above */
+.medmountain { z-index: 4; }
+
+/* (If not set elsewhere) keep other layers sensible */
+.mountain, .sidemountain, .sidemountain2 { z-index: 2; }
+.water { z-index: 1; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .sun-fan-img { animation: none !important; }
+}
+
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sun-fan-img { animation: none !important; }
+}
+
+
+/* Clouds (base) */
 .cloud {
   position: absolute;
   opacity: 0.9;
-  /* default slow drift; overridden per-cloud for variety */
   animation-name: cloud-drift;
   animation-duration: 40s;
   animation-timing-function: ease-in-out;
@@ -102,12 +162,11 @@ body {
   animation-direction: alternate;
   will-change: transform;
 }
-:root { --fade-dur: 4.5s; } /* 4–5s per direction; tweak as needed */
 
-/* Keyframes stay the same */
+/* Cloud drift + fade combo */
 @keyframes drift {
   0%   { transform: translateX(0) translateY(0); }
-  50%  { transform: translateX(12px) translateY(-6px); }
+  50%  { transform: translateX(22px) translateY(-16px); }
   100% { transform: translateX(0) translateY(0); }
 }
 
@@ -116,7 +175,7 @@ body {
   50%      { opacity: 1; }
 }
 
-/* Apply dual animations: drift (your original duration), fade (~4–5s) */
+/* Apply dual animations: drift (per-cloud), fade (~4–5s per direction) */
 .cloud-1 { 
   top: -2%; left: -2%;
   animation-name: drift, fade;
@@ -167,32 +226,53 @@ body {
   animation-direction: normal, alternate;
 }
 
+/* ===== Mountain sway (back & forth) + fixes ===== */
+@keyframes sway {
+  0%   { transform: var(--base-transform, translateZ(0)) translateX(calc(-1 * var(--sway-distance))); }
+  100% { transform: var(--base-transform, translateZ(0)) translateX(var(--sway-distance)); }
+}
+
 .mountain {
   position: absolute;
-  bottom: -60;
-  left: 450;
+  bottom: -60px;
+  left: 450px;
+  z-index: 2;
+ 
 }
+
 .medmountain {
   position: absolute;
   bottom: 0;
+  z-index: 4; /* occludes lower half of the sun */
+
 }
+
 .sidemountain {
   position: absolute;
-  bottom: -80;
+  bottom: -80px; /* fixed units */
+  z-index: 3;
+
 }
+
 .sidemountain2 {
   position: absolute;
-  bottom: -200;
-  rotate: calc(-90deg);
-  left: 200;}
+  bottom: -200px; /* fixed units */
+  left: 200px;    /* fixed units */
+  z-index: 3;
+  --base-transform: rotate(-90deg); /* preserve rotation */
+ rotate: calc(-90deg);
+}
+
 .sparkle {
   position: absolute;
   animation: pulse-glow 2s infinite;
 }
+
 .water {
-   position: absolute;
-  right: -200;
-  bottom: -30;
+  position: absolute;
+  right: -200px;  /* fixed units */
+  bottom: -30px;  /* fixed units */
+  z-index: 1;
 }
 
 /* Talking Tom Animations */
@@ -223,15 +303,9 @@ body {
 }
 
 @keyframes wiggle {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(1deg);
-  }
-  75% {
-    transform: rotate(-1deg);
-  }
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(1deg); }
+  75%      { transform: rotate(-1deg); }
 }
 
 @keyframes pulse-glow {
@@ -244,12 +318,8 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-10px); }
 }
 
 /* Utility Classes */
@@ -265,50 +335,26 @@ body {
   background: linear-gradient(135deg, var(--playful-pink) 0%, var(--tom-orange) 100%);
 }
 
-.bounce-in {
-  animation: bounce-in 0.6s ease-out;
-}
-
-.slide-in {
-  animation: slide-in 0.4s ease-out;
-}
-
-.wiggle {
-  animation: wiggle 0.5s ease-in-out;
-}
-
-.pulse-glow {
-  animation: pulse-glow 2s infinite;
-}
-
-.float {
-  animation: float 3s ease-in-out infinite;
-}
+.bounce-in { animation: bounce-in 0.6s ease-out; }
+.slide-in  { animation: slide-in 0.4s ease-out; }
+.wiggle    { animation: wiggle 0.5s ease-in-out; }
+.pulse-glow{ animation: pulse-glow 2s infinite; }
+.float     { animation: float 3s ease-in-out infinite; }
 
 /* Rounded corners for everything */
-.rounded-tom {
-  border-radius: 20px;
-}
-
-.rounded-tom-sm {
-  border-radius: 12px;
-}
-
-.rounded-tom-lg {
-  border-radius: 24px;
-}
+.rounded-tom    { border-radius: 20px; }
+.rounded-tom-sm { border-radius: 12px; }
+.rounded-tom-lg { border-radius: 24px; }
 
 /* Button hover effects */
 .tom-button {
   transition: all 0.3s ease;
   transform: scale(1);
 }
-
 .tom-button:hover {
   transform: scale(1.05);
   box-shadow: var(--shadow-strong);
 }
-
 .tom-button:active {
   transform: scale(0.98);
 }
@@ -321,7 +367,6 @@ body {
   border-radius: 20px 20px 20px 5px;
   box-shadow: var(--shadow-soft);
 }
-
 .tom-message::after {
   content: '';
   position: absolute;
@@ -341,7 +386,6 @@ body {
   border-radius: 20px 20px 5px 20px;
   box-shadow: var(--shadow-soft);
 }
-
 .user-message::after {
   content: '';
   position: absolute;
@@ -362,7 +406,6 @@ body {
   background: var(--card-bg);
   transition: all 0.3s ease;
 }
-
 .tom-input:focus {
   border-color: var(--sunny-yellow);
   box-shadow: 0 0 0 3px rgba(255, 217, 61, 0.3);
@@ -370,10 +413,7 @@ body {
 }
 
 /* Decorative elements */
-.paw-print {
-  position: relative;
-}
-
+.paw-print { position: relative; }
 .paw-print::before {
   content: '🐾';
   position: absolute;
@@ -395,16 +435,14 @@ body {
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .rounded-tom {
-    border-radius: 16px;
-  }
-  
-  .rounded-tom-lg {
-    border-radius: 20px;
-  }
-  
-  .user-count {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
+  .rounded-tom    { border-radius: 16px; }
+  .rounded-tom-lg { border-radius: 20px; }
+  .user-count     { font-size: 12px; padding: 6px 10px; }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sun-orbit { animation: none !important; }
+  .mountain, .medmountain, .sidemountain, .sidemountain2 { animation: none !important; }
+  .cloud, .cloud-1, .cloud-2, .cloud-3, .cloud-4, .cloud-5 { animation: none !important; }
 }
