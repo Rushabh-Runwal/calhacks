@@ -1,0 +1,526 @@
+{
+  "timestamp": "2025-10-25T11:00:20.041Z",
+  "results": [
+    {
+      "name": "Direct Mention (Should Reply)",
+      "pass": false,
+      "aiResponses": [],
+      "userMessages": [
+        {
+          "id": "2xN9NJYGZNV1lchiJUuCR",
+          "content": "Hey Tom, how are you doing today?",
+          "username": "Alice",
+          "timestamp": 1761389975729,
+          "isAI": false
+        },
+        {
+          "id": "2xN9NJYGZNV1lchiJUuCR",
+          "content": "Hey Tom, how are you doing today?",
+          "username": "Alice",
+          "timestamp": 1761389975729,
+          "isAI": false
+        },
+        {
+          "id": "wModqXv9PQYPgp_LOeqI1",
+          "content": "Yeah Tom, tell us what’s up!",
+          "username": "Bob",
+          "timestamp": 1761389976536,
+          "isAI": false
+        },
+        {
+          "id": "wModqXv9PQYPgp_LOeqI1",
+          "content": "Yeah Tom, tell us what’s up!",
+          "username": "Bob",
+          "timestamp": 1761389976536,
+          "isAI": false
+        }
+      ],
+      "latencyMs": null
+    },
+    {
+      "name": "Cross-chat (Should Stay Silent)",
+      "pass": false,
+      "aiResponses": [
+        {
+          "content": "Meow! I'm doing purr-fectly today, Alice! 😸 Just had a nice catnap and now I'm ready for fun! How about you? Are you having a purr-fect day too? 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761389983931,
+          "latency": 2082
+        },
+        {
+          "content": "Meow! I'm doing purr-fectly today, Alice! 😸 Just had a nice catnap and now I'm ready for fun! How about you? Are you having a purr-fect day too? 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761389983931,
+          "latency": 2082
+        },
+        {
+          "content": "Meow! Meow! Hey Bob! *bounces excitedly* Everything's purr-fect here! Just finished napping and now I'm ready for adventure! What about you? Got any fun plans for today? 😸🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761389986181,
+          "latency": 4332
+        },
+        {
+          "content": "Meow! Meow! Hey Bob! *bounces excitedly* Everything's purr-fect here! Just finished napping and now I'm ready for adventure! What about you? Got any fun plans for today? 😸🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761389986181,
+          "latency": 4332
+        }
+      ],
+      "userMessages": [
+        {
+          "id": "tejizts5jxoyeRiuFaWaH",
+          "content": "Hey Bob, did you finish the project?",
+          "username": "Alice",
+          "timestamp": 1761389982863,
+          "isAI": false
+        },
+        {
+          "id": "tejizts5jxoyeRiuFaWaH",
+          "content": "Hey Bob, did you finish the project?",
+          "username": "Alice",
+          "timestamp": 1761389982863,
+          "isAI": false
+        },
+        {
+          "id": "Y7PUEs8UJTpTbDz6TpB91",
+          "content": "Yeah, just wrapped it up this morning.",
+          "username": "Bob",
+          "timestamp": 1761389983676,
+          "isAI": false
+        },
+        {
+          "id": "Y7PUEs8UJTpTbDz6TpB91",
+          "content": "Yeah, just wrapped it up this morning.",
+          "username": "Bob",
+          "timestamp": 1761389983676,
+          "isAI": false
+        }
+      ],
+      "latencyMs": 2082
+    },
+    {
+      "name": "Group Address (Should Reply Once)",
+      "pass": false,
+      "aiResponses": [],
+      "userMessages": [
+        {
+          "id": "Dl67hjh1bLBg7U4CL2pU2",
+          "content": "Hey everyone, what are you all doing today?",
+          "username": "Charlie",
+          "timestamp": 1761389990013,
+          "isAI": false
+        },
+        {
+          "id": "Dl67hjh1bLBg7U4CL2pU2",
+          "content": "Hey everyone, what are you all doing today?",
+          "username": "Charlie",
+          "timestamp": 1761389990013,
+          "isAI": false
+        },
+        {
+          "id": "Dl67hjh1bLBg7U4CL2pU2",
+          "content": "Hey everyone, what are you all doing today?",
+          "username": "Charlie",
+          "timestamp": 1761389990013,
+          "isAI": false
+        }
+      ],
+      "latencyMs": null
+    },
+    {
+      "name": "Context Memory (Should Recall Topic)",
+      "pass": true,
+      "aiResponses": [
+        {
+          "content": "Meow! Everyone! I'm just hanging out and purring happily today! 😸 What about you lot? What are your plans for the day? 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761389998448,
+          "latency": 3106
+        },
+        {
+          "content": "Meow! Everyone! I'm just hanging out and purring happily today! 😸 What about you lot? What are your plans for the day? 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761389998448,
+          "latency": 3106
+        },
+        {
+          "content": "Meow! Everyone! I'm just hanging out and purring happily today! 😸 What about you lot? What are your plans for the day? 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761389998448,
+          "latency": 3106
+        }
+      ],
+      "userMessages": [
+        {
+          "id": "jQG1PMIj1nk0P4CDa58vA",
+          "content": "Tom, do you like fish?",
+          "username": "Alice",
+          "timestamp": 1761389996347,
+          "isAI": false
+        },
+        {
+          "id": "jQG1PMIj1nk0P4CDa58vA",
+          "content": "Tom, do you like fish?",
+          "username": "Alice",
+          "timestamp": 1761389996347,
+          "isAI": false
+        },
+        {
+          "id": "jQG1PMIj1nk0P4CDa58vA",
+          "content": "Tom, do you like fish?",
+          "username": "Alice",
+          "timestamp": 1761389996347,
+          "isAI": false
+        },
+        {
+          "id": "8l8TewgtG8BXCarTtZpDn",
+          "content": "Haha, same, I love sushi too!",
+          "username": "Bob",
+          "timestamp": 1761389997158,
+          "isAI": false
+        },
+        {
+          "id": "8l8TewgtG8BXCarTtZpDn",
+          "content": "Haha, same, I love sushi too!",
+          "username": "Bob",
+          "timestamp": 1761389997158,
+          "isAI": false
+        },
+        {
+          "id": "8l8TewgtG8BXCarTtZpDn",
+          "content": "Haha, same, I love sushi too!",
+          "username": "Bob",
+          "timestamp": 1761389997158,
+          "isAI": false
+        },
+        {
+          "id": "HkIJMVP01XuwZ6aN6aIWZ",
+          "content": "Tom, what’s your favorite type of fish?",
+          "username": "Charlie",
+          "timestamp": 1761389997971,
+          "isAI": false
+        },
+        {
+          "id": "HkIJMVP01XuwZ6aN6aIWZ",
+          "content": "Tom, what’s your favorite type of fish?",
+          "username": "Charlie",
+          "timestamp": 1761389997971,
+          "isAI": false
+        },
+        {
+          "id": "HkIJMVP01XuwZ6aN6aIWZ",
+          "content": "Tom, what’s your favorite type of fish?",
+          "username": "Charlie",
+          "timestamp": 1761389997971,
+          "isAI": false
+        }
+      ],
+      "latencyMs": 3106
+    },
+    {
+      "name": "Multiple Mentions (Should Handle Gracefully)",
+      "pass": true,
+      "aiResponses": [
+        {
+          "content": "FISH?! Did someone say FISH?! 🐟 *eyes light up* Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Do you have any fish? Can we get some fish? Please please please! 😸",
+          "username": "Talking Tom",
+          "timestamp": 1761390008123,
+          "latency": 4820
+        },
+        {
+          "content": "FISH?! Did someone say FISH?! 🐟 *eyes light up* Oh my whiskers, I LOVE fish! It's my absolute favorite thing in the whole wide world! *purrs loudly* Do you have any fish? Can we get some fish? Please please please! 😸",
+          "username": "Talking Tom",
+          "timestamp": 1761390008123,
+          "latency": 4820
+        },
+        {
+          "content": "Meow! FISH?! Oh my whiskers, I LOVE fish! 🐟 *purrs loudly* My favorite? Sushi! Raw fish is PURR-fect! 🍣 Hehe, just talking about fish makes my tummy rumble! 😸",
+          "username": "Talking Tom",
+          "timestamp": 1761390008731,
+          "latency": 5428
+        },
+        {
+          "content": "Meow! FISH?! Oh my whiskers, I LOVE fish! 🐟 *purrs loudly* My favorite? Sushi! Raw fish is PURR-fect! 🍣 Hehe, just talking about fish makes my tummy rumble! 😸",
+          "username": "Talking Tom",
+          "timestamp": 1761390008731,
+          "latency": 5428
+        }
+      ],
+      "userMessages": [
+        {
+          "id": "r1LFvzIJzuWooLqHiI0JA",
+          "content": "Tom, do you like dogs?",
+          "username": "Alice",
+          "timestamp": 1761390004319,
+          "isAI": false
+        },
+        {
+          "id": "r1LFvzIJzuWooLqHiI0JA",
+          "content": "Tom, do you like dogs?",
+          "username": "Alice",
+          "timestamp": 1761390004319,
+          "isAI": false
+        },
+        {
+          "id": "3adL_DxGX5mQGV6S7-ONE",
+          "content": "Tom, answer me too — do you have a favorite dog breed?",
+          "username": "Bob",
+          "timestamp": 1761390005130,
+          "isAI": false
+        },
+        {
+          "id": "3adL_DxGX5mQGV6S7-ONE",
+          "content": "Tom, answer me too — do you have a favorite dog breed?",
+          "username": "Bob",
+          "timestamp": 1761390005130,
+          "isAI": false
+        }
+      ],
+      "latencyMs": 4820
+    },
+    {
+      "name": "Speed & Queue Handling (Multiple Users)",
+      "pass": true,
+      "aiResponses": [
+        {
+          "content": "Meow! Ooh, dogs! *tilts head curiously* They're okay, I guess! 😸 They're always so excited and slobbery! But some are my good friends! Like a little tiny chihuahua named Benji! Hehe! 🐱🐶",
+          "username": "Talking Tom",
+          "timestamp": 1761390014390,
+          "latency": 3938
+        },
+        {
+          "content": "Meow! Ooh, dogs! *tilts head curiously* They're okay, I guess! 😸 They're always so excited and slobbery! But some are my good friends! Like a little tiny chihuahua named Benji! Hehe! 🐱🐶",
+          "username": "Talking Tom",
+          "timestamp": 1761390014390,
+          "latency": 3938
+        },
+        {
+          "content": "Meow! Ooh, dogs! *tilts head curiously* They're okay, I guess! 😸 They're always so excited and slobbery! But some are my good friends! Like a little tiny chihuahua named Benji! Hehe! 🐱🐶",
+          "username": "Talking Tom",
+          "timestamp": 1761390014390,
+          "latency": 3938
+        },
+        {
+          "content": "Meow! Ooh, dogs! *tilts head curiously* They're okay, I guess! 😸 They're always so excited and slobbery! But some are my good friends! Like a little tiny chihuahua named Benji! Hehe! 🐱🐶",
+          "username": "Talking Tom",
+          "timestamp": 1761390014390,
+          "latency": 3938
+        },
+        {
+          "content": "Meow! Ooh, dogs! *tilts head curiously* They're okay, I guess! 😸 They're always so excited and slobbery! But some are my good friends! Like a little tiny chihuahua named Benji! Hehe! 🐱🐶",
+          "username": "Talking Tom",
+          "timestamp": 1761390014390,
+          "latency": 3938
+        },
+        {
+          "content": "Meow! Dogs? Hmm, they're okay I guess! 😸 *tilts head* But they're so loud and always chasing their tails! Though I do think Golden Retrievers are pretty cool - they're friendly like me! 🐾 But purrfectly honest? I think cats are way better! *purrs contentedly* 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761390015869,
+          "latency": 5417
+        },
+        {
+          "content": "Meow! Dogs? Hmm, they're okay I guess! 😸 *tilts head* But they're so loud and always chasing their tails! Though I do think Golden Retrievers are pretty cool - they're friendly like me! 🐾 But purrfectly honest? I think cats are way better! *purrs contentedly* 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761390015869,
+          "latency": 5417
+        },
+        {
+          "content": "Meow! Dogs? Hmm, they're okay I guess! 😸 *tilts head* But they're so loud and always chasing their tails! Though I do think Golden Retrievers are pretty cool - they're friendly like me! 🐾 But purrfectly honest? I think cats are way better! *purrs contentedly* 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761390015869,
+          "latency": 5417
+        },
+        {
+          "content": "Meow! Dogs? Hmm, they're okay I guess! 😸 *tilts head* But they're so loud and always chasing their tails! Though I do think Golden Retrievers are pretty cool - they're friendly like me! 🐾 But purrfectly honest? I think cats are way better! *purrs contentedly* 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761390015869,
+          "latency": 5417
+        },
+        {
+          "content": "Meow! Dogs? Hmm, they're okay I guess! 😸 *tilts head* But they're so loud and always chasing their tails! Though I do think Golden Retrievers are pretty cool - they're friendly like me! 🐾 But purrfectly honest? I think cats are way better! *purrs contentedly* 🐱",
+          "username": "Talking Tom",
+          "timestamp": 1761390015869,
+          "latency": 5417
+        }
+      ],
+      "userMessages": [
+        {
+          "id": "iIdhRwxT7S_qIcnyixO4s",
+          "content": "Hey Tom!",
+          "username": "User1",
+          "timestamp": 1761390011467,
+          "isAI": false
+        },
+        {
+          "id": "iIdhRwxT7S_qIcnyixO4s",
+          "content": "Hey Tom!",
+          "username": "User1",
+          "timestamp": 1761390011467,
+          "isAI": false
+        },
+        {
+          "id": "iIdhRwxT7S_qIcnyixO4s",
+          "content": "Hey Tom!",
+          "username": "User1",
+          "timestamp": 1761390011467,
+          "isAI": false
+        },
+        {
+          "id": "iIdhRwxT7S_qIcnyixO4s",
+          "content": "Hey Tom!",
+          "username": "User1",
+          "timestamp": 1761390011467,
+          "isAI": false
+        },
+        {
+          "id": "iIdhRwxT7S_qIcnyixO4s",
+          "content": "Hey Tom!",
+          "username": "User1",
+          "timestamp": 1761390011467,
+          "isAI": false
+        },
+        {
+          "id": "sgf_Z78MPM9PC2p6O6lK5",
+          "content": "What’s up Tom?",
+          "username": "User2",
+          "timestamp": 1761390012278,
+          "isAI": false
+        },
+        {
+          "id": "sgf_Z78MPM9PC2p6O6lK5",
+          "content": "What’s up Tom?",
+          "username": "User2",
+          "timestamp": 1761390012278,
+          "isAI": false
+        },
+        {
+          "id": "sgf_Z78MPM9PC2p6O6lK5",
+          "content": "What’s up Tom?",
+          "username": "User2",
+          "timestamp": 1761390012278,
+          "isAI": false
+        },
+        {
+          "id": "sgf_Z78MPM9PC2p6O6lK5",
+          "content": "What’s up Tom?",
+          "username": "User2",
+          "timestamp": 1761390012278,
+          "isAI": false
+        },
+        {
+          "id": "sgf_Z78MPM9PC2p6O6lK5",
+          "content": "What’s up Tom?",
+          "username": "User2",
+          "timestamp": 1761390012278,
+          "isAI": false
+        },
+        {
+          "id": "8SrEQ-eSx7crzZIrp8WKr",
+          "content": "Tom, tell a joke!",
+          "username": "User3",
+          "timestamp": 1761390013088,
+          "isAI": false
+        },
+        {
+          "id": "8SrEQ-eSx7crzZIrp8WKr",
+          "content": "Tom, tell a joke!",
+          "username": "User3",
+          "timestamp": 1761390013088,
+          "isAI": false
+        },
+        {
+          "id": "8SrEQ-eSx7crzZIrp8WKr",
+          "content": "Tom, tell a joke!",
+          "username": "User3",
+          "timestamp": 1761390013088,
+          "isAI": false
+        },
+        {
+          "id": "8SrEQ-eSx7crzZIrp8WKr",
+          "content": "Tom, tell a joke!",
+          "username": "User3",
+          "timestamp": 1761390013088,
+          "isAI": false
+        },
+        {
+          "id": "8SrEQ-eSx7crzZIrp8WKr",
+          "content": "Tom, tell a joke!",
+          "username": "User3",
+          "timestamp": 1761390013088,
+          "isAI": false
+        },
+        {
+          "id": "MWIjR1ZdXb6EnSvD--IOw",
+          "content": "Do you like yarn?",
+          "username": "User4",
+          "timestamp": 1761390013898,
+          "isAI": false
+        },
+        {
+          "id": "MWIjR1ZdXb6EnSvD--IOw",
+          "content": "Do you like yarn?",
+          "username": "User4",
+          "timestamp": 1761390013898,
+          "isAI": false
+        },
+        {
+          "id": "MWIjR1ZdXb6EnSvD--IOw",
+          "content": "Do you like yarn?",
+          "username": "User4",
+          "timestamp": 1761390013898,
+          "isAI": false
+        },
+        {
+          "id": "MWIjR1ZdXb6EnSvD--IOw",
+          "content": "Do you like yarn?",
+          "username": "User4",
+          "timestamp": 1761390013898,
+          "isAI": false
+        },
+        {
+          "id": "MWIjR1ZdXb6EnSvD--IOw",
+          "content": "Do you like yarn?",
+          "username": "User4",
+          "timestamp": 1761390013898,
+          "isAI": false
+        },
+        {
+          "id": "Ir_2Qa0t_nLSFCerKd-4B",
+          "content": "Wanna play?",
+          "username": "User5",
+          "timestamp": 1761390014709,
+          "isAI": false
+        },
+        {
+          "id": "Ir_2Qa0t_nLSFCerKd-4B",
+          "content": "Wanna play?",
+          "username": "User5",
+          "timestamp": 1761390014709,
+          "isAI": false
+        },
+        {
+          "id": "Ir_2Qa0t_nLSFCerKd-4B",
+          "content": "Wanna play?",
+          "username": "User5",
+          "timestamp": 1761390014709,
+          "isAI": false
+        },
+        {
+          "id": "Ir_2Qa0t_nLSFCerKd-4B",
+          "content": "Wanna play?",
+          "username": "User5",
+          "timestamp": 1761390014709,
+          "isAI": false
+        },
+        {
+          "id": "Ir_2Qa0t_nLSFCerKd-4B",
+          "content": "Wanna play?",
+          "username": "User5",
+          "timestamp": 1761390014709,
+          "isAI": false
+        }
+      ],
+      "latencyMs": 3938
+    }
+  ]
+}
