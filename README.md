@@ -1,13 +1,14 @@
-# Multiplayer AI Chat Room
+# Multiplayer AI Chat Room with Talking Tom
 
-A real-time multiplayer chat application with AI assistance, built for the CalHacks hackathon. Multiple users can join the same chat room and interact with an AI character that responds to every message.
+A real-time multiplayer chat application featuring Talking Tom, the famous friendly cat! Built for the CalHacks hackathon. Multiple users can join the same chat room and interact with Talking Tom who responds to every message with his playful, cat-like personality.
 
 ## Features
 
-- 🤖 **AI-Powered**: AI character responds to every message using JanitorAI API
+- 🐱 **Talking Tom Character**: Chat with Talking Tom, the playful cat who loves jokes, fish, and making friends!
 - 👥 **Multiplayer**: Multiple users can join the same chat room
 - 🔗 **Shareable Rooms**: Generate random room codes to share with friends
 - ⚡ **Real-time**: WebSocket-based instant messaging
+- 😸 **Fun Personality**: Tom uses cat sounds, emojis, and makes everyone laugh
 - 🎨 **Modern UI**: Google Chat-inspired interface with Tailwind CSS
 - 📱 **Responsive**: Works on desktop and mobile devices
 
