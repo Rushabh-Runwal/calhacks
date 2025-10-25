@@ -32,6 +32,7 @@ class FishAudioService:
                 text="",
                 reference_id=self.voice_model_id,
                 format="mp3"
+                
             )
             
             audio_filename = f"{message_id}.mp3"
