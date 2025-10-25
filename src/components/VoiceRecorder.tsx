@@ -51,8 +51,8 @@ export default function VoiceRecorder({ onRecordingComplete, disabled }: VoiceRe
             onClick={isRecording ? stopRecording : startRecording}
             disabled={disabled}
             className={`p-4 rounded-full transition-all duration-200 ${isRecording
-                    ? 'bg-red-500 animate-pulse shadow-lg'
-                    : 'bg-tom-orange hover:bg-orange-600 shadow-md hover:shadow-lg'
+                ? 'bg-red-500 animate-pulse shadow-lg'
+                : 'bg-tom-orange hover:bg-orange-600 shadow-md hover:shadow-lg'
                 } ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}`}
             title={isRecording ? 'Stop recording' : 'Start voice recording'}
         >

@@ -5,6 +5,7 @@ export interface Message {
   timestamp: number;
   isAI: boolean;
   isVoice?: boolean;
+  audioUrl?: string;
 }
 
 export interface User {

@@ -1,10 +1,13 @@
 import { Message } from '@/types/chat';
+import { useState } from 'react';
 
 interface ChatMessageProps {
     message: Message;
+    isStreaming?: boolean;
 }
 
-export default function ChatMessage({ message }: ChatMessageProps) {
+export default function ChatMessage({ message, isStreaming = false }: ChatMessageProps) {
+    const [isPlaying, setIsPlaying] = useState(false);
     const formatTime = (timestamp: number) => {
         return new Date(timestamp).toLocaleTimeString([], {
             hour: '2-digit',
@@ -43,7 +46,35 @@ export default function ChatMessage({ message }: ChatMessageProps) {
                         )}
                     </div>
                     <div className="tom-message p-4 max-w-xs lg:max-w-md">
-                        <p className="text-white font-medium leading-relaxed">{message.content}</p>
+                        <p className="text-white font-medium leading-relaxed">
+                            {message.content}
+                            {isStreaming && (
+                                <span className="inline-block ml-1 w-2 h-4 bg-white animate-pulse"></span>
+                            )}
+                        </p>
+                        {message.audioUrl && (
+                            <div className="mt-3">
+                                <audio
+                                    controls
+                                    autoPlay
+                                    onPlay={() => setIsPlaying(true)}
+                                    onEnded={() => setIsPlaying(false)}
+                                    onPause={() => setIsPlaying(false)}
+                                    className="w-full max-w-xs"
+                                    src={process.env.NODE_ENV === 'production'
+                                        ? message.audioUrl
+                                        : `http://localhost:8000${message.audioUrl}`}
+                                >
+                                    Your browser does not support audio playback.
+                                </audio>
+                                {isPlaying && (
+                                    <div className="flex items-center gap-2 mt-2 text-tom-orange">
+                                        <div className="w-2 h-2 bg-tom-orange rounded-full animate-pulse" />
+                                        <span className="text-sm">Tom is speaking...</span>
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
@@ -72,6 +103,14 @@ export default function ChatMessage({ message }: ChatMessageProps) {
                 </div>
                 <div className="user-message p-4 max-w-xs lg:max-w-md">
                     <p className="text-white font-medium leading-relaxed">{message.content}</p>
+                    {message.isVoice && (
+                        <div className="mt-2 text-xs text-blue-200 flex items-center gap-1">
+                            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            </svg>
+                            Voice message
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
