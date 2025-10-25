@@ -1,51 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Talking Tom Color Palette */
-:root {
-  /* Primary Colors */
-  --tom-orange: #FF8C42;
-  --sunny-yellow: #FFD93D;
-  --sky-blue: #6BCF7F;
-  --playful-pink: #FF6B9D;
-  --soft-purple: #A78BFA;
-  
-  /* Background Colors */
-  --main-bg: linear-gradient(135deg, #FFE5B4 0%, #87CEEB 100%);
-  --chat-bg: #FFF8E7;
-  --card-bg: #FFFFFF;
-  
-  /* Text Colors */
-  --text-primary: #2D3748;
-  --text-secondary: #4A5568;
-  --text-white: #FFFFFF;
-  
-  /* Shadows */
-  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-strong: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-@theme inline {
-  --color-background: var(--card-bg);
-  --color-foreground: var(--text-primary);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* Global Styles */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--main-bg);
-  color: var(--text-primary);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
 @import "tailwindcss";
 
 /* Talking Tom Color Palette */
@@ -369,5 +321,4 @@ body {
     font-size: 12px;
     padding: 6px 10px;
   }
-}
 }
