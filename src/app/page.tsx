@@ -112,8 +112,8 @@ export default function Home() {
         <Image
           src="/Hero/dark_water_layer.88343155.svg"
           alt="Water"
-          className="mountain"
-          width={1920}
+          className="water"
+          width={1820}
           height={400}
           style={{ zIndex: 1 }}
           priority

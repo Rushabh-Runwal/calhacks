@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Talking Tom Color Palette */
 :root {
@@ -107,6 +109,11 @@ body {
 .sparkle {
   position: absolute;
   animation: pulse-glow 2s infinite;
+}
+.water {
+   position: absolute;
+  right: -200;
+  bottom: -30;
 }
 
 /* Talking Tom Animations */

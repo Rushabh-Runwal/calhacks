@@ -6,7 +6,6 @@ import { io, Socket } from 'socket.io-client';
 import { Message, User } from '@/types/chat';
 import ChatMessage from '@/components/ChatMessage';
 import ChatInput from '@/components/ChatInput';
-import VoiceRecorder from '@/components/VoiceRecorder';
 
 export default function RoomPage() {
     const params = useParams();
@@ -28,8 +27,8 @@ export default function RoomPage() {
             return;
         }
 
-        // Initialize socket connection to Python backend
-        const newSocket = io(process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8000');
+        // Initialize socket connection
+        const newSocket = io(process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000');
         setSocket(newSocket);
 
         // Connection events
@@ -88,24 +87,6 @@ export default function RoomPage() {
                 roomId
             });
         }
-    };
-
-    const handleVoiceRecording = async (audioBlob: Blob) => {
-        if (!socket || !roomId || !username) return;
-
-        // Convert blob to base64
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            const base64Audio = reader.result?.toString().split(',')[1];
-            if (base64Audio) {
-                socket.emit('sendVoiceMessage', {
-                    roomId,
-                    username,
-                    audio: base64Audio
-                });
-            }
-        };
-        reader.readAsDataURL(audioBlob);
     };
 
     const copyRoomCode = () => {
@@ -184,15 +165,7 @@ export default function RoomPage() {
 
             {/* Input */}
             <div className="bg-white border-t border-gray-200 p-4">
-                <div className="flex items-center gap-3">
-                    <VoiceRecorder
-                        onRecordingComplete={handleVoiceRecording}
-                        disabled={!isConnected}
-                    />
-                    <div className="flex-1">
-                        <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
-                    </div>
-                </div>
+                <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
             </div>
         </div>
     );
