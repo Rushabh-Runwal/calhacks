@@ -58,6 +58,19 @@ body {
   }
 }
 
+/* Gentle cloud drift: move clouds back and forth slowly for a relaxed effect */
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-12px);
+  }
+  50% {
+    transform: translateX(12px);
+  }
+  100% {
+    transform: translateX(-12px);
+  }
+}
+
 .background-container {
   position: fixed;
   top: 0;
@@ -80,13 +93,79 @@ body {
 
 .cloud {
   position: absolute;
-  opacity: 0.8;
+  opacity: 0.9;
+  /* default slow drift; overridden per-cloud for variety */
+  animation-name: cloud-drift;
+  animation-duration: 40s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  will-change: transform;
+}
+:root { --fade-dur: 4.5s; } /* 4–5s per direction; tweak as needed */
+
+/* Keyframes stay the same */
+@keyframes drift {
+  0%   { transform: translateX(0) translateY(0); }
+  50%  { transform: translateX(12px) translateY(-6px); }
+  100% { transform: translateX(0) translateY(0); }
 }
 
-.cloud-2 { top: 25%; right: 15%; }
-.cloud-3 { top: 20%; }
-.cloud-4 { top: 20%; right: 35%; }
-.cloud-5 { top: 30%; left: 50%; }
+@keyframes fade {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 1; }
+}
+
+/* Apply dual animations: drift (your original duration), fade (~4–5s) */
+.cloud-1 { 
+  top: -2%; left: -2%;
+  animation-name: drift, fade;
+  animation-duration: 10s, var(--fade-dur);
+  animation-delay: 2s, 0s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: normal, alternate;
+}
+
+.cloud-2 { 
+  top: 25%; right: 15%;
+  animation-name: drift, fade;
+  animation-duration: 10s, var(--fade-dur);
+  animation-delay: 2s, 0s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: normal, alternate;
+}
+
+.cloud-3 { 
+  top: 20%; left: -1%;
+  animation-name: drift, fade;
+  animation-duration: 6s, var(--fade-dur);
+  animation-delay: 6s, 0s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: normal, alternate;
+}
+
+.cloud-4 { 
+  top: 20%; right: 35%;
+  animation-name: drift, fade;
+  animation-duration: 8s, var(--fade-dur);
+  animation-delay: 1s, 0s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: normal, alternate;
+}
+
+.cloud-5 { 
+  top: 30%; left: 50%;
+  animation-name: drift, fade;
+  animation-duration: 9s, var(--fade-dur);
+  animation-delay: 8s, 0s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: normal, alternate;
+}
 
 .mountain {
   position: absolute;
@@ -109,6 +188,11 @@ body {
 .sparkle {
   position: absolute;
   animation: pulse-glow 2s infinite;
+}
+.water {
+   position: absolute;
+  right: -200;
+  bottom: -30;
 }
 
 /* Talking Tom Animations */
