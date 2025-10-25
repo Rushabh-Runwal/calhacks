@@ -88,7 +88,7 @@ async def sendMessage(sid, data):
             rooms[room_id].messages.append(user_message)
             await sio.emit("message", user_message.dict(), room=room_id)
             
-            await generate_streaming_ai_response(room_id, content)
+            await generate_ai_response(room_id, content, username)
         
     except Exception as e:
         print(f"Error in sendMessage: {e}")
@@ -101,7 +101,7 @@ async def sendVoiceMessage(sid, data):
         audio_base64 = data.get("audio")
         
         if not room_id or not username or not audio_base64:
-            await sio.emit("error", {"message": "Missing required data"}, room=sid)
+            await sio.emit("error", {"message": "Missing required data for voice message"}, room=sid)
             return
         
         if room_id not in rooms:
@@ -111,13 +111,13 @@ async def sendVoiceMessage(sid, data):
         try:
             audio_bytes = base64.b64decode(audio_base64)
         except Exception as e:
-            await sio.emit("error", {"message": "Invalid audio data"}, room=sid)
+            await sio.emit("error", {"message": "Invalid audio data format"}, room=sid)
             return
         
         transcribed_text = await fish_audio.transcribe_audio(audio_bytes)
         
         if not transcribed_text:
-            await sio.emit("error", {"message": "Could not transcribe audio"}, room=sid)
+            await sio.emit("error", {"message": "Could not transcribe audio. Please try speaking more clearly."}, room=sid)
             return
         
         user_message = Message(
@@ -132,42 +132,57 @@ async def sendVoiceMessage(sid, data):
         rooms[room_id].messages.append(user_message)
         await sio.emit("message", user_message.dict(), room=room_id)
         
-        await generate_streaming_ai_response(room_id, transcribed_text)
+        await generate_ai_response(room_id, transcribed_text, username)
         
     except Exception as e:
         print(f"Error in sendVoiceMessage: {e}")
-        await sio.emit("error", {"message": "Failed to process voice message"}, room=sid)
+        await sio.emit("error", {"message": "Failed to process voice message. Please try again."}, room=sid)
 
-async def generate_streaming_ai_response(room_id: str, last_user_message: str):
-    """Generate AI response with streaming text and audio"""
+def should_tom_respond(message_content: str, username: str) -> bool:
+    """Check if Tom should respond based on the prompt rules"""
+    content_lower = message_content.lower()
+    
+    # Tom responds when:
+    # 1. Someone directly mentions his name
+    if any(name in content_lower for name in ["tom", "talking tom"]):
+        return True
+    
+    # 2. Someone asks a question
+    if "?" in message_content:
+        return True
+    
+    # 3. Message is addressed to everyone
+    if any(greeting in content_lower for greeting in ["guys", "everyone", "hey all", "hi all", "hello all"]):
+        return True
+    
+    return False
+
+async def generate_ai_response(room_id: str, last_user_message: str, username: str):
+    """Generate AI response with text and audio"""
     try:
         if room_id not in rooms:
+            return
+        
+        # Check if Tom should respond based on the prompt rules
+        if not should_tom_respond(last_user_message, username):
+            print(f"Tom not responding to: {last_user_message} (from {username})")
             return
         
         room = rooms[room_id]
         context = janitor_ai.build_conversation_context(room.messages)
         message_id = generate_message_id()
-        collected_text = []
         
-        async def text_generator():
-            """Generator that streams AI text and emits chunks to frontend"""
-            async for chunk in janitor_ai.stream_ai_response(context):
-                collected_text.append(chunk)
-                await sio.emit("aiTextChunk", {
-                    "messageId": message_id,
-                    "chunk": chunk
-                }, room=room_id)
-                yield chunk
+        # Get AI response (non-streaming)
+        ai_text = await janitor_ai.get_ai_response(context)
         
-        audio_path = await fish_audio.generate_streaming_audio(
-            text_generator(),
-            message_id
-        )
+        # Generate audio
+        audio_path = None
+        if ai_text.strip():
+            audio_path = await fish_audio.generate_audio(ai_text, message_id)
         
-        full_text = "".join(collected_text)
         ai_message = Message(
             id=message_id,
-            content=full_text,
+            content=ai_text,
             username="Talking Tom",
             timestamp=int(datetime.now().timestamp() * 1000),
             is_ai=True,
@@ -175,10 +190,10 @@ async def generate_streaming_ai_response(room_id: str, last_user_message: str):
         )
         
         room.messages.append(ai_message)
-        await sio.emit("aiComplete", ai_message.dict(), room=room_id)
+        await sio.emit("message", ai_message.dict(), room=room_id)
         
     except Exception as e:
-        print(f"Error generating streaming AI response: {e}")
+        print(f"Error generating AI response: {e}")
 
 @sio.event
 async def leaveRoom(sid, data):

@@ -19,7 +19,6 @@ export default function RoomPage() {
     const [users, setUsers] = useState<User[]>([]);
     const [isConnected, setIsConnected] = useState(false);
     const [error, setError] = useState<string>('');
-    const [streamingMessages, setStreamingMessages] = useState<Map<string, string>>(new Map());
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -50,24 +49,6 @@ export default function RoomPage() {
             setMessages(prev => [...prev, message]);
         });
 
-        // Streaming AI response events
-        newSocket.on('aiTextChunk', (data: { messageId: string, chunk: string }) => {
-            setStreamingMessages(prev => {
-                const updated = new Map(prev);
-                const current = updated.get(data.messageId) || '';
-                updated.set(data.messageId, current + data.chunk);
-                return updated;
-            });
-        });
-
-        newSocket.on('aiComplete', (message: Message) => {
-            setStreamingMessages(prev => {
-                const updated = new Map(prev);
-                updated.delete(message.id);
-                return updated;
-            });
-            setMessages(prev => [...prev, message]);
-        });
 
         newSocket.on('userJoined', (user: User) => {
             setUsers(prev => {
@@ -84,6 +65,10 @@ export default function RoomPage() {
 
         newSocket.on('roomUsers', (roomUsers: User[]) => {
             setUsers(roomUsers);
+        });
+
+        newSocket.on('roomMessages', (roomMessages: Message[]) => {
+            setMessages(roomMessages);
         });
 
         newSocket.on('error', (errorMessage: string) => {
@@ -192,7 +177,7 @@ export default function RoomPage() {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                {messages.length === 0 && streamingMessages.size === 0 ? (
+                {messages.length === 0 ? (
                     <div className="text-center text-gray-500 mt-8">
                         <p>No messages yet. Start the conversation!</p>
                     </div>
@@ -201,24 +186,6 @@ export default function RoomPage() {
                         {messages.map((message) => (
                             <ChatMessage key={message.id} message={message} />
                         ))}
-                        {Array.from(streamingMessages.entries()).map(([messageId, content]) => {
-                            const streamingMessage: Message = {
-                                id: messageId,
-                                content: content,
-                                username: "Talking Tom",
-                                timestamp: Date.now(),
-                                isAI: true,
-                                isVoice: false,
-                                audioUrl: undefined
-                            };
-                            return (
-                                <ChatMessage
-                                    key={messageId}
-                                    message={streamingMessage}
-                                    isStreaming={true}
-                                />
-                            );
-                        })}
                     </div>
                 )}
                 <div ref={messagesEndRef} />

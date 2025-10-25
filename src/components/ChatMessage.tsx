@@ -3,10 +3,9 @@ import { useState } from 'react';
 
 interface ChatMessageProps {
     message: Message;
-    isStreaming?: boolean;
 }
 
-export default function ChatMessage({ message, isStreaming = false }: ChatMessageProps) {
+export default function ChatMessage({ message }: ChatMessageProps) {
     const [isPlaying, setIsPlaying] = useState(false);
     const formatTime = (timestamp: number) => {
         return new Date(timestamp).toLocaleTimeString([], {
@@ -24,7 +23,7 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
             .slice(0, 2);
     };
 
-    if (message.isAI) {
+    if (message.is_ai) {
         return (
             <div className="flex items-start space-x-3 bounce-in">
                 <div className="flex-shrink-0">
@@ -36,7 +35,7 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
                     <div className="flex items-center space-x-2 mb-2">
                         <span className="text-sm font-bold text-gray-900">{message.username}</span>
                         <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-tom-sm">{formatTime(message.timestamp)}</span>
-                        {message.isVoice && (
+                        {message.is_voice && (
                             <span className="inline-flex items-center gap-1 text-xs text-gray-500 bg-blue-100 px-2 py-1 rounded-tom-sm">
                                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -48,11 +47,8 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
                     <div className="tom-message p-4 max-w-xs lg:max-w-md">
                         <p className="text-white font-medium leading-relaxed">
                             {message.content}
-                            {isStreaming && (
-                                <span className="inline-block ml-1 w-2 h-4 bg-white animate-pulse"></span>
-                            )}
                         </p>
-                        {message.audioUrl && (
+                        {message.audio_url && (
                             <div className="mt-3">
                                 <audio
                                     controls
@@ -62,8 +58,8 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
                                     onPause={() => setIsPlaying(false)}
                                     className="w-full max-w-xs"
                                     src={process.env.NODE_ENV === 'production'
-                                        ? message.audioUrl
-                                        : `http://localhost:8000${message.audioUrl}`}
+                                        ? message.audio_url
+                                        : `http://localhost:8000${message.audio_url}`}
                                 >
                                     Your browser does not support audio playback.
                                 </audio>
@@ -92,7 +88,7 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
                 <div className="flex items-center space-x-2 mb-2">
                     <span className="text-sm font-bold text-gray-900">{message.username}</span>
                     <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-tom-sm">{formatTime(message.timestamp)}</span>
-                    {message.isVoice && (
+                    {message.is_voice && (
                         <span className="inline-flex items-center gap-1 text-xs text-gray-500 bg-blue-100 px-2 py-1 rounded-tom-sm">
                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -103,7 +99,7 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
                 </div>
                 <div className="user-message p-4 max-w-xs lg:max-w-md">
                     <p className="text-white font-medium leading-relaxed">{message.content}</p>
-                    {message.isVoice && (
+                    {message.is_voice && (
                         <div className="mt-2 text-xs text-blue-200 flex items-center gap-1">
                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />

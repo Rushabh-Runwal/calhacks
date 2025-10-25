@@ -26,7 +26,7 @@ export default function VoiceRecorder({ onRecordingComplete, disabled }: VoiceRe
             };
 
             mediaRecorder.onstop = () => {
-                const audioBlob = new Blob(chunksRef.current, { type: 'audio/webm' });
+                const audioBlob = new Blob(chunksRef.current, { type: 'audio/webm;codecs=opus' });
                 onRecordingComplete(audioBlob);
                 stream.getTracks().forEach(track => track.stop());
             };
