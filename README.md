@@ -1,243 +1,117 @@
-# 🐱 Talking Tom Chat# Multiplayer AI Chat# 🐱 Talking Tom Chat
+# 🐱 Talking Tom Chat
 
+A real-time, room-based group chat where you and friends can talk to an AI “Talking Tom” via text or voice. Messages are delivered instantly over Socket.IO. Voice notes are auto-transcribed and Tom replies with natural text-to-speech audio. Tom follows prompt-guided behavior: he speaks when addressed or helpful, avoids interrupting active threads, nudges the room if it’s quiet, and applies simple moderation.
 
+- Low-latency, multiplayer rooms
+- Text + voice messaging (VAD recording, ASR transcription, TTS replies)
+- Context-aware AI persona with speaking rules and cooldowns
+- Works on desktop and mobile
 
-Real-time multiplayer chat with AI character (Talking Tom) featuring voice input and responses.
+## Features
 
-
-
-## FeaturesA real-time multiplayer chat application with an AI character (Talking Tom) that can respond via text and voice.Multiplayer AI chat with Talking Tom featuring voice chat capabilities.
-
-
-
-- 💬 Real-time multiplayer chat
-
+- 💬 Real-time multiplayer chat (Socket.IO)
 - 🎙️ Voice input with automatic speech detection
-
-- 🔊 AI voice responses## Architecture## Features
-
-- 🤖 Smart AI that responds contextually
-
-- 👥 Room-based conversations
-
-
-
-## Tech StackThis project is split into two main parts:- Real-time multiplayer chat with WebSockets
-
-
-
-**Backend:** Python, FastAPI, Socket.IO  - Talking Tom AI character with Fish Audio TTS
-
-**Frontend:** Next.js, React, TypeScript, Tailwind CSS  
-
-**AI:** Janitor AI, Fish Audio SDK- **Backend**: Python FastAPI + Socket.IO server (`/backend`)- Voice message recording and transcription
-
-
-
-## Quick Start- **Frontend**: Next.js React application (`/frontend`)- Smart response logic (Tom responds when addressed)
-
-
-
-### Prerequisites- Room-based chat with shareable codes
-
-- Python 3.10+
-
-- Node.js 18+## Features
-
-- FFmpeg
+- 🔊 AI voice responses (Fish Audio TTS) + transcription (ASR)
+- 🤖 JanitorAI-powered character with context-aware logic
+- 👥 Room-based conversations with shareable codes
+- 🛡️ Simple moderation prompts and anti-interruption behavior
+- 📦 Audio caching and HTTP streaming for generated speech
 
 ## Tech Stack
 
-### Running Locally
+- Backend: Python 3.10+, FastAPI, python-socketio, Uvicorn
+- Frontend: Next.js, React, TypeScript, Tailwind CSS
+- AI: JanitorAI
+- Audio: Fish Audio SDK (TTS + ASR), FFmpeg
 
-- 🎙️ **Voice Input**: Speak to the AI using voice activity detection
+## Prerequisites
 
-1. **Clone and setup environment:**
+- Python 3.10+
+- Node.js 18+
+- FFmpeg installed and on PATH
+- Docker (optional, for Compose)
 
-```bash- 🔊 **Voice Responses**: AI responds with synthesized speech- **Backend**: FastAPI + python-socketio
+## Quick Start
 
-git clone https://github.com/Rushabh-Runwal/calhacks.git
+### Option 1: Docker Compose (recommended)
 
-cd calhacks- 💬 **Real-time Chat**: Socket.IO-based instant messaging- **Frontend**: Next.js + React + TypeScript + Tailwind CSS
-
-
-
-# Setup backend- 👥 **Multiplayer Rooms**: Multiple users can chat together- **AI**: JanitorAI API
-
-cp backend/.env.example backend/.env
-
-# Edit backend/.env with your API keys- 🤖 **AI Character**: Talking Tom with personality and context awareness- **Audio**: Fish Audio SDK (TTS + ASR)
-
-
-
-# Setup frontend- 📱 **Responsive UI**: Works on desktop and mobile devices
-
-cp frontend/.env.example frontend/.env.local
-
-```## Quick Start
-
-
-
-2. **Start Backend (Terminal 1):**## Quick Start
-
-```bash
-
-./start-backend.sh1. **Install dependencies:**
-
-```
-
-Backend runs on http://localhost:8000### Prerequisites```bash
-
-
-
-3. **Start Frontend (Terminal 2):**uv sync
-
-```bash
-
-./start-frontend.sh- Python 3.10+npm install
-
-```
-
-Frontend runs on http://localhost:3000- Node.js 18+```
-
-
-
-### Using Docker- FFmpeg (for audio processing)
-
-
-
-```bash2. **Start backend:**
+```powershell
+# In repo root
+Copy-Item backend/.env.example backend/.env
+Copy-Item frontend/.env.example frontend/.env.local
+# Edit both env files with your API keys and settings
 
 docker-compose up --build
-
-```### Option 1: Docker Compose (Recommended)```bash
-
-
-
-## Project Structureuv run python start_server.py
-
-
-
-``````bash```
-
-├── backend/          # Python FastAPI + Socket.IO
-
-├── frontend/         # Next.js React app# Copy environment files
-
-└── docker-compose.yml
-
-```cp backend/.env.example backend/.env3. **Start frontend:**
-
-
-
-## Environment Variablescp frontend/.env.example frontend/.env.local```bash
-
-
-
-**Backend (.env):**npm run dev
-
-```env
-
-FISH_API_KEY=your_key# Edit the .env files with your API keys```
-
-JANITOR_API_KEY=your_key
-
 ```
 
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- WebSocket: ws://localhost:8000/socket.io/
 
+### Option 2: Manual setup
 
-**Frontend (.env.local):**# Start both services4. **Open:** http://localhost:3000
+Backend (Windows PowerShell):
+```powershell
+cd backend
+Copy-Item .env.example .env  # edit with your API keys
 
-```env
-
-NEXT_PUBLIC_API_URL=http://localhost:8000docker-compose up --build
-
-```
-
-```## Usage
-
-## Deployment
-
-
-
-- **Backend:** Deploy to Railway, Render, or any Python hosting
-
-- **Frontend:** Deploy to Vercel (recommended), Netlify, or CloudFlare Pages- Frontend: http://localhost:30001. Enter username and create/join room
-
-
-
-Set root directory to `backend` or `frontend` respectively.- Backend: http://localhost:80002. Chat with text or voice messages
-
-
-
-## License3. Tom responds when you address him directly
-
-
-
-MIT### Option 2: Manual Setup4. Voice messages are transcribed and Tom responds with audio
-
-
-
-
-#### Backend Setup## Project Structure
-
-
-
-```bash```
-
-cd backend├── main.py                 # FastAPI server
-
-├── services/               # AI and audio services
-
-# Create virtual environment (optional)├── models/                 # Pydantic models
-
-python -m venv .venv├── config/                 # AI prompts
-
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate├── src/                    # Next.js frontend
-
-└── audio_cache/           # Generated audio files
-
-# Install dependencies```
-
+python -m venv .venv
+. .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 
-## API
-
-# Copy and configure environment
-
-cp .env.example .env- WebSocket: `ws://localhost:8000/socket.io/`
-
-# Edit .env with your API keys- Events: `joinRoom`, `sendMessage`, `sendVoiceMessage`
-
-- HTTP: `/rooms`, `/audio/{filename}`
-# Start the server
 python start_server.py
 ```
 
-Backend will run on http://localhost:8000
-
-#### Frontend Setup
-
-```bash
+Frontend:
+```powershell
 cd frontend
-
-# Install dependencies
+Copy-Item .\.env.example .\.env.local  # edit if needed
 npm install
-
-# Copy and configure environment
-cp .env.example .env.local
-# Edit .env.local if needed
-
-# Start development server
 npm run dev
 ```
 
-Frontend will run on http://localhost:3000
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- WebSocket: ws://localhost:8000/socket.io/
+
+## Usage
+
+1) Enter a username, then create or join a room via code.  
+2) Send text or hold-to-record a voice message.  
+3) Tom replies in text and usually with synthesized voice.  
+4) Say his name to engage directly; he avoids interrupting active 1:1 threads.  
+
+## API Overview
+
+HTTP
+- GET `/` → Health/info
+- GET `/rooms` → List rooms
+- POST `/rooms/create` → Create a room
+- GET `/audio/{filename}` → Stream cached TTS audio
+
+Socket.IO (ws://localhost:8000/socket.io/)
+- Client → Server:
+  - `joinRoom` { roomId, username }
+  - `sendMessage` { roomId, username, content }
+  - `sendVoiceMessage` { roomId, username, audio: base64 }
+- Server → Client:
+  - `userJoined`, `userLeft`, `roomUsers`
+  - `roomMessages`, `newMessage`
+  - `error`
+
+## Tom’s Behavior (prompt-guided)
+
+- Responds when addressed or when helpful to the group
+- Avoids interrupting ongoing 1:1 exchanges
+- Optional “silence nudge” after quiet periods
+- Brief, friendly voice style; minimal fillers; no cat sounds in moderation
+- Simple moderation: immediate warning on harassment; repeat → removal
+
+Tune timings, cooldowns, and wording in the prompt/config (e.g., `config/ai_prompt.py`)
 
 ## Environment Variables
 
-### Backend (`backend/.env`)
-
+Backend (`backend/.env`)
 ```env
 HOST=0.0.0.0
 PORT=8000
@@ -245,8 +119,7 @@ FISH_API_KEY=your_fish_audio_api_key
 JANITOR_API_KEY=your_janitor_ai_api_key
 ```
 
-### Frontend (`frontend/.env.local`)
-
+Frontend (`frontend/.env.local`)
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
@@ -255,150 +128,30 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 
 ```
 .
-├── backend/                 # Python FastAPI backend
-│   ├── config/             # Configuration files
-│   ├── models/             # Data models
-│   ├── services/           # External service integrations
-│   ├── audio_cache/        # Cached audio files
-│   ├── main.py             # Main application
-│   ├── start_server.py     # Server startup script
-│   ├── requirements.txt    # Python dependencies
-│   └── Dockerfile          # Backend Docker configuration
+├── backend/                 # FastAPI + Socket.IO server
+│   ├── config/              # AI prompt and settings
+│   ├── models/              # Pydantic models
+│   ├── services/            # JanitorAI + Fish Audio integrations
+│   ├── audio_cache/         # Generated audio files
+│   ├── main.py              # App entry
+│   ├── start_server.py      # Uvicorn launcher
+│   └── requirements.txt
 │
-├── frontend/               # Next.js frontend
-│   ├── src/
-│   │   ├── app/           # Next.js app directory
-│   │   ├── components/    # React components
-│   │   └── types/         # TypeScript types
-│   ├── public/            # Static assets
-│   ├── package.json       # Node dependencies
-│   └── Dockerfile         # Frontend Docker configuration
+├── frontend/                # Next.js app
+│   ├── src/                 # app/, components/, types/
+│   ├── public/
+│   └── package.json
 │
-├── docker-compose.yml     # Docker Compose configuration
-└── README.md             # This file
+└── docker-compose.yml
 ```
-
-## Development
-
-### Backend Development
-
-```bash
-cd backend
-python start_server.py
-```
-
-The server will auto-reload on code changes.
-
-### Frontend Development
-
-```bash
-cd frontend
-npm run dev
-```
-
-The frontend will auto-reload on code changes.
-
-## Deployment
-
-### Backend Deployment
-
-#### Railway / Render / Heroku
-
-1. Create a new service
-2. Connect your repository
-3. Set the root directory to `backend`
-4. Set environment variables
-5. Deploy!
-
-#### Docker
-
-```bash
-cd backend
-docker build -t chat-backend .
-docker run -p 8000:8000 --env-file .env chat-backend
-```
-
-### Frontend Deployment
-
-#### Vercel (Recommended)
-
-1. Import your repository on Vercel
-2. Set root directory to `frontend`
-3. Add environment variable: `NEXT_PUBLIC_API_URL` = your backend URL
-4. Deploy!
-
-#### Netlify / CloudFlare Pages
-
-Similar to Vercel - set the root directory and environment variables.
-
-#### Docker
-
-```bash
-cd frontend
-docker build -t chat-frontend --build-arg NEXT_PUBLIC_API_URL=https://your-backend-url.com .
-docker run -p 3000:3000 chat-frontend
-```
-
-## API Documentation
-
-### REST Endpoints
-
-- `GET /` - Health check
-- `GET /rooms` - List active rooms
-- `POST /rooms/create` - Create new room
-- `GET /audio/{filename}` - Get audio file
-
-### Socket.IO Events
-
-See [backend/README.md](backend/README.md) for detailed Socket.IO documentation.
-
-## Technology Stack
-
-### Backend
-- FastAPI - Modern Python web framework
-- Socket.IO - Real-time bidirectional communication
-- Fish Audio SDK - Text-to-speech and transcription
-- Janitor AI - AI character responses
-- FFmpeg - Audio processing
-
-### Frontend
-- Next.js 16 - React framework
-- TypeScript - Type safety
-- Tailwind CSS - Styling
-- Socket.IO Client - Real-time communication
-- @ricky0123/vad-web - Voice Activity Detection
 
 ## Troubleshooting
 
-### Socket.IO Connection Issues
-
-- Ensure backend is running and accessible
-- Check CORS settings in backend
-- Verify `NEXT_PUBLIC_API_URL` in frontend
-
-### Audio Issues
-
-- Install FFmpeg on your system
-- Check microphone permissions in browser
-- Ensure HTTPS in production (required for microphone access)
-
-### API Key Issues
-
-- Verify your Fish Audio API key is valid
-- Verify your Janitor AI API key is valid
-- Check API rate limits
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+- Missing API keys: set `FISH_API_KEY` and `JANITOR_API_KEY` in `backend/.env`.
+- FFmpeg not found: install and add to PATH, then restart terminal.
+- CORS/Socket errors: confirm `NEXT_PUBLIC_API_URL` points to your backend URL.
+- No audio playback: ensure `audio_cache/` is writable and files are being created.
 
 ## License
 
-MIT License
-
-## Support
-
-For issues and questions, please open an issue on GitHub.
+MIT
