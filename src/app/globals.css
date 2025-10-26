@@ -459,7 +459,6 @@ body {
 @media (max-width: 768px) {
   .rounded-tom    { border-radius: 16px; }
   .rounded-tom-lg { border-radius: 20px; }
-  .user-count     { font-size: 12px; padding: 6px 10px; }
 }
 
 /* Accessibility: respect reduced motion */

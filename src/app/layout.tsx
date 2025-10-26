@@ -3,8 +3,8 @@ import "./globals.css";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Talking Tom Chat",
-  description: "Multiplayer AI chat with Talking Tom - voice to voice conversations!",
+  title: "Tommy Chat",
+  description: "Multiplayer AI chat with Tommy - voice to voice conversations!",
 };
 
 export default function RootLayout({

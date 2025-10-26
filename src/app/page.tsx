@@ -35,7 +35,7 @@ export default function Home() {
         <div className="text-center mb-4">
           <div className="text-4xl mb-4 float">🐱</div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Talking Tom Chat
+           Tommy Chat
           </h1>
           <p className="text-gray-600 text-base">
             Meow! Let&apos;s chat together!

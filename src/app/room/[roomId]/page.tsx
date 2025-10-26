@@ -143,18 +143,18 @@ export default function RoomPage() {
     return (
         <div className="h-screen flex flex-col bg-transparent">
             {/* Header */}
-            <div className="tom-gradient px-6 py-4 flex items-center justify-between shadow-medium">
+            <div className="tom-gradient px-2 md:px-6 py-4 flex items-center justify-between shadow-medium">
                 <div className="flex items-center space-x-4">
                     <button
                         onClick={() => window.location.href = '/'}
-                        className="tom-button bg-white text-gray-700 px-4 py-2 rounded-tom-sm font-semibold hover:bg-gray-50"
+                        className="md:tom-button bg-white text-gray-700 md:px-4 md:py-2 py-1 px-2 text-xs rounded-tom-sm md:font-semibold hover:bg-gray-50"
                     >
-                        ← Back
+                        ← 
                     </button>
                     <div className="flex items-center space-x-3">
-                        <div className="text-3xl float">🐱</div>
+                        <div className="md:text-3xl float">🐱</div>
                         <div>
-                            <h1 className="text-xl font-bold text-white">Room: {roomId}</h1>
+                            <h1 className="text-sm md:text-xl font-bold text-white">Room: {roomId}</h1>
                             <div className="flex items-center space-x-2">
                                 <div className={`w-3 h-3 rounded-full ${isConnected ? 'bg-green-400' : 'bg-red-400'} pulse-glow`}></div>
                                 <span className="text-sm text-white font-medium">
@@ -165,13 +165,13 @@ export default function RoomPage() {
                     </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                    <div className="user-count">
+                <div className="md:flex flex-col items-center md:space-x-4">
+                    <div className="text-xs md:text-base px-2 py-1 md:py-2 rounded-tom-sm bg-white/30 mb-1 text-white text-center">
                         {users.length} user{users.length !== 1 ? 's' : ''} online
                     </div>
                     <button
                         onClick={copyRoomCode}
-                        className="tom-button bg-white text-gray-700 px-4 py-2 rounded-tom-sm font-semibold hover:bg-gray-50"
+                        className="tom-button bg-white text-xs md:text-lg text-gray-700 md:px-4 md:py-2 px-2 py-1 rounded-tom-sm md:font-semibold hover:bg-gray-50"
                     >
                         Copy Room Code
                     </button>
@@ -195,15 +195,18 @@ export default function RoomPage() {
             </div>
 
             {/* Input */}
-            <div className="bg-white/30 px-10 backdrop-blur-sm ">
+            <div className="bg-white/30 px-10  backdrop-blur-sm pb-6">
                   
-                    <div className=" flex items-center justify-between space-x-4 py-4">
-                        <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
-                          <ContinuousRecorder
-                        onRecordingComplete={handleVoiceRecording}
-                        disabled={!isConnected}
-                    />
-                </div>
+                  <div className="flex items-center gap-2 py-2 px-2 md:px-44">
+  <div className="flex-1">
+    <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
+  </div>
+  <ContinuousRecorder
+    onRecordingComplete={handleVoiceRecording}
+    disabled={!isConnected}
+  />
+</div>
+
             </div>
         </div>
     );
