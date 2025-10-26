@@ -1,18 +1,22 @@
-# Backend Dockerfile
-FROM python:3.11-slim
+# Backend Dockerfile for Render
+FROM python:3.12-slim
 
 WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     ffmpeg \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy dependency files
-COPY requirements.txt pyproject.toml ./
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy dependency files
+COPY pyproject.toml uv.lock* ./
+
+# Install dependencies
+RUN uv sync --frozen --no-dev
 
 # Copy application code
 COPY . .
@@ -24,4 +28,4 @@ RUN mkdir -p audio_cache
 EXPOSE 8000
 
 # Start server
-CMD ["python", "start_server.py"]
+CMD ["uv", "run", "python", "start_server.py"]

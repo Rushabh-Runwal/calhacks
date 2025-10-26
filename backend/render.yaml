@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: multiplayer-ai-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 8000
+      - key: FISH_API_KEY
+        sync: false
+      - key: JANITOR_API_KEY
+        sync: false
+    healthCheckPath: /
