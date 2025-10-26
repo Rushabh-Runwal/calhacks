@@ -28,8 +28,8 @@ export default function RoomPage() {
             return;
         }
 
-        // Initialize socket connection to Python backend
-        const newSocket = io(process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8000');
+        // Initialize socket connection
+        const newSocket = io(process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000');
         setSocket(newSocket);
 
         // Connection events
