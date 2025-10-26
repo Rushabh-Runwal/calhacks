@@ -57,9 +57,9 @@ export default function ChatMessage({ message }: ChatMessageProps) {
                                     onEnded={() => setIsPlaying(false)}
                                     onPause={() => setIsPlaying(false)}
                                     className="w-full max-w-xs"
-                                    src={process.env.NODE_ENV === 'production'
+                                    src={message.audio_url.startsWith('http')
                                         ? message.audio_url
-                                        : `http://localhost:8000${message.audio_url}`}
+                                        : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${message.audio_url}`}
                                 >
                                     Your browser does not support audio playback.
                                 </audio>
