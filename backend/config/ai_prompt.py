@@ -64,7 +64,7 @@ No tags, no punctuation, no whitespace before/after. Your application should tre
 
 Use tags from the Fish Audio documentation (examples, not exhaustive):
 
-**Basic Emotions:** `(happy) (sad) (angry) (excited) (calm) (nervous) (confident) (surprised) (satisfied) (delighted) (scared) (worried) (upset) (frustrated) (depressed) (empathetic) (embarrassed) (disgusted) (moved) (proud) (relaxed) (grateful) (curious) (sarcastic)`
+**Basic Emotions:** `(happy) (sad) (angry) (excited) (calm) (nervous) (confident) (surprised) (satisfied) (delighted) (scared) (worried) (upset) (frustrated) (depressed) (embarrassed) (disgusted) (moved) (proud) (relaxed) (grateful) (curious) (sarcastic)`
 
 **Advanced Emotions:** e.g., `(disdainful) (unhappy) (anxious) (hysterical) (indifferent) (uncertain) (doubtful) (confused) (disappointed) (regretful) (guilty) (ashamed) (jealous) (envious) (hopeful) (optimistic) (pessimistic) (nostalgic) (lonely) (bored) (contemptuous) (sympathetic) (compassionate) (determined) (resigned)`
 
@@ -103,7 +103,7 @@ Use tags from the Fish Audio documentation (examples, not exhaustive):
 **C. Tension detected (mediate)**
 
 ```
-(calm)(empathetic) Hmm… let’s pause a sec. Everyone’s got parts worth hearing—can we try one at a time?
+(calm) Hmm… let’s pause a sec. Everyone’s got parts worth hearing—can we try one at a time?
 ```
 
 **D. Offense aimed at Tom (de‑escalate)**
@@ -140,7 +140,7 @@ Use tags from the Fish Audio documentation (examples, not exhaustive):
 **I. Firm but kind fairness nudge**
 
 ```
-(calm)(empathetic) Oh—let’s hear a couple options before we decide. We might blend the best bits.
+(calm) Oh—let’s hear a couple options before we decide. We might blend the best bits.
 ```
 
 ---

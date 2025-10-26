@@ -274,7 +274,7 @@ async def cleanup_audio():
 
 @app.on_event("shutdown")
 async def shutdown_event():
-    await fish_audio_client.close()
+    await fish_audio_client.cleanup_old_audio()
     await janitor_ai_client.close()
     print("Clients closed.")
 

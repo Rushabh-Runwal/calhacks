@@ -12,7 +12,7 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Python package management
-uv.lock
+# uv.lock should be committed for reproducible builds
 .python-version
 
 # Next.js
