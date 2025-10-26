@@ -183,7 +183,13 @@ export default function RoomPage() {
                 {messages.length === 0 ? (
                     <div className="flex flex-col items-center justify-center text-center text-gray-500 mt-32">
                         <p className='my-3 text-blue-950/60'>Meow! Let&apos;s have some fun...</p>
-                        <Image src="/Hero/tom.svg" alt="tommy" width={100} height={100} />
+                        <Image
+                            src="/Hero/tom.png"
+                            alt="tommy"
+                            width={200}
+                            height={280}
+                            className="w-40 h-56 md:w-48 md:h-64 lg:w-56 lg:h-80"
+                        />
                     </div>
 
                 ) : (
