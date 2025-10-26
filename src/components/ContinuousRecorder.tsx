@@ -123,22 +123,17 @@ export default function ContinuousRecorder({ onRecordingComplete, disabled }: Co
     };
 
     return (
-        <div className="flex items-center gap-4">
-            <button
-                onClick={handleButtonClick}
-                disabled={disabled}
-                className={`p-4 rounded-full transition-all duration-200 ${statusColor} ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}`}
-                title={statusText}
-            >
-                {recorderState === 'MUTED' || recorderState === 'AWAITING_PERMISSION' || recorderState === 'ERROR' ? (
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
-                ) : (
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm5 3V4a1 1 0 10-2 0v3a1 1 0 102 0zM5 8a5 5 0 1010 0v-1a1 1 0 10-2 0v1a3 3 0 11-6 0v-1a1 1 0 10-2 0v1z" clipRule="evenodd" /></svg>
-                )}
-            </button>
-            <div className="text-sm font-medium text-gray-700 w-24">
-                {statusText}
-            </div>
-        </div>
+        <button
+            onClick={handleButtonClick}
+            disabled={disabled}
+            className={`p-4 rounded-full transition-all duration-200 ${statusColor} ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}`}
+            title={statusText}
+        >
+            {recorderState === 'MUTED' || recorderState === 'AWAITING_PERMISSION' || recorderState === 'ERROR' ? (
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
+            ) : (
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm5 3V4a1 1 0 10-2 0v3a1 1 0 102 0zM5 8a5 5 0 1010 0v-1a1 1 0 10-2 0v1a3 3 0 11-6 0v-1a1 1 0 10-2 0v1z" clipRule="evenodd" /></svg>
+            )}
+        </button>
     );
 }

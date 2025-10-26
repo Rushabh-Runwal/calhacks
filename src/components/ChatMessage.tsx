@@ -78,16 +78,9 @@ export default function ChatMessage({ message }: ChatMessageProps) {
     }
 
     return (
-        <div className="flex items-start space-x-3 slide-in">
-            <div className="flex-shrink-0">
-                <div className="w-12 h-12 sky-gradient rounded-full flex items-center justify-center text-white text-lg font-bold shadow-medium">
-                    {getInitials(message.username)}
-                </div>
-            </div>
-            <div className="flex-1 min-w-0">
-                <div className="flex items-center space-x-2 mb-2">
-                    <span className="text-sm font-bold text-gray-900">{message.username}</span>
-                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-tom-sm">{formatTime(message.timestamp)}</span>
+        <div className="flex items-start space-x-3 slide-in justify-end">
+            <div className="flex-1 min-w-0 flex flex-col items-end">
+                <div className="flex items-center space-x-2 mb-1 mt-2">
                     {message.is_voice && (
                         <span className="inline-flex items-center gap-1 text-xs text-gray-500 bg-blue-100 px-2 py-1 rounded-tom-sm">
                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -96,6 +89,8 @@ export default function ChatMessage({ message }: ChatMessageProps) {
                             Voice
                         </span>
                     )}
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-tom-sm">{formatTime(message.timestamp)}</span>
+                    <span className="text-sm font-bold text-gray-900">{message.username}</span>
                 </div>
                 <div className="user-message p-4 max-w-xs lg:max-w-md">
                     <p className="text-white font-medium leading-relaxed">{message.content}</p>
@@ -107,6 +102,11 @@ export default function ChatMessage({ message }: ChatMessageProps) {
                             Voice message
                         </div>
                     )}
+                </div>
+            </div>
+            <div className="flex-shrink-0">
+                <div className="w-12 h-12 mt-12 sky-gradient rounded-full flex items-center justify-center text-white text-lg font-bold shadow-medium">
+                    {getInitials(message.username)}
                 </div>
             </div>
         </div>

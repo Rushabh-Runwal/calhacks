@@ -25,26 +25,28 @@ export default function ChatInput({ onSendMessage, disabled = false }: ChatInput
     };
 
     return (
-        <div className="flex items-center space-x-4 p-4">
-            <div className="flex-1">
-                <input
-                    type="text"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder={disabled ? "Connecting to Tom..." : "Type a message to Tom..."}
-                    disabled={disabled}
-                    className="tom-input w-full px-4 py-4 text-lg disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    maxLength={500}
-                />
-            </div>
-            <button
+        <div className="flex justify-center w-full p-4">
+            <div className="flex items-center space-x-4 w-[70%]">
+                <div className="flex-1">
+                    <input
+                        type="text"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        onKeyPress={handleKeyPress}
+                        placeholder={disabled ? "Connecting to Tom..." : "Type a message to Tom..."}
+                        disabled={disabled}
+                        className="tom-input w-full px-4 py-4 text-lg disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        maxLength={500}
+                    />
+                </div>
+                <button
                 onClick={handleSubmit}
                 disabled={!message.trim() || disabled}
                 className="tom-button tom-gradient text-white px-8 py-4 rounded-tom font-bold text-lg shadow-medium disabled:bg-gray-300 disabled:cursor-not-allowed disabled:transform-none"
             >
                 Send
             </button>
+            </div>
         </div>
     );
 }

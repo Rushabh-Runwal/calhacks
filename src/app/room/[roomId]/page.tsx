@@ -125,8 +125,8 @@ export default function RoomPage() {
 
     if (error) {
         return (
-            <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-                <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+            <div className="min-h-screen flex items-center justify-center">
+                <div className=" p-8 rounded-lg shadow-lg text-center">
                     <h2 className="text-xl font-semibold text-red-600 mb-4">Error</h2>
                     <p className="text-gray-600 mb-4">{error}</p>
                     <button
@@ -141,7 +141,7 @@ export default function RoomPage() {
     }
 
     return (
-        <div className="h-screen flex flex-col" style={{ background: 'var(--chat-bg)' }}>
+        <div className="h-screen flex flex-col bg-transparent">
             {/* Header */}
             <div className="tom-gradient px-6 py-4 flex items-center justify-between shadow-medium">
                 <div className="flex items-center space-x-4">
@@ -179,7 +179,7 @@ export default function RoomPage() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-hidden p-4 space-y-4 bg-white/30 backdrop-blur-sm">
                 {messages.length === 0 ? (
                     <div className="text-center text-gray-500 mt-8">
                         <p>No messages yet. Start the conversation!</p>
@@ -195,15 +195,14 @@ export default function RoomPage() {
             </div>
 
             {/* Input */}
-            <div className="bg-white border-t border-gray-200 p-4">
-                <div className="flex items-center gap-3">
-                    <ContinuousRecorder
+            <div className="bg-white/30 px-10 backdrop-blur-sm ">
+                  
+                    <div className=" flex items-center justify-between space-x-4 py-4">
+                        <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
+                          <ContinuousRecorder
                         onRecordingComplete={handleVoiceRecording}
                         disabled={!isConnected}
                     />
-                    <div className="flex-1">
-                        <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
-                    </div>
                 </div>
             </div>
         </div>
