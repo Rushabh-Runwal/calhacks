@@ -7,6 +7,7 @@ import { Message, User } from '@/types/chat';
 import ChatMessage from '@/components/ChatMessage';
 import ChatInput from '@/components/ChatInput';
 import ContinuousRecorder from '@/components/ContinuousRecorder';
+import Image from 'next/image';
 
 export default function RoomPage() {
     const params = useParams();
@@ -29,8 +30,10 @@ export default function RoomPage() {
         }
 
         // Initialize socket connection
-        const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-        const newSocket = io(backendUrl);
+        const newSocket = io(process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000', {
+            transports: ['websocket', 'polling'],
+            autoConnect: true,
+        });
         setSocket(newSocket);
 
         // Connection events
@@ -123,8 +126,8 @@ export default function RoomPage() {
 
     if (error) {
         return (
-            <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-                <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+            <div className="min-h-screen flex items-center justify-center">
+                <div className=" p-8 rounded-lg shadow-lg text-center">
                     <h2 className="text-xl font-semibold text-red-600 mb-4">Error</h2>
                     <p className="text-gray-600 mb-4">{error}</p>
                     <button
@@ -139,20 +142,20 @@ export default function RoomPage() {
     }
 
     return (
-        <div className="h-screen flex flex-col" style={{ background: 'var(--chat-bg)' }}>
+        <div className="h-screen flex flex-col bg-transparent">
             {/* Header */}
-            <div className="tom-gradient px-6 py-4 flex items-center justify-between shadow-medium">
+            <div className="tom-gradient px-2 md:px-6 py-4 flex items-center justify-between shadow-medium">
                 <div className="flex items-center space-x-4">
                     <button
                         onClick={() => window.location.href = '/'}
-                        className="tom-button bg-white text-gray-700 px-4 py-2 rounded-tom-sm font-semibold hover:bg-gray-50"
+                        className="md:tom-button bg-white text-gray-700 md:px-4 md:py-2 py-1 px-2 text-xs rounded-tom-sm md:font-semibold hover:bg-gray-50"
                     >
-                        ← Back
+                        ← 
                     </button>
                     <div className="flex items-center space-x-3">
-                        <div className="text-3xl float">🐱</div>
+                        <div className="md:text-3xl float">🐱</div>
                         <div>
-                            <h1 className="text-xl font-bold text-white">Room: {roomId}</h1>
+                            <h1 className="text-sm md:text-xl font-bold text-white">Room: {roomId}</h1>
                             <div className="flex items-center space-x-2">
                                 <div className={`w-3 h-3 rounded-full ${isConnected ? 'bg-green-400' : 'bg-red-400'} pulse-glow`}></div>
                                 <span className="text-sm text-white font-medium">
@@ -163,13 +166,13 @@ export default function RoomPage() {
                     </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                    <div className="user-count">
+                <div className="md:flex md:flex-row flex-col items-center md:space-x-4">
+                    <div className="text-xs md:text-base px-2 py-1 md:py-2 rounded-tom-sm bg-white/30 mb-1 text-white text-center">
                         {users.length} user{users.length !== 1 ? 's' : ''} online
                     </div>
                     <button
                         onClick={copyRoomCode}
-                        className="tom-button bg-white text-gray-700 px-4 py-2 rounded-tom-sm font-semibold hover:bg-gray-50"
+                        className="tom-button bg-white text-xs md:text-lg text-gray-700 md:px-4 md:py-2 px-2 py-1 rounded-tom-sm md:font-semibold hover:bg-gray-50"
                     >
                         Copy Room Code
                     </button>
@@ -177,11 +180,14 @@ export default function RoomPage() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            {/* allow vertical scrolling but keep scrollbars hidden via global CSS */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white/30 backdrop-blur-sm">
                 {messages.length === 0 ? (
-                    <div className="text-center text-gray-500 mt-8">
-                        <p>No messages yet. Start the conversation!</p>
-                    </div>
+                  <div className="flex flex-col items-center justify-center text-center text-gray-500 mt-32">
+  <p className='my-3 text-blue-950/60'>Meow! Let&apos;s have some fun...</p>
+  <Image src="/Hero/tom.svg" alt="tommy" width={100} height={100} />
+</div>
+
                 ) : (
                     <div>
                         {messages.map((message) => (
@@ -193,16 +199,18 @@ export default function RoomPage() {
             </div>
 
             {/* Input */}
-            <div className="bg-white border-t border-gray-200 p-4">
-                <div className="flex items-center gap-3">
-                    <ContinuousRecorder
-                        onRecordingComplete={handleVoiceRecording}
-                        disabled={!isConnected}
-                    />
-                    <div className="flex-1">
-                        <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
-                    </div>
-                </div>
+            <div className="bg-white/30 px-10  backdrop-blur-sm pb-6">
+                  
+                  <div className="flex items-center gap-2 py-2 px-2 md:px-44">
+  <div className="flex-1">
+    <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
+  </div>
+  <ContinuousRecorder
+    onRecordingComplete={handleVoiceRecording}
+    disabled={!isConnected}
+  />
+</div>
+
             </div>
         </div>
     );
