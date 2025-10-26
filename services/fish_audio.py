@@ -13,21 +13,8 @@ class FishAudioClient:
         self.session = Session(api_key)
         os.makedirs(self.audio_cache_dir, exist_ok=True)
 
-    def _add_emotion_tags(self, text: str) -> str:
-        if any(word in text.lower() for word in ["meow", "purr", "hehe", "fish", "fun", "play"]):
-            return f"(excited) {text}"
-        elif "?" in text:
-            return f"(curious) {text}"
-        elif any(word in text.lower() for word in ["love", "happy", "amazing", "wonderful"]):
-            return f"(happy) {text}"
-        elif any(word in text.lower() for word in ["sorry", "trouble", "problem"]):
-            return f"(sad) {text}"
-        else:
-            return f"(playful) {text}"
-
     async def generate_audio(self, text: str, message_id: str) -> Optional[str]:
         try:
-            emotional_text = self._add_emotion_tags(text)
             ws_session = WebSocketSession(self.api_key)
             
             request = TTSRequest(
@@ -45,7 +32,7 @@ class FishAudioClient:
                     with open(audio_path, "wb") as f:
                         for audio_chunk in ws_session.tts(
                             request,
-                            [emotional_text],
+                            [text], # Use the original text directly
                             backend="s1"
                         ):
                             f.write(audio_chunk)

@@ -29,7 +29,7 @@ export default function RoomPage() {
         }
 
         // Initialize socket connection
-        const newSocket = io(process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000');
+        const newSocket = io(process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8000');
         setSocket(newSocket);
 
         // Connection events

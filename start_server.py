@@ -11,16 +11,12 @@ def main():
     port = int(os.getenv("PORT", "8000"))
 
     # Set Fish Audio API Key
-    fish_api_key = os.getenv("FISH_API_KEY")
-    if not fish_api_key:
-        print("Warning: FISH_API_KEY environment variable not set.")
-    else:
-        os.environ["FISH_API_KEY"] = fish_api_key
+    fish_api_key = "b34cff9e6fed4b8cb414b3ed4356014d"
 
     # Start the Uvicorn server
     print(f"Starting server on {host}:{port}")
     uvicorn.run(
-        "main:app", 
+        "main:socket_app", 
         host=host, 
         port=port, 
         reload=True, 

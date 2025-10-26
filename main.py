@@ -11,14 +11,15 @@ import socketio
 from models.chat import Message, User, Room
 from services.fish_audio import FishAudioClient
 from services.janitor_ai import JanitorAIClient
-import traceback
 import uuid
 
 app = FastAPI(title="Talking Tom Chat API", version="1.0.0")
 sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins="*")
 
-# Mount the Socket.IO app at the default path
-app.mount("/socket.io", socketio.ASGIApp(sio))
+# Serve static audio files
+app.mount("/audio", StaticFiles(directory="audio_cache"), name="audio")
+
+socket_app = socketio.ASGIApp(sio, app)
 
 # Initialize clients
 fish_audio_client = FishAudioClient()
@@ -144,22 +145,21 @@ async def sendVoiceMessage(sid, data):
         await sio.emit("error", {"message": "Failed to process voice message. Please try again."}, room=sid)
 
 def should_tom_respond(message_content: str, username: str) -> bool:
-    """Check if Tom should respond based on the prompt rules"""
+    """Check if Tom should respond based on the prompt's gating rules."""
     content_lower = message_content.lower()
     
-    # Tom responds when:
-    # 1. Someone directly mentions his name
-    if any(name in content_lower for name in ["tom", "talking tom"]):
+    # Rule 1: Direct mention of "Tom"
+    if "tom" in content_lower:
         return True
     
-    # 2. Someone asks a question
+    # Rule 2: Addressed to everyone (covers greetings like "hey all")
+    if any(phrase in content_lower for phrase in ["guys", "everyone", "all"]):
+        return True
+    
+    # Rule 3: A question is asked
     if "?" in message_content:
         return True
-    
-    # 3. Message is addressed to everyone
-    if any(greeting in content_lower for greeting in ["guys", "everyone", "hey all", "hi all", "hello all"]):
-        return True
-    
+
     return False
 
 async def generate_ai_response(room_id: str, username: str):
@@ -176,8 +176,9 @@ async def generate_ai_response(room_id: str, username: str):
     # 2. Get AI text response
     ai_text_response = await janitor_ai_client.get_ai_response(context)
 
-    if not ai_text_response:
-        print(f"[{room_id}] AI did not return a response.")
+    # 3. Handle silence
+    if not ai_text_response or "[[NO_OUTPUT]]" in ai_text_response:
+        print(f"[{room_id}] AI decided to stay silent.")
         return
         
     print(f"[{room_id}] AI Response (text): {ai_text_response}")
@@ -185,13 +186,12 @@ async def generate_ai_response(room_id: str, username: str):
     # Generate a unique ID for the AI's message
     ai_message_id = generate_message_id()
 
-    # 3. Generate audio for the AI response
+    # 4. Generate audio for the AI response
     audio_file_path = await fish_audio_client.generate_audio(ai_text_response, ai_message_id)
     audio_duration = 0 # Fish Audio SDK does not provide duration, default to 0
 
     if not audio_file_path:
         print(f"[{room_id}] Failed to generate audio for AI response.")
-        # Fallback: send text-only message if audio fails
         ai_message = Message(
             id=ai_message_id,
             content=ai_text_response,
@@ -203,7 +203,7 @@ async def generate_ai_response(room_id: str, username: str):
             timestamp=int(datetime.now().timestamp() * 1000)
         )
     else:
-        # 4. Create the AI message with audio
+        # 5. Create the AI message with audio
         print(f"[{room_id}] AI Response (audio): {audio_file_path} (duration: {audio_duration}s)")
         ai_message = Message(
             id=ai_message_id,
@@ -216,7 +216,7 @@ async def generate_ai_response(room_id: str, username: str):
             timestamp=int(datetime.now().timestamp() * 1000)
         )
 
-    # 5. Add AI message to the room and broadcast
+    # 6. Add AI message to the room and broadcast
     room.messages.append(ai_message)
     await sio.emit("newMessage", ai_message.dict(), room=room_id)
 
@@ -280,4 +280,4 @@ async def shutdown_event():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(socket_app, host="0.0.0.0", port=8000)
