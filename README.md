@@ -1,92 +1,181 @@
-# Multiplayer AI Chat# 🐱 Talking Tom Chat
+# 🐱 Talking Tom Chat# Multiplayer AI Chat# 🐱 Talking Tom Chat
 
 
 
-A real-time multiplayer chat application with an AI character (Talking Tom) that can respond via text and voice.Multiplayer AI chat with Talking Tom featuring voice chat capabilities.
+Real-time multiplayer chat with AI character (Talking Tom) featuring voice input and responses.
 
 
 
-## Architecture## Features
+## FeaturesA real-time multiplayer chat application with an AI character (Talking Tom) that can respond via text and voice.Multiplayer AI chat with Talking Tom featuring voice chat capabilities.
 
 
 
-This project is split into two main parts:- Real-time multiplayer chat with WebSockets
+- 💬 Real-time multiplayer chat
 
-- Talking Tom AI character with Fish Audio TTS
+- 🎙️ Voice input with automatic speech detection
 
-- **Backend**: Python FastAPI + Socket.IO server (`/backend`)- Voice message recording and transcription
+- 🔊 AI voice responses## Architecture## Features
 
-- **Frontend**: Next.js React application (`/frontend`)- Smart response logic (Tom responds when addressed)
+- 🤖 Smart AI that responds contextually
 
-- Room-based chat with shareable codes
+- 👥 Room-based conversations
 
-## Features
+
+
+## Tech StackThis project is split into two main parts:- Real-time multiplayer chat with WebSockets
+
+
+
+**Backend:** Python, FastAPI, Socket.IO  - Talking Tom AI character with Fish Audio TTS
+
+**Frontend:** Next.js, React, TypeScript, Tailwind CSS  
+
+**AI:** Janitor AI, Fish Audio SDK- **Backend**: Python FastAPI + Socket.IO server (`/backend`)- Voice message recording and transcription
+
+
+
+## Quick Start- **Frontend**: Next.js React application (`/frontend`)- Smart response logic (Tom responds when addressed)
+
+
+
+### Prerequisites- Room-based chat with shareable codes
+
+- Python 3.10+
+
+- Node.js 18+## Features
+
+- FFmpeg
 
 ## Tech Stack
 
+### Running Locally
+
 - 🎙️ **Voice Input**: Speak to the AI using voice activity detection
 
-- 🔊 **Voice Responses**: AI responds with synthesized speech- **Backend**: FastAPI + python-socketio
+1. **Clone and setup environment:**
 
-- 💬 **Real-time Chat**: Socket.IO-based instant messaging- **Frontend**: Next.js + React + TypeScript + Tailwind CSS
+```bash- 🔊 **Voice Responses**: AI responds with synthesized speech- **Backend**: FastAPI + python-socketio
 
-- 👥 **Multiplayer Rooms**: Multiple users can chat together- **AI**: JanitorAI API
+git clone https://github.com/Rushabh-Runwal/calhacks.git
 
-- 🤖 **AI Character**: Talking Tom with personality and context awareness- **Audio**: Fish Audio SDK (TTS + ASR)
-
-- 📱 **Responsive UI**: Works on desktop and mobile devices
-
-## Quick Start
-
-## Quick Start
-
-1. **Install dependencies:**
-
-### Prerequisites```bash
-
-uv sync
-
-- Python 3.10+npm install
-
-- Node.js 18+```
-
-- FFmpeg (for audio processing)
-
-2. **Start backend:**
-
-### Option 1: Docker Compose (Recommended)```bash
-
-uv run python start_server.py
-
-```bash```
-
-# Copy environment files
-
-cp backend/.env.example backend/.env3. **Start frontend:**
-
-cp frontend/.env.example frontend/.env.local```bash
-
-npm run dev
-
-# Edit the .env files with your API keys```
+cd calhacks- 💬 **Real-time Chat**: Socket.IO-based instant messaging- **Frontend**: Next.js + React + TypeScript + Tailwind CSS
 
 
 
-# Start both services4. **Open:** http://localhost:3000
+# Setup backend- 👥 **Multiplayer Rooms**: Multiple users can chat together- **AI**: JanitorAI API
+
+cp backend/.env.example backend/.env
+
+# Edit backend/.env with your API keys- 🤖 **AI Character**: Talking Tom with personality and context awareness- **Audio**: Fish Audio SDK (TTS + ASR)
+
+
+
+# Setup frontend- 📱 **Responsive UI**: Works on desktop and mobile devices
+
+cp frontend/.env.example frontend/.env.local
+
+```## Quick Start
+
+
+
+2. **Start Backend (Terminal 1):**## Quick Start
+
+```bash
+
+./start-backend.sh1. **Install dependencies:**
+
+```
+
+Backend runs on http://localhost:8000### Prerequisites```bash
+
+
+
+3. **Start Frontend (Terminal 2):**uv sync
+
+```bash
+
+./start-frontend.sh- Python 3.10+npm install
+
+```
+
+Frontend runs on http://localhost:3000- Node.js 18+```
+
+
+
+### Using Docker- FFmpeg (for audio processing)
+
+
+
+```bash2. **Start backend:**
 
 docker-compose up --build
 
+```### Option 1: Docker Compose (Recommended)```bash
+
+
+
+## Project Structureuv run python start_server.py
+
+
+
+``````bash```
+
+├── backend/          # Python FastAPI + Socket.IO
+
+├── frontend/         # Next.js React app# Copy environment files
+
+└── docker-compose.yml
+
+```cp backend/.env.example backend/.env3. **Start frontend:**
+
+
+
+## Environment Variablescp frontend/.env.example frontend/.env.local```bash
+
+
+
+**Backend (.env):**npm run dev
+
+```env
+
+FISH_API_KEY=your_key# Edit the .env files with your API keys```
+
+JANITOR_API_KEY=your_key
+
+```
+
+
+
+**Frontend (.env.local):**# Start both services4. **Open:** http://localhost:3000
+
+```env
+
+NEXT_PUBLIC_API_URL=http://localhost:8000docker-compose up --build
+
+```
+
 ```## Usage
 
+## Deployment
 
 
-- Frontend: http://localhost:30001. Enter username and create/join room
 
-- Backend: http://localhost:80002. Chat with text or voice messages
+- **Backend:** Deploy to Railway, Render, or any Python hosting
 
-3. Tom responds when you address him directly
+- **Frontend:** Deploy to Vercel (recommended), Netlify, or CloudFlare Pages- Frontend: http://localhost:30001. Enter username and create/join room
 
-### Option 2: Manual Setup4. Voice messages are transcribed and Tom responds with audio
+
+
+Set root directory to `backend` or `frontend` respectively.- Backend: http://localhost:80002. Chat with text or voice messages
+
+
+
+## License3. Tom responds when you address him directly
+
+
+
+MIT### Option 2: Manual Setup4. Voice messages are transcribed and Tom responds with audio
+
 
 
 
