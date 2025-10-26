@@ -29,119 +29,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      <div className="background-container">
-    {/* Sun (orbiting) */}
-<div className="sun-fan">
-  <Image
-    src="/Hero/sun_rays.svg"
-    alt="Sun Rays"
-    fill
-    className="sun-fan-img"
-    priority
-  />
-</div>
-<div className="sun-disk" aria-hidden="true" />
-        <Image
-          src="/Hero/cloud_one.svg"
-          alt="Cloud"
-          className="cloud cloud-1"
-          width={300}
-          height={100}
-        />
-        <Image
-          src="/Hero/cloud_two.svg"
-          alt="Cloud"
-          className="cloud cloud-2"
-          width={250}
-          height={100}
-        />
-        <Image
-          src="/Hero/cloud_three.svg"
-          alt="Cloud"
-          className="cloud cloud-3"
-          width={550}
-          height={100}
-        />
-        <Image
-          src="/Hero/cloud_four.svg"
-          alt="Cloud"
-          className="cloud cloud-4"
-          width={200}
-          height={100}
-        />
-        <Image
-          src="/Hero/cloud_five.svg"
-          alt="Cloud"
-          className="cloud cloud-5"
-          width={200}
-          height={100}
-        />
-        <Image
-          src="/Hero/dark_green_mountain.svg"
-          alt="Mountains"
-          className="mountain"
-          width={1050}
-          height={500}
-          style={{ zIndex: 2 }}
-          priority
-        />
-          <Image
-          src="/Hero/medium_green_mountain.svg"
-          alt="Mountains"
-          className="medmountain"
-          width={550}
-          height={400}
-          style={{ zIndex: 2 }}
-          priority
-        />
-          <Image
-          src="/Hero/side_mountain.svg"
-          alt="Mountains"
-          className="sidemountain"
-          width={250}
-          height={400}
-          style={{ zIndex: 2 }}
-          priority
-        />
-         <Image
-          src="/Hero/side_mountain.svg"
-          alt="Mountains"
-          className="sidemountain2"
-          width={300}
-          height={400}
-          style={{ zIndex: 2 }}
-          priority
-        />
-        <Image
-          src="/Hero/dark_water_layer.88343155.svg"
-          alt="Water"
-          className="water"
-          width={1820}
-          height={400}
-          style={{ zIndex: 1 }}
-          priority
-        />
-        <Image
-          src="/Hero/single_sparkle.svg"
-          alt="Sparkle"
-          width={30}
-          height={30}
-          style={{ top: '25%', left: '15%' }}
-        />
-        <Image
-          src="/Hero/two_sparkles.svg"
-          alt="Sparkles"
-          width={50}
-          height={30}
-          style={{ top: '35%', right: '20%' }}
-        />
-      </div>
+
       <div className="bg-white/90 backdrop-blur-sm rounded-tom-lg shadow-strong p-8 w-full max-w-md bounce-in relative">
         {/* Tom Character Header */}
         <div className="text-center mb-4">
           <div className="text-4xl mb-4 float">🐱</div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Talking Tom Chat
+           Tommy Chat
           </h1>
           <p className="text-gray-600 text-base">
             Meow! Let&apos;s chat together!
