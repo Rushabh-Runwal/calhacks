@@ -121,12 +121,23 @@ export default function Home() {
           style={{ zIndex: 1 }}
           priority
         />
+         <Image
+          src="/Hero/tom.svg"
+          alt="Water"
+          className="tom"
+          width={200}
+          height={200}
+          priority
+        />
+       
+        
         <Image
-          src="/Hero/single_sparkle.svg"
-          alt="Sparkle"
-          width={30}
-          height={30}
-          style={{ top: '25%', left: '15%' }}
+          src="/Hero/dark_beach_layer.06a45771.svg"
+          alt="Water"
+          className="beach-layer"
+          width={650}
+          height={200}
+          priority
         />
         <Image
           src="/Hero/two_sparkles.svg"

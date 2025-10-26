@@ -29,7 +29,10 @@ export default function RoomPage() {
         }
 
         // Initialize socket connection
-        const newSocket = io(process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000');
+        const newSocket = io(process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000', {
+            transports: ['websocket', 'polling'],
+            autoConnect: true,
+        });
         setSocket(newSocket);
 
         // Connection events
