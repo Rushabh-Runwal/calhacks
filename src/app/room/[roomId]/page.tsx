@@ -7,6 +7,7 @@ import { Message, User } from '@/types/chat';
 import ChatMessage from '@/components/ChatMessage';
 import ChatInput from '@/components/ChatInput';
 import ContinuousRecorder from '@/components/ContinuousRecorder';
+import Image from 'next/image';
 
 export default function RoomPage() {
     const params = useParams();
@@ -165,7 +166,7 @@ export default function RoomPage() {
                     </div>
                 </div>
 
-                <div className="md:flex flex-col items-center md:space-x-4">
+                <div className="md:flex md:flex-row flex-col items-center md:space-x-4">
                     <div className="text-xs md:text-base px-2 py-1 md:py-2 rounded-tom-sm bg-white/30 mb-1 text-white text-center">
                         {users.length} user{users.length !== 1 ? 's' : ''} online
                     </div>
@@ -179,11 +180,14 @@ export default function RoomPage() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-hidden p-4 space-y-4 bg-white/30 backdrop-blur-sm">
+            {/* allow vertical scrolling but keep scrollbars hidden via global CSS */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white/30 backdrop-blur-sm">
                 {messages.length === 0 ? (
-                    <div className="text-center text-gray-500 mt-8">
-                        <p>No messages yet. Start the conversation!</p>
-                    </div>
+                  <div className="flex flex-col items-center justify-center text-center text-gray-500 mt-32">
+  <p className='my-3 text-blue-950/60'>Meow! Let&apos;s have some fun...</p>
+  <Image src="/Hero/tom.svg" alt="tommy" width={100} height={100} />
+</div>
+
                 ) : (
                     <div>
                         {messages.map((message) => (
