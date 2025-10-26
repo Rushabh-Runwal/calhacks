@@ -30,10 +30,8 @@ export default function RoomPage() {
         }
 
         // Initialize socket connection
-        const newSocket = io(process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000', {
-            transports: ['websocket', 'polling'],
-            autoConnect: true,
-        });
+        const backendUrl = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
+        const newSocket = io(backendUrl);
         setSocket(newSocket);
 
         // Connection events
@@ -150,7 +148,7 @@ export default function RoomPage() {
                         onClick={() => window.location.href = '/'}
                         className="md:tom-button bg-white text-gray-700 md:px-4 md:py-2 py-1 px-2 text-xs rounded-tom-sm md:font-semibold hover:bg-gray-50"
                     >
-                        ← 
+                        ←
                     </button>
                     <div className="flex items-center space-x-3">
                         <div className="md:text-3xl float">🐱</div>
@@ -183,10 +181,10 @@ export default function RoomPage() {
             {/* allow vertical scrolling but keep scrollbars hidden via global CSS */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white/30 backdrop-blur-sm">
                 {messages.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center text-center text-gray-500 mt-32">
-  <p className='my-3 text-blue-950/60'>Meow! Let&apos;s have some fun...</p>
-  <Image src="/Hero/tom.svg" alt="tommy" width={100} height={100} />
-</div>
+                    <div className="flex flex-col items-center justify-center text-center text-gray-500 mt-32">
+                        <p className='my-3 text-blue-950/60'>Meow! Let&apos;s have some fun...</p>
+                        <Image src="/Hero/tom.svg" alt="tommy" width={100} height={100} />
+                    </div>
 
                 ) : (
                     <div>
@@ -200,16 +198,16 @@ export default function RoomPage() {
 
             {/* Input */}
             <div className="bg-white/30 px-10  backdrop-blur-sm pb-6">
-                  
-                  <div className="flex items-center gap-2 py-2 px-2 md:px-44">
-  <div className="flex-1">
-    <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
-  </div>
-  <ContinuousRecorder
-    onRecordingComplete={handleVoiceRecording}
-    disabled={!isConnected}
-  />
-</div>
+
+                <div className="flex items-center gap-2 py-2 px-2 md:px-44">
+                    <div className="flex-1">
+                        <ChatInput onSendMessage={sendMessage} disabled={!isConnected} />
+                    </div>
+                    <ContinuousRecorder
+                        onRecordingComplete={handleVoiceRecording}
+                        disabled={!isConnected}
+                    />
+                </div>
 
             </div>
         </div>
