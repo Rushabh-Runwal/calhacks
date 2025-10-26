@@ -95,7 +95,7 @@ export default function Background() {
         priority
       />
       <Image
-        src="/Hero/tom.svg"
+        src="/Hero/tom.png"
         alt="Water"
         className="tom"
         width={200}
