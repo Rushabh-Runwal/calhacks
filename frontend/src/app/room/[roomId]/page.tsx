@@ -29,7 +29,8 @@ export default function RoomPage() {
         }
 
         // Initialize socket connection
-        const newSocket = io(process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8000');
+        const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const newSocket = io(backendUrl);
         setSocket(newSocket);
 
         // Connection events
