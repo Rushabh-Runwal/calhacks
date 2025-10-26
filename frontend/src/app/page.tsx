@@ -33,9 +33,17 @@ export default function Home() {
       <div className="bg-white/90 backdrop-blur-sm rounded-tom-lg shadow-strong p-8 w-full max-w-md bounce-in relative">
         {/* Tom Character Header */}
         <div className="text-center mb-4">
-          <div className="text-4xl mb-4 float">🐱</div>
+          <div className="mb-4 flex justify-center">
+            <Image
+              src="/Hero/face.png"
+              alt="Tom's face"
+              width={80}
+              height={80}
+              className="float"
+            />
+          </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
-           Tommy Chat
+            Tommy Chat
           </h1>
           <p className="text-gray-600 text-base">
             Meow! Let&apos;s chat together!

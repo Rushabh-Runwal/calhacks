@@ -151,7 +151,15 @@ export default function RoomPage() {
                         ←
                     </button>
                     <div className="flex items-center space-x-3">
-                        <div className="md:text-3xl float">🐱</div>
+                        <div className="float">
+                            <Image
+                                src="/Hero/face.png"
+                                alt="Tom's face"
+                                width={56}
+                                height={48}
+                                className="w-12 h-10 md:w-14 md:h-12 lg:w-16 lg:h-14"
+                            />
+                        </div>
                         <div>
                             <h1 className="text-sm md:text-xl font-bold text-white">Room: {roomId}</h1>
                             <div className="flex items-center space-x-2">
